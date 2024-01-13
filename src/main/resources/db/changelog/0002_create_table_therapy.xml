@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+    <changeSet id="0002" author="tomasz.gorski88@gmail.com">
+        <createTable tableName="therapy">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="kind_of_therapy" type="VARCHAR(30)"/>
+            <column name="description" type="VARCHAR(1500)"/>
+            <column name="price" type="decimal"/>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

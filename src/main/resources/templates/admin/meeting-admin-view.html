@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <!-- Nagłówek pobieramy z modelu -->
+        <h2 class="list-heading" th:text="${headingFA}">Wyświetla terminy w pętli thymeleaf'a</h2>
+        <!-- godzine pobieramy z modelu -->
+        <p class="list-description" th:text="${descriptionFA}">Sprawdz terminy spotkań</p>
+        <!-- Zostawiamy tylko pierwszy element <li> -->
+        <ul class="free-therms-list" th:remove="all-but-first">
+            <!-- Pętla po wszystkich terminach z modelu -->
+            <li class="free-therms-list-item" th:each="meetingsThermsForAdmin: ${meetingThermsOccupiedForAdmin}">
+
+                <!-- Link do strony pojedynczego termiu  /termin/5 -->
+                <a href="#" th:href="@{|spotkania/${meetingsThermsForAdmin}|}">
+                    <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
+                    <button class="meeting-button">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </button>
+                </a>
+                <!--dane do pojedynczego spotkania terminu-->
+                <div class="free-therms-list-item-card">
+                    <div class="free-therms-list-item-content">
+                        <h4 class="free-therms-list-item-title" th:text="|Termin: ${meetingsThermsForAdmin.calender.dayof} ${meetingsThermsForAdmin.calender.time}|">Termin: </h4>
+                        <p class="free-therms-list-item-title" th:text="|Pacjęt: ${meetingsThermsForAdmin.patient.surname}  ${meetingsThermsForAdmin.patient.name} Nick: ${meetingsThermsForAdmin.patient.nick} tel. ${meetingsThermsForAdmin.patient.telephone}|">Pacjęt</p>
+                        <p class="free-therms-list-item-title" th:text="|Rodzaj terapii: ${meetingsThermsForAdmin.therapy.kindOfTherapy}|">Terapia</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+    <changeSet id="0004" author="tomasz.gorski88@gmail.com">
+        <createTable tableName="meeting">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="patient_id" type="BIGINT">
+                <constraints nullable="true"
+                             foreignKeyName="fk_patient_id"
+                             referencedTableName="patient"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="therapy_id" type="BIGINT">
+                <constraints nullable="true"
+                             foreignKeyName="fk_therapy_id"
+                             referencedTableName="therapy"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="calender_id" type="BIGINT">
+                <constraints nullable="true"
+                             foreignKeyName="fk_calender_id"
+                             referencedTableName="calender"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

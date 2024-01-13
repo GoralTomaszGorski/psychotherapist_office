@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <section class="therapy">
+            <h2 class="list-heading" th:text="${therapyHeading}">Rodzaje terapii/zakres usług</h2>
+
+            <!-- Podsumowanie -->
+            <div class="therapy-summary">
+                <!-- ikonka/obrazek -->
+
+                <!-- informacje o terapii -->
+                <div class="therapy-summary-info">
+
+                    <ul class="therapy-therms-list" th:remove="all-but-first">
+                        <!-- ustawiamy podsatwowe informacje o terapii -->
+                        <li th:each="therapy: ${therapies}">
+                            <fieldset>
+
+                                <!-- ustawiamy podsatwowe informacje o terapii -->
+                                <h3 class="meeting-summary" th:text="${therapy.kindOfTherapy}">Rodzaj terapii</h3>
+                                <p class="meeting-summary-day" th:text="|${therapy.description}|">opis</p>
+                                <p class="meeting-summary-day" th:text="|cena: ${therapy.price} zł|">cena</p>
+
+                            </fieldset>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

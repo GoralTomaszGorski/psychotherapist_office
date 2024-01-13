@@ -1,0 +1,368 @@
+
+/*CSS reset*/
+* {
+    margin: 0;
+    padding: 0;
+
+}
+/*Zmiana domyślnego fontu*/
+body {
+    font-family: 'Montserrat';
+    background-image: url("../images/gory2.jpg");
+    background-position: top;
+}
+/*Ustawienie koloru odnośników i usunięcie podkreśleń*/
+a {
+    text-decoration: none;
+    color: darkblue;
+}
+/*Kolor tła w głównym kontenerze i ustawienie elastycznego rozkładu
+Elementy będą ustawiane jeden pod drugim
+*/
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    padding: 2%;
+}
+
+/*
+przyciski dod sprawdzenia zarezerwowanych i wolnych terminów
+*/
+.terms-href,
+.terms-booked-href,
+.terms-free-href{
+    padding: 10px 18px;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+}
+.meeting-button-free,
+.meeting-button-booked{
+    padding: 14px 24px;
+    font-size: 28px;
+    text-align: center;
+    align-items: center;
+}
+.meeting-button-free{
+    color: darkgreen;
+}
+.meeting-button-booked{
+    color: orangered;
+}
+
+
+
+/*Główna sekcja powinna być skalowana wraz z rozciąganiem okna przeglądarki
+i powinna zajmować większość dostępnej przestrzeni
+*/
+.main-content {
+    flex: 1;
+    background-color: mistyrose;
+}
+
+/*MENU START*/
+/*Kolor logotypu i przycisku rozwijającego menu*/
+.logo,
+#toggle-icon {
+    color: darkblue;
+}
+/*Ustawienia dla responsywnego menu*/
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: mistyrose;
+}
+/*Elementy menu domyślnie są ukryte*/
+.menu-item{
+    width: 100%;
+    padding: 16px;
+    border-bottom: 1px #6d6d6d solid;
+    text-align: center;
+    display: none;
+}
+
+
+
+/*Po wciśnięciu przycisku elementy będą widoczne*/
+.expanded > .menu-item {
+    display: block;
+}
+/*padding dla elementów menu*/
+.menu-logo-container,
+.menu-login-container,
+.menu-toggle {
+    display: block;
+    padding: 16px 32px;
+    font-size: 17px;
+
+}
+
+/*Office START*/
+.office {
+
+    padding: 3rem;
+    text-align: center;
+}
+.office-header {
+    font-size: 1.5rem;
+    margin: 0.2rem 0;
+}
+.office-description {
+    font-size: 0.7rem;
+}
+/*Office END*/
+
+/*MENU END*/
+
+/*FOOTER START*/
+/*Wyśrodkowanie stopki*/
+.footer {
+    font-size: 80%;
+    padding: 8px;
+    text-align: center;
+    color: mistyrose;
+}
+/*FOOTER END*/
+
+/*index START*/
+/*Nagłówek*/
+.list-heading,
+.list-description {
+    text-align: center;
+    margin: 16px 0;
+
+}
+/*Usunięcie dekoracji elementów listy (kropki na początku)*/
+.free-therms-list,
+.therapy-therms-list,
+.list-border,
+.patients-list{
+        list-style-type: none;
+
+}
+
+.free-therms-list{
+    padding: 14px 24px;
+    font-size: 28px;
+    text-align: left;
+    display: block;
+}
+
+
+/*Usunięcie dekoracji elementów listy (kropki na początku)*/
+.patients-list123 {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+
+}
+
+
+/*Margines i ramka wokół pojedynczego posta*/
+.free-therms-list-item{
+    margin-bottom: 10px;
+    max-width: 930px;
+    display: flex;
+    border: 1px #6d6d6d solid;
+}
+
+.patients-list-item{
+    margin-bottom: 10px;
+    max-width: 930px;
+    display: block;
+    border: 1px #6d6d6d solid;
+}
+/*Plakat - usuniecie paddingu*/
+.free-therms-list-item-poster {
+    display: block;
+    object-fit: contain;
+    max-width: 100px;
+    max-height: 100px;
+    font-size: 0.8rem;
+
+}
+/*Karta terminu*/
+
+.meeting-button{
+        display: block;
+    padding: 14px 24px;
+    font-size: 28px;
+    color: darkgreen;
+    text-align: center;
+}
+
+.free-therms-list-item-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+}
+.free-therms-list-item-content {
+    margin: 4px 0;
+}
+.free-therms-list-item-title {
+    font-size: 0.9rem;
+}
+.free-therms-list-item-rating {
+    font-size: 0.6rem;
+}
+/*index END*/
+
+
+
+
+/*Responsive*/
+@media only screen and (min-width: 992px) {
+    /*Na ekranie powyżej 992px ukrywamy przycisk do rozwijania menu*/
+    .menu-toggle {
+        display: none;
+    }
+
+    /*Elementy menu nie powinny już zajmować całej szerokości, tylko być obok siebie*/
+    .menu-item {
+        display: block;
+        width: auto;
+        border-bottom: 0;
+    }
+    .menu-logo-container{
+        flex: 1;
+    }
+
+
+    /*Na dużym ekranie ograniczamy szerokość do 960px*/
+    .main-content,
+    .menu {
+        align-self: center;
+        width: 960px;
+    }
+
+
+
+    /*meeting2.html*/
+    /*offer.html*/
+
+    /*Informacje o spotkaniu w jednym rzędzie z odstępem */
+    .meeting,
+    .therapy,
+    .patient{
+    }
+
+
+    .meeting-summary,
+    .therapy-summary{
+        display: flex;
+        margin-top: 16px;
+
+    }
+    .patient-summary{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    /*Mniejsza ikona na małych ekranach*/
+    .meeting-summary-icon {
+        object-fit: contain;
+        max-width: 200px;
+        font-size: 4rem;
+        display: block;
+        padding: 14px 24px;
+        color: darkgreen;
+
+    }
+    /*Odstęp informacji o spotkaniu od okładki*/
+    .meeting-summary-info,
+    .therapy-summary-info,
+    .patient-summary-info{
+        margin-left: 8px;
+    }
+    /*Dzień spotkania w kolorze wybanym przez Żonę i odstęp pod nim*/
+    .meeting-summary-day,
+    .patient-summary-day{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+
+
+    }
+    /*Odstępy między poszczególnymi informacjami*/
+    .meeting-summary-item {
+        margin: 8px;
+    }
+
+    .therapy123{
+        margin-bottom: 10px;
+        border: 1px #6d6d6d solid;
+        display: block;
+        padding: 14px 24px;
+        font-size: 28px;
+        color: darkgreen;
+        text-align: center;
+    }
+    /*meeting2.html END*/
+
+
+    /*error pages START*/
+    .error-container {
+        margin: 32px auto;
+    }
+    .error-container > * {
+        display: block;
+        text-align: center;
+    }
+    .error-header,
+    .error-icon {
+        font-size: 4rem;
+        margin: 16px 0;
+    }
+    /*error pages END*/
+
+
+
+
+    /*formularze*/
+    /*textarea domyślnie nie dziedziczy czcionki z body*/
+    .textarea {
+        font-family: inherit;
+    }
+    /*etykiety i inputy jeden pod drugim z odstępami po bokach*/
+    .mc-form {
+        display: flex;
+        flex-direction: column;
+        margin: 0 32px;
+    }
+    /*odstępy między etykietami i inputami*/
+    .mc-form > * {
+        margin-top: 8px;
+    }
+    /*większe inputy z paddingami*/
+    .mc-form > input,
+    .mc-form > textarea,
+    .mc-form > button {
+        font-size: 1.2rem;
+        color: black;
+        padding: 8px;
+    }
+    .mc-form > button {
+        margin-top: 16px;
+        background-color: white;
+        color: #ffc107;
+        border: none;
+    }
+
+    /*panel admina belka z powiadomniniami*/
+    .notification-bar {
+        text-align: center;
+        background-color: #ffc107;
+        padding: 8px 0;
+    }
+
+
+
+}

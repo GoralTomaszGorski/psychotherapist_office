@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th i layout -->
+<html lang="pl" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Psychoterapia - Ewa Górska</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Dynamicznie budowany adres do skryptu JS i arkusza stylów -->
+    <script defer src="../static/scripts/common.js" th:src="@{/scripts/common.js}"></script>
+    <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
+</head>
+
+<body>
+<div class="container">
+
+    <ul class="menu">
+        <li class="menu-logo-container">
+            <!-- Dynamicznie budowany adres do strony głównej -->
+
+            <a href="#" th:href="@{/}">
+                <i class="fa-regular fa-compass"></i> Strona Główna</a>
+        </li>
+        <li class="menu-toggle">
+            <a href="#"><i id="toggle-icon" class="far fa-plus-square"></i></a>
+        </li>
+        <li class="menu-item">
+            <a href="#"><i class="fa-solid fa-clipboard-user"></i> O mnie</a>
+        </li>
+        <li class="menu-item">
+            <a href="#" th:href="@{/offerta}"><i class="fa-solid fa-hand-holding-heart"></i> Oferta</a>
+        </li>
+        <li class="menu-item">
+            <a href="#" th:href="@{/terminy}"><i class="fa-regular fa-calendar-days"></i> Terminy</a>
+        </li>
+        <li class="menu-item">
+            <a href="#"><i class="fa-regular fa-envelope"></i> Kontakt</a>
+        </li>
+        <li class="menu-item">
+            <a href="#" th:href="@{/admin}"><i class="fa-solid fa-screwdriver-wrench"></i> Admin</a>
+        </li>
+        <li class="menu-login-container">
+            <a href="#">
+                <i class="fa-solid fa-right-to-bracket"></i> Zaloguj się
+            </a>
+        </li>
+    </ul>
+
+
+
+    <header class="office">
+        <h1 class="office-header">GABINET PSYCHOTERAPEUTYCZNY</h1>
+        <h2>Ewa Górska</h2>
+        <p>
+            Zadzwoń, z chęcią odpowiem na każde Twoje pytanie.</p>
+        <p class="office-description">Można coś tu jeszcze napisać czym się gabinet wyróżnia czy coś</p>
+        <p>Kraśnik, przychodnia FŁT,</p>
+        <p>ul. Fabryczna 6, I piętro, gabinet nr 205.</p>
+        <p>(+48) 781 106 026</p>
+    </header>
+
+    <main class="main-content" layout:fragment="content" >
+
+    </main>
+    <footer class="footer">
+        <p><i class="fa-regular fa-heart"></i> Psychoterapia: Ewa Górska (+48) 781 106 026 </p>
+        <p> <i class="fa-solid fa-file-code"></i>  Api wykonał: tomasz.gorski88@gamil.com</p>
+    </footer>
+
+</div>
+
+</body>
+
+</html>

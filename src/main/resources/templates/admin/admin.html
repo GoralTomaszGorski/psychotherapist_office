@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+
+<body>
+<main class="main-content" layout:fragment="content">
+    <p class="notification-bar" th:if="${notification}" th:text="${notification}">
+        Belka z powiadomieniami
+    <h2 class="list-heading">Panel administracyjny</h2>
+    <ul class="list-border">
+        <li><a href="#" th:href="@{/admin/dodaj-pacjeta}">Dodaj pacjęta</a></li>
+        <li><a href="#" th:href="@{/admin/dodaj-terapie}">Dodaj rodzaj terapii</a></li>
+        <li><a href="#" th:href="@{/admin/pacjeci}">Wyświetl pacjętów</a></li>
+        <li><a href="#" th:href="@{/admin/spotkania}">Wyświetl spotkania</a></li>
+
+    </ul>
+</main>
+
+</body>
+</html>

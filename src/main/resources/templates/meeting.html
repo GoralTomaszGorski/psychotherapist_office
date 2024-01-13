@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <!-- Nagłówek pobieramy z modelu -->
+        <h2 class="list-heading" th:text="${heading}">Wyświetla terminy w pętli thymeleaf'a</h2>
+        <!-- godzine pobieramy z modelu -->
+        <p class="list-description" th:text="${description}">Sprawdz terminy spotkań</p>
+
+        <div class="terms-href">
+            <a class="terms-free-href" href="/terminy">
+                <button class="meeting-button-free">
+                    <i class="fa-regular fa-calendar"></i>
+                </button>
+                <p>sprawdź wolne terminy</p>
+            </a>
+        </div>
+
+
+        <!-- Zostawiamy tylko pierwszy element <li> -->
+        <ul class="free-therms-list" th:remove="all-but-first">
+            <!-- Pętla po wszystkich terminach z modelu -->
+            <li class="free-therms-list-item" th:each="meetingsTherms: ${meetingThermsOccupied}">
+
+                <!-- Link do strony pojedynczego termiu  /termin/5 -->
+                <a href="#" th:href="@{|/terminy/${meetingsTherms}|}">
+                    <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
+                    <button class="meeting-button-booked">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </button>
+
+                </a>
+                <!--dane do pojedynczego spotkania terminu-->
+                <div class="free-therms-list-item-card">
+                    <div class="free-therms-list-item-content">
+
+                        <h3 class="free-therms-list-item-title" th:text="|Termin: ${meetingsTherms.calender.dayof} ${meetingsTherms.calender.time}|">Pacjęt</h3>
+                        <p class="free-therms-list-item-title" th:text="|Nick: ${meetingsTherms.patient.nick}|">Pacjęt</p>
+                        <p class="free-therms-list-item-title" th:text="|Rodzaj terapii: ${meetingsTherms.therapy.kindOfTherapy}|">Terapia</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </main>
+</div>
+</body>
+</html>
