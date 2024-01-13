@@ -1,6 +1,6 @@
 # How run project
 
-## Requires to start appication
+## Requires to start application
 1. mvn 3.6
 2. java 17
 
