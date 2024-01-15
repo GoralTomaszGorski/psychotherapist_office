@@ -9,9 +9,11 @@ import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
+import goral.psychotherapistoffice.web.admin.AdminController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,8 +45,28 @@ public class VisitorController {
         return "visitor/visitor";
     }
 
+/*    @GetMapping("/terminy/{caleneder.id}")
+    public String addPatientFrom(Model model){
+        PatientDto patientDto = new PatientDto();
+        model.addAttribute("patientDto", patientDto);
+        return "visitor/meeting-form";
+    }
 
-    @GetMapping("/visitor/dadaj-rezerwacje")
+
+    @PostMapping("/terminy/{caleneder.id}")
+    public String addPatient(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
+        patientService.addPatient(patientDto);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Pacjęt %s %s pseudonim %s został zapisany "
+                        .formatted(
+                                patientDto.getName(),
+                                patientDto.getSurname(),
+                                patientDto.getNick())
+        );
+        return "redirect:/visitor";
+    }*/
+/*    @GetMapping("/visitor/dadaj-rezerwacje")
     public String addMeetingForm(Model model){
 
 
@@ -68,10 +90,11 @@ public class VisitorController {
                 VisitorController.NOTIFICATION_ATTRIBUTE,
                 "Pomyłśnie dokonano zapisu %s %s"
                         .formatted(
-                                therapyService.findTherapyById(meetingSave.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("asdfadsf"),
+                                therapyService.findTherapyById(meetingSave.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined"),
                                 patientService.findPatientById(meetingSave.getPatient()).map(PatientDto::getNick).orElse("Undefined")
                         )
         );
+
         return "redirect:/visitor";
-    }
+    }*/
 }
