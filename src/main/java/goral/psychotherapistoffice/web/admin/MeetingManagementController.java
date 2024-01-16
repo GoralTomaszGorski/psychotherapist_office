@@ -62,7 +62,7 @@ public class MeetingManagementController {
         meetingService.addMeeting(meetingSave);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
-                "Pomyłśnie dokonano zapisu dla %s na %s"
+                "Pomyślnie dokonano zapisu dla <b>%s</b> na <b>%s</b>"
                         .formatted(
                                 patientService.findPatientById(meetingSave.getPatient()).map(PatientDto::getNick).orElse("Undefined"),
                                 therapyService.findTherapyById(meetingSave.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined")

@@ -5,6 +5,7 @@ import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CalenderService {
@@ -25,36 +26,9 @@ public class CalenderService {
                 .map(CalenderDtoMapper::map).toList();
     }
 
-
-
-
-
-
-
-/*    @Transactional
-    public void releaseCalender(Long calenderId){
-        updateCalenderReleaseTherm(calenderId, false);
+    public  Optional<CalenderDto> findCalenderByIdIfFreeIsTrue(long id){
+        return calenderRepository.findCalenderByIdAndFreeIsTrue(id)
+                .map(CalenderDtoMapper::map);
     }
-
-    public Calender updateCalenderReleaseTherm(Long calenderId, Boolean free){
-        Calender calender = calenderRepository
-                .findById(calenderId)
-                .orElseThrow(CalenderNotFoundException::new);
-        calender.setFree(free);
-        return calender;
-    }
-
-    @Transactional
-    public void reserveCalender(Long calenderId){
-        updateCalenderReserveTherm(calenderId, true);
-    }
-
-    public Calender updateCalenderReserveTherm(Long calenderId, Boolean free){
-        Calender calender = calenderRepository
-                .findById(calenderId)
-                .orElseThrow(CalenderNotFoundException::new);
-        calender.setFree(free);
-        return calender;
-    }*/
 
 }
