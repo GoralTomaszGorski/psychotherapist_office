@@ -51,31 +51,23 @@ public class VisitorController {
     @GetMapping("/termin/{id}")
     public String addMeetingByVisitor(@PathVariable long id, Model model){
         //1. wybranie z kalendarza
-
         CalenderDto calender = calenderService.findCalenderByIdIfFreeIsTrue(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("calender", calender);
-
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
-
         List<TherapyDto> allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);
         //3. ustawienie meetingu
         MeetingVisitorSaveDto meetingVisitorSaveDto = new MeetingVisitorSaveDto();
         model.addAttribute( "meetingSave", meetingVisitorSaveDto);
-
         return "visitor/meeting-form";
     }
 
     @PostMapping("/termin/{id}")
     public String addPatientAndMeeting(@ModelAttribute("patientDto") PatientDto patientDto, @ModelAttribute("meetingSave") MeetingVisitorSaveDto meetingSave, RedirectAttributes redirectAttributes){
-       //1 zmiana
-
         patientService.addPatient(patientDto);
-
         meetingSave.setPatient(patientDto.getId());
-
         redirectAttributes.addFlashAttribute(
                 VisitorController.NOTIFICATION_ATTRIBUTE,
                 "Pacjęt %s %s pseudonim %s został zapisany "
