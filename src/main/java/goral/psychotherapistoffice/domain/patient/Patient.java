@@ -1,12 +1,13 @@
 package goral.psychotherapistoffice.domain.patient;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "Patient")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,15 @@ public class Patient {
     private String surname;
     private String telephone;
     private int yearOfBrith;
+    private String email;
+    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "patient_roles",
+            joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Set<PatientRole> roles = new HashSet<>();
 
 
 
@@ -68,15 +78,29 @@ public class Patient {
         this.yearOfBrith = yearOfBrith;
     }
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", nick='" + nick + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", yearOfBrith=" + yearOfBrith +
-                '}';
+
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<PatientRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<PatientRole> roles) {
+        this.roles = roles;
+    }
+
 }
