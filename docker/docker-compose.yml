@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: java_web_app
+    build:
+      context: ./..
+      dockerfile: ./docker/app/Dockerfile
+    ports:
+      - ${APP_PORT}:8080
