@@ -23,7 +23,7 @@ public class Patient {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "patient_roles",
-            joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<PatientRole> roles = new HashSet<>();

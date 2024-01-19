@@ -39,6 +39,8 @@ public class PatientService {
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
+        patientToSave.setEmail(patientDto.getEmail());
+        patientToSave.setPassword(patientDto.getPassword());
         patientRepository.save(patientToSave);
 
     }
