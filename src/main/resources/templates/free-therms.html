@@ -30,7 +30,7 @@
             <li class="free-therms-list-item" th:each="freeTherms: ${allFreeTherms}">
 
                 <!-- Link do strony pojedynczego termiu  /termin/5 -->
-                <a href="#" th:href="@{|/terminy/${freeTherms.id}|}">
+                <a href="#" th:href="@{|/termin/${freeTherms.id}|}">
                     <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
                     <button class="meeting-button-free">
                         <i class="fa-regular fa-calendar"></i>

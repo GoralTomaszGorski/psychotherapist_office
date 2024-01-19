@@ -31,7 +31,6 @@ public class PatientService {
     }
 
 
-
     @Transactional
     public void addPatient(PatientDto patientDto){
         Patient patientToSave = new Patient();
@@ -41,9 +40,7 @@ public class PatientService {
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientRepository.save(patientToSave);
+
     }
-
-
-
 
 }

@@ -6,17 +6,19 @@ import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingVisitorSaveDto;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class VisitorController {
@@ -37,6 +39,7 @@ public class VisitorController {
 
     //stała z UserManagementController
     public static final String NOTIFICATION_ATTRIBUTE = "visitorNotification";
+    public static final String NOTIFICATION_ATTRIBUTE2 = "visitorNotification2";
 
     @GetMapping("/visitor")
     public String getAdminPanel(){
@@ -44,34 +47,47 @@ public class VisitorController {
     }
 
 
-    @GetMapping("/visitor/dadaj-rezerwacje")
-    public String addMeetingForm(Model model){
 
-
-        List<TherapyDto>allTherapies = therapyService.findAllTherapies();
+    @GetMapping("/termin/{id}")
+    public String addMeetingByVisitor(@PathVariable long id, Model model){
+        //1. wybranie z kalendarza
+        CalenderDto calender = calenderService.findCalenderByIdIfFreeIsTrue(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        model.addAttribute("calender", calender);
+        PatientDto patientDto = new PatientDto();
+        model.addAttribute("patientDto", patientDto);
+        List<TherapyDto> allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);
-        List<PatientDto>allPatients = patientService.findAllPatients();
-        model.addAttribute("patients", allPatients);
-        List<CalenderDto> allFreeTherms = calenderService.findAllFreeTherms();
-        model.addAttribute("therms", allFreeTherms);
+        //3. ustawienie meetingu
         MeetingVisitorSaveDto meetingVisitorSaveDto = new MeetingVisitorSaveDto();
         model.addAttribute( "meetingSave", meetingVisitorSaveDto);
         return "visitor/meeting-form";
-
     }
 
-    @PostMapping("/visitor/dadaj-rezerwacje")
-    public String addMeeting(MeetingVisitorSaveDto meetingSave, RedirectAttributes redirectAttributes) {
-        meetingService.addMeeting(meetingSave);
-
+    @PostMapping("/termin/{id}")
+    public String addPatientAndMeeting(@ModelAttribute("patientDto") PatientDto patientDto, @ModelAttribute("meetingSave") MeetingVisitorSaveDto meetingSave, RedirectAttributes redirectAttributes){
+        patientService.addPatient(patientDto);
+        meetingSave.setPatient(patientDto.getId());
         redirectAttributes.addFlashAttribute(
                 VisitorController.NOTIFICATION_ATTRIBUTE,
-                "Pomyłśnie dokonano zapisu %s %s"
+                "Pacjęt %s %s pseudonim %s został zapisany "
                         .formatted(
-                                therapyService.findTherapyById(meetingSave.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("asdfadsf"),
-                                patientService.findPatientById(meetingSave.getPatient()).map(PatientDto::getNick).orElse("Undefined")
+                                patientDto.getName(),
+                                patientDto.getSurname(),
+                                patientDto.getNick())
+                        );
+
+        meetingService.addMeeting(meetingSave);
+        redirectAttributes.addFlashAttribute(
+                VisitorController.NOTIFICATION_ATTRIBUTE2,
+                "na terepię %s %s "
+                        .formatted(
+                                meetingSave.getTherapy(),
+                                meetingSave.getCalender()
                         )
         );
         return "redirect:/visitor";
     }
+
+
 }

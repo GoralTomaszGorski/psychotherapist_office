@@ -23,10 +23,14 @@
 
                 <!-- Link do strony pojedynczego termiu  /termin/5 -->
                 <a href="#" th:href="@{|/termin/${calender.id}|}">
-                    <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
-                    <button class="meeting-button">
-                        <i class="fa-regular fa-calendar-days"></i>
-                    </button>
+                    <span th:switch="${calender.free}">
+                        <button th:case="false" class="meeting-button-booked">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        </button>
+                        <button th:case="true" class="meeting-button-free">
+                        <i class="fa-regular fa-calendar"></i>
+                        </button>
+                    </span>
                 </a>
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">
@@ -39,9 +43,16 @@
                         </h3>
                         <p class="free-therms-list-item-title" th:text="${calender.time}">godzina</p>
                     </div>
-                    <div class="free-therms-list-item-rating">
-                        <i class="fas fa-star"></i>
-                        <span>wolny termin wizyty</span>
+                    <div th:switch="${calender.free}" class="free-therms-list-item-rating">
+                        <span th:case="false">
+                            <i class="fas fa-star"></i>
+                            <span>zajęty termin wizyty</span>
+                        </span>
+                        <span th:case="true">
+                            <i class="fas fa-star"></i>
+                            <span>wolny termin wizyty</span>
+                        </span>
+
                     </div>
                 </div>
             </li>
