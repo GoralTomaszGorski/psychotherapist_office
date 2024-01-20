@@ -28,13 +28,6 @@ public class MeetingService {
         this.therapyRepository = therapyRepository;
     }
 
-    public List<MeetingDto>findAllMeetings(){
-        return meetingRepository.findAllByCalenderIsNotNullOrderByCalender()
-                .stream()
-                .map(MeetingDtoMapper::map)
-                .toList();
-    }
-
 
     public void addMeeting(MeetingVisitorSaveDto meetingToSaveDto){
         Meeting meeting = new Meeting();
@@ -51,4 +44,9 @@ public class MeetingService {
     }
 
 
+    public List<MeetingDto> findAllMeetings() {
+        return  meetingRepository.findAllByCalenderIsNotNullOrderByCalender()
+                .stream().map(MeetingDtoMapper::map).toList();
+
+    }
 }
