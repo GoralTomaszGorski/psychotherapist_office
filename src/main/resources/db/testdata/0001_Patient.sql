@@ -1,4 +1,4 @@
-insert	into	patient	(	nick	,	name	,	surname	,	telephone	,	year_Of_Brith	,	email	,	password	)
+insert	into	Patient	(	nick	,	name	,	surname	,	telephone	,	year_Of_Brith	,	email	,	password	)
 values
 (	'vaylesbury0'	,	'Valentine'	,	'Aylesbury'	,	'+7-415-462-2763'	,	1974	,	'admin@example.com', '{noop}adminpass'),
 

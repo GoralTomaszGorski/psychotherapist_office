@@ -1,74 +1,37 @@
 package goral.psychotherapistoffice.config.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class CustomSecurityConfig {
-
     private static final String ADMIN_ROLE = "ADMIN";
-    private static final String USER_ROLE = "USER";
+
+    private static final String PATIENT_ROLE = "PATIENT";
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
-                        .requestMatchers("/termin/**", "/user/**").hasAnyRole(ADMIN_ROLE, USER_ROLE)
-                        .requestMatchers("/secured").hasAnyRole(ADMIN_ROLE, USER_ROLE)
-                        .requestMatchers("/register", "/confirmation","/forgotPassword/**","/resetPassword/**").permitAll()
-                        .anyRequest().permitAll()
-                )
-                .formLogin(login -> login
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout/**", HttpMethod.GET.name()))
-                        .logoutSuccessUrl("/login?logout").permitAll()
-                );
+                        .requestMatchers("/termin/**").hasAnyRole(PATIENT_ROLE, ADMIN_ROLE)
+                .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
+
+                .anyRequest().permitAll()
+        )
+                .formLogin(Customizer.withDefaults());
         return httpSecurity.build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
         return web -> web.ignoring().requestMatchers(
-                "/images/**",
+                "/img/**",
                 "/scripts/**",
-                "/styles/**",
-                "/h2-console/**"
+                "/styles/**"
         );
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
-
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userDetailsService);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
-
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authenticationConfiguration) throws Exception{
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
 }

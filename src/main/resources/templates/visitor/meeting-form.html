@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <h2 class="list-heading">Podaj swoje dane, aby umówić wizytę</h2>
+        <h4 class="list-heading">Twoje dane będzie widział jedynie terapeuta, ogólnodostępne będzie jednynie NICK</h4>
+
+        <section class="mc-form" th:object="${calender}">
+            <h4>Termin spotkania: </h4>
+            <p th:text="|${calender.dayof} ${calender.time}|"
+               th:value="${calender.id}"></p>
+        </section>
+
+        <form action="#" th:action="@{/termin/{id}}" method="post" class="mc-form"th:object="${patientDto}" th:id="patientForm">
+            <!-- dodawanie pacjęta -->
+
+            <label for="nick">Nick Pacjęta </label>
+            <input type="text" id="nick" placeholder="np. Wiki23" th:field="*{nick}">
+            <label for="name">Imię Pacjęta </label>
+            <input type="text" id="name" placeholder="np. Adam" th:field="*{name}">
+            <label for="surname">Nazwisko Pacjęta </label>
+            <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
+            <label for="telephone">telefon Pacjęta</label>
+            <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
+            <label for="yearOfBrith">Rok urodzenia Pacjęta (np. 1988) </label>
+            <input type="text" id="yearOfBrith" placeholder="np. 1988" th:field="*{yearOfBrith}">
+            <input type="hidden" id="id" th:field="*{id}">
+
+        </form>
+
+        <form action="#" th:action="@{/termin/{id}}" method="post" class="mc-form"th:object="${meetingSave}">
+            <input type="hidden" id="patientId" th:field="*{patient}" th:value="${patientDto.id}" >
+
+            <label for="therapy">Terapia - wybierz rodzaj terapii</label>
+            <select id="therapy" required th:field="*{therapy}">
+                <option hidden="" value="">Wyberz Rodzaj terapii</option>
+                <option th:each="therapy: ${therapies}"
+                        th:text="${therapy.kindOfTherapy}" th:value="${therapy.id}"></option>
+            </select>
+            <input type="hidden" id="calender" th:field="*{calender}" th:value="${calender.id}" >
+            <button type="submit">Dodaj</button>
+        </form>
+
+
+    </main>
+</div>
+</body>
+</html>

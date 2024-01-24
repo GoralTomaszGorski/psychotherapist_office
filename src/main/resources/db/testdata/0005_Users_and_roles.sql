@@ -1,68 +1,14 @@
 insert into
-    user_role (name, description)
+    patient_role (name, description)
 values
     ('ADMIN', 'pełne uprawnienia'),   -- 1
-    ('USER', 'podstawowe uprawnienia + możliwość zapisania się na terapię');   -- 2
-
-
-insert into
-    users (email, password)
-values
-    ('admin@example.com', '{noop}adminpass'),   -- 1
-    ('user@example.com', '{noop}userpass'),     -- 1
-    ('editor@example.com', '{noop}editorpass'),
-    ('draff3@mtv.com','{noop}Szyfrowane7X'),
-    ('pslateford4@t.co','{noop}TajneHaslo8_'),
-    ('goralek_z_gor@o2.pl','{noop}BezZmartwien1e'),
-    ('goralek_z_gor@tlen.pl','{noop}ZnakoweH@sh2'),
-    ('tomasz.gorski88@gmail.com','{noop}123Sekretne$'),
-    ('lbarhem8@harvard.edu','{noop}K0dyR@nd0m'),
-    ('bsapshed9@weather.com','{noop}BezRyzyka9!'),
-    ('cschulera@slate.com','{noop}H@sh1K0d'),
-    ('afassonb@com.com','{noop}S1lneH@sl0'),
-    ('iorablec@skype.com','{noop}BezZnaczeni@3'),
-    ('jwiperd@drupal.org','{noop}K0dInformatyk@'),
-    ('kohickeye@globo.com','{noop}Skr0coneP@ss'),
-    ('cocorrinf@feedburner.com','{noop}Hasl0BezProblemu'),
-    ('smcindrewg@jigsy.com','{noop}R@nd0m1z0wane#'),
-    ('mjeromeh@amazon.de','{noop}T@jn3H@sl0'),
-    ('mforresti@japanpost.jp','{noop}Zabezpiecz0ne6%'),
-    ('luccellij@eventbrite.com','{noop}7Szyfrowane!'),
-    ('gburnupk@vkontakte.ru','{noop}Un1k@t0w3H@sl0'),
-    ('gstoppl@usgs.gov','{noop}BezpieczneH@ss'),
-    ('ggrocuttm@google.com.au','{noop}1nformatyCzn3'),
-    ('gkinneallyn@cloudflare.com','{noop}Znak1Zabezpiecz@j'),
-    ('kchauveyo@so-net.ne.jp','{noop}S3kretneH@sl0'),
-    ('erothwellp@networkadvertising.org','{noop}H@sl0BezRyzyka'),
-    ('sconkieq@smh.com.au','{noop}BezTajemnic5!'),
-    ('jchavesr@goodreads.com','{noop}1234Bezpieczne$'),
-    ('gnaceys@elpais.com','{noop}H@sl0_1234'),
-    ('nsydallt@bbb.org','{noop}Znak0waneT@jn3'),
-    ('vbeavonu@dot.gov','{noop}B@r1er@H@sl@'),
-    ('nlavignev@multiply.com','{noop}K0d_1nformatyk@'),
-    ('nkopischw@amazon.de','{noop}BezZmartwień2'),
-    ('slambiex@smugmug.com','{noop}S@f3H@ss'),
-    ('cbourcqy@ebay.co.uk','{noop}H@sl0Znakowe'),
-    ('atetherz@wsj.com','{noop}N@jk0dowane!'),
-    ('tplaice10@hubpages.com','{noop}R@ndomow3H@ss'),
-    ('ttuckwood11@intel.com','{noop}S3kretneP@ss'),
-    ('mmacnab12@google.co.uk','{noop}BezRyzyk@H@ss'),
-    ('acummings13@homestead.com','{noop}ZnakoweBezpieczne3'),
-    ('hcrudgington14@cafepress.com','{noop}H@ss1234'),
-    ('bflorio15@ed.gov','{noop}Szyfr0wane5!'),
-    ('ecubbino16@google.com.hk','{noop}BezTrudności9%'),
-    ('cberrisford17@wordpress.com','{noop}K0d_123'),
-    ('bbartholomieu18@netscape.com','{noop}T@jn3H@sl@'),
-    ('cauchterlony19@biblegateway.com','{noop}S1lneHaslo!'),
-    ('ahanson1a@xrea.com','{noop}123S3kretne%'),
-    ('cseccombe1b@a8.net','{noop}H@ssB3zP@nz3'),
-    ('sharteley1c@sciencedaily.com','{noop}BezTrudności8!'),
-    ('iyoule1d@redcross.org','{noop}R@ndomH@ss!');
+    ('PATIENT', 'podstawowe uprawnienia + możliwość zapisania się na terapię'),   -- 2
+    ('USER', 'podstawowe uprawnienia przeglądanie strony');   -- 3
 
 insert into
-    user_roles (user_id, role_id)
+    patient_roles (patient_id, role_id)
 values
-    (	1	,	1	),
+    (	1	,	1	)	,
     (	2	,	1	)	,
     (	3	,	2	)	,
     (	4	,	2	)	,
@@ -108,7 +54,8 @@ values
     (	44	,	2	)	,
     (	45	,	2	)	,
     (	46	,	2	)	,
-    (	47	,	2	)	,
-    (	48	,	2	)	,
-    (	49	,	2	)	,
-    (	50	,	2	)	;
+    (	47	,	3	)	,
+    (	48	,	3	)	,
+    (	49	,	3	)	,
+    (	50	,	3	)	;
+
