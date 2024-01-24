@@ -17,7 +17,7 @@
                th:value="${calender.id}"></p>
         </section>
 
-        <form method="post" class="mc-form"th:object="${patientDto}" th:id="patientForm">
+        <form action="#" th:action="@{/termin/{id}}" method="post" class="mc-form"th:object="${patientDto}" th:id="patientForm">
             <!-- dodawanie pacjęta -->
 
             <label for="nick">Nick Pacjęta </label>
@@ -28,13 +28,13 @@
             <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
             <label for="telephone">telefon Pacjęta</label>
             <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
-            <label for="yearOfBrith">Rok urodzenia Pacjęta</label>
+            <label for="yearOfBrith">Rok urodzenia Pacjęta (np. 1988) </label>
             <input type="text" id="yearOfBrith" placeholder="np. 1988" th:field="*{yearOfBrith}">
             <input type="hidden" id="id" th:field="*{id}">
 
         </form>
 
-        <form method="post" class="mc-form"th:object="${meetingSave}">
+        <form action="#" th:action="@{/termin/{id}}" method="post" class="mc-form"th:object="${meetingSave}">
             <input type="hidden" id="patientId" th:field="*{patient}" th:value="${patientDto.id}" >
 
             <label for="therapy">Terapia - wybierz rodzaj terapii</label>
