@@ -7,7 +7,8 @@ import java.util.List;
 public interface MeetingRepository extends CrudRepository <Meeting, Long>{
 
 
-    List<Meeting> findAllByCalenderIsNotNullOrderByCalender();
+    List<Meeting>findAllByCalenderIsNotNullOrderByCalender();
+
 
 
 }

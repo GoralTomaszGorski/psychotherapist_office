@@ -68,3 +68,6 @@ Actually I prepare functions:
 3. approving, deleting meetings - for admin
 4. Contacting box
 5. Tab about me
+
+DB Schema
+![Psychotherapy_office_DB_Schema .png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FPsychotherapy_office_DB_Schema%20.png)
