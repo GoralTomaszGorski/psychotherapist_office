@@ -48,6 +48,10 @@ docker-compose -f docker/docker-compose.yml up -d
 ### Open app in you browser
 [Click here](http://localhost:8080/).
 
+### Authentication data:
+###### login: admin@example.com
+###### password: adminpass
+
 ## Description
 Psychotherapy office client services
 

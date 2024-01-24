@@ -30,7 +30,6 @@ public class PatientService {
                 .map(PatientDtoMapper::map).toList();
     }
 
-
     @Transactional
     public void addPatient(PatientDto patientDto){
         Patient patientToSave = new Patient();
@@ -42,7 +41,11 @@ public class PatientService {
         patientToSave.setEmail(patientDto.getEmail());
         patientToSave.setPassword(patientDto.getPassword());
         patientRepository.save(patientToSave);
+    }
 
+    public Optional<PatientCredentialsDto> findCredentialsByEmail(String email){
+        return patientRepository.findPatientByEmail(email)
+                .map(PatientCredentialsDtoMapper::map);
     }
 
 }

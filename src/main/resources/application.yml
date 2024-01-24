@@ -3,3 +3,7 @@ spring:
     url: jdbc:h2:mem:test
   liquibase:
     change-log: classpath:db/changelog/master.xml
+  security:
+    user:
+      name: admin
+      password: 1234
