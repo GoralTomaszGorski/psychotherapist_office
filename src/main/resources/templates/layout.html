@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- Dodana przestrzeń nazw th i layout -->
-<html lang="pl" xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="pl" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Psychoterapia - Ewa Górska</title>
@@ -48,13 +50,17 @@
             <a href="#" th:href="@{/admin}"><i class="fa-solid fa-screwdriver-wrench"></i> Admin</a>
         </li>
         <li class="menu-login-container">
-            <a href="#">
-                <i class="fa-solid fa-right-to-bracket"></i> Zaloguj się
+
+            <a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Zaloguj się
+            </a>
+            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Wyloguj się
             </a>
         </li>
     </ul>
-
-
 
     <header class="office">
         <h1 class="office-header">GABINET PSYCHOTERAPEUTYCZNY</h1>
