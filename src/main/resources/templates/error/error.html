@@ -8,7 +8,9 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Strona nie istnieje - Psychoterapia Ewa Górska</title>
+    <title>
+        Błąd - Psychoterapia Ewa Górska
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -24,9 +26,10 @@
 <div class="container">
     <main class="main-content" layout:fragment="content">
         <div class="error-container">
-            <h2 class="error-header">Brak dostępu</h2>
+            <h2 th:text="${pageTitle}"> Tytuł błedu.</h2>
             <i class="fa-solid fa-face-frown error-icon"></i>
-            <p>Nie masz uprawnień do strony, którą próbujesz odwiedzić.</p>
+
+            <p th:text="${errorInfo}">informacja o błedzie<p>
         </div>
     </main>
 
