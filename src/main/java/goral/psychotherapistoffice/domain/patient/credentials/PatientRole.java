@@ -1,4 +1,4 @@
-package goral.psychotherapistoffice.domain.patient;
+package goral.psychotherapistoffice.domain.patient.credentials;
 
 import jakarta.persistence.*;
 

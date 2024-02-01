@@ -35,7 +35,7 @@ public class AppErrorController implements ErrorController {
             Integer statusCode = Integer.valueOf(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()){
                 pageTitle = "Strona nie istnieje (error 404)";
-                errorInfo = "Strona, którą próbujesz odwiedzić nie została odnaleziona.";
+                errorInfo = "Strona, którą próbujesz odwiedzić nie została odnaleziona lub termin który próbujesz zarezerwować jest już zajęty";
                 LOGGER.error("Error 404");
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 pageTitle = "Błąd - wewnętrzny błąd serwera (error 500)";

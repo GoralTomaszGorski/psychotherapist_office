@@ -1,6 +1,7 @@
 package goral.psychotherapistoffice.domain.patient;
 
 
+import goral.psychotherapistoffice.domain.patient.credentials.PatientRole;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

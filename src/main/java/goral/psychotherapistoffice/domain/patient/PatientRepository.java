@@ -9,9 +9,8 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
 
     List<Patient>findAll();
 
-    Optional<Patient>findByNickIgnoreCase(String nickOrSurname);
     Optional<Patient> findPatientById(long id);
-    Optional<Patient> findPatientByEmail(String email);
+    Optional<Patient> findByEmail(String email);
 
 
 }
