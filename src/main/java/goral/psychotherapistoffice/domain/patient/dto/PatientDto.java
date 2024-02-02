@@ -9,27 +9,15 @@ public class PatientDto {
     private String surname;
     private String telephone;
     private int yearOfBrith;
-    private String email;
-    private String password;
-    private Set<String> roles;
 
-
+    public PatientDto() {
+    }
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public PatientDto(Set<String> roles) {
-
-        this.roles = roles;
-    }
-
-    public PatientDto() {
-
     }
 
 
@@ -73,32 +61,16 @@ public class PatientDto {
         this.yearOfBrith = yearOfBrith;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public PatientDto(Long id, String nick, String name, String surname, String telephone, int yearOfBrith, String email, String password, Set<String> roles) {
+    public PatientDto(Long id, String nick, String name, String surname, String telephone, int yearOfBrith) {
         this.id = id;
         this.nick = nick;
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
         this.yearOfBrith = yearOfBrith;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
+
     }
 
 }
