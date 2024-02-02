@@ -1,8 +1,7 @@
 package goral.psychotherapistoffice.config.security;
 
-import goral.psychotherapistoffice.domain.patient.PatientCredentialsDto;
+import goral.psychotherapistoffice.domain.patient.credentials.PatientCredentialsDto;
 import goral.psychotherapistoffice.domain.patient.PatientService;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,10 +18,10 @@ class CustomPatientDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return patientService.findCredentialsByEmail(username)
+    public UserDetails loadUserByUsername(String patientEmail) throws UsernameNotFoundException {
+        return patientService.findCredentialsByEmail(patientEmail)
                 .map(this::createUserDetails)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email %s not found", username)));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email or nick %s not found", patientEmail)));
     }
 
     private UserDetails createUserDetails(PatientCredentialsDto patientCredentialsDto){

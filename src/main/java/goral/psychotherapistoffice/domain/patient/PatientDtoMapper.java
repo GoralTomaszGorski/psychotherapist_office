@@ -1,6 +1,10 @@
 package goral.psychotherapistoffice.domain.patient;
 
+import goral.psychotherapistoffice.domain.patient.credentials.PatientRole;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PatientDtoMapper {
 
@@ -13,7 +17,9 @@ public class PatientDtoMapper {
                 patient.getTelephone(),
                 patient.getYearOfBrith(),
                 patient.getEmail(),
-                patient.getPassword()
-        );
+                patient.getPassword(),
+                patient.getRoles()
+                        .stream().map(PatientRole::getName)
+                        .collect(Collectors.toSet()));
     }
 }

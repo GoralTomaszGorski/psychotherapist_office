@@ -9,9 +9,6 @@ public class CalenderDtoMapper {
                 calender.getDayof(),
                 calender.getTime(),
                 calender.isFree()
-
-
         );
     }
-
 }
