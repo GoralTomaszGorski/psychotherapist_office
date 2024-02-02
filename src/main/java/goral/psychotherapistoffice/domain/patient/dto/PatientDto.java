@@ -1,5 +1,7 @@
 package goral.psychotherapistoffice.domain.patient.dto;
 
+import java.util.Set;
+
 public class PatientDto {
     private Long id;
     private String nick;
@@ -9,10 +11,9 @@ public class PatientDto {
     private int yearOfBrith;
     private String email;
     private String password;
+    private Set<String> roles;
 
-    public PatientDto() {
 
-    }
 
     public Long getId() {
         return id;
@@ -21,6 +22,16 @@ public class PatientDto {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public PatientDto(Set<String> roles) {
+
+        this.roles = roles;
+    }
+
+    public PatientDto() {
+
+    }
+
 
     public String getNick() {
         return nick;
@@ -78,7 +89,7 @@ public class PatientDto {
         this.password = password;
     }
 
-    public PatientDto(Long id, String nick, String name, String surname, String telephone, int yearOfBrith, String email, String password) {
+    public PatientDto(Long id, String nick, String name, String surname, String telephone, int yearOfBrith, String email, String password, Set<String> roles) {
         this.id = id;
         this.nick = nick;
         this.name = name;
@@ -87,5 +98,7 @@ public class PatientDto {
         this.yearOfBrith = yearOfBrith;
         this.email = email;
         this.password = password;
+        this.roles = roles;
     }
+
 }
