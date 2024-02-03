@@ -1,10 +1,9 @@
-package goral.psychotherapistoffice.domain.patient.credentials;
+package goral.psychotherapistoffice.domain.User;
 
 import jakarta.persistence.*;
 
-
 @Entity
-public class PatientRole {
+public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

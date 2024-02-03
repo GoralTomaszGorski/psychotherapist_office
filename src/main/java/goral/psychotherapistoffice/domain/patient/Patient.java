@@ -1,11 +1,6 @@
 package goral.psychotherapistoffice.domain.patient;
 
-
-import goral.psychotherapistoffice.domain.patient.credentials.PatientRole;
 import jakarta.persistence.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Patient")
@@ -19,15 +14,6 @@ public class Patient {
     private String surname;
     private String telephone;
     private int yearOfBrith;
-    private String email;
-    private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "patient_roles",
-            joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
-    )
-    private Set<PatientRole> roles = new HashSet<>();
 
 
 
@@ -79,29 +65,5 @@ public class Patient {
         this.yearOfBrith = yearOfBrith;
     }
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<PatientRole> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<PatientRole> roles) {
-        this.roles = roles;
-    }
 
 }

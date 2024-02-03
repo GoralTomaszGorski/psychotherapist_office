@@ -6,8 +6,17 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
     <changeSet id="0005" author="tomasz.gorski88@gmail.com">
 
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(200)"/>
+        </createTable>
 
-        <createTable tableName="patient_role">
+        <createTable tableName="user_role">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
@@ -17,23 +26,23 @@
             <column name="description" type="VARCHAR(100)"/>
         </createTable>
 
-        <createTable tableName="patient_roles">
-            <column name="patient_id" type="BIGINT">
+        <createTable tableName="user_roles">
+            <column name="user_id" type="BIGINT">
                 <constraints nullable="false"
-                             foreignKeyName="fk_patient_roles_patient_id"
-                             referencedTableName="Patient"
+                             foreignKeyName="fk_user_roles_user_id"
+                             referencedTableName="users"
                              referencedColumnNames="id"
                              primaryKey="true"
-                             primaryKeyName="pk_patient_roles"
+                             primaryKeyName="pk_user_roles"
                 />
             </column>
             <column name="role_id" type="BIGINT">
                 <constraints nullable="false"
-                             foreignKeyName="fk_patient_roles_role_id"
-                             referencedTableName="patient_role"
+                             foreignKeyName="fk_user_roles_role_id"
+                             referencedTableName="user_role"
                              referencedColumnNames="id"
                              primaryKey="true"
-                             primaryKeyName="pk_patient_roles"
+                             primaryKeyName="pk_user_roles"
                 />
             </column>
         </createTable>

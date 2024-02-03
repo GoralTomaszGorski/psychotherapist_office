@@ -15,13 +15,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class CustomSecurityConfig {
     private static final String ADMIN_ROLE = "ADMIN";
-    private static final String PATIENT_ROLE = "PATIENT";
     private static final String USER_ROLE = "USER";
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/termin/**").hasAnyRole(PATIENT_ROLE, ADMIN_ROLE)
+                        .requestMatchers("/termin/**").hasAnyRole(USER_ROLE, ADMIN_ROLE)
                         .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
                         .anyRequest().permitAll()
                 )
@@ -41,7 +40,8 @@ public class CustomSecurityConfig {
         return web -> web.ignoring().requestMatchers(
                 "/img/**",
                 "/scripts/**",
-                "/styles/**"
+                "/styles/**",
+                "/h2-console/**"
         );
     }
 
