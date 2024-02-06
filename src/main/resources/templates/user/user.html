@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+
+<body>
+<main class="main-content" layout:fragment="content">
+    <p class="notification-bar" th:if="${userNotification}" th:utext="${userNotification}">
+        Belka z powiadomieniami
+    <h2 class="list-heading">Panel Użytkownika</h2>
+    <ul class="list-border">
+        <li><a href="#" th:href="@{/user/dodaj-pacjeta}">Dodaj pacjęta</a></li>
+    </ul>
+</main>
+
+</body>
+</html>
