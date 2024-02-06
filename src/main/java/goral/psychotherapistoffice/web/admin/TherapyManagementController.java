@@ -32,7 +32,7 @@ public class TherapyManagementController {
         therapyService.addTherapy(therapyDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
-                "Terapia %s została zapisana cena %s zł"
+                "Terapia <b>%s</b> została zapisana cena <b>%s</b>  zł"
                         .formatted(
                                 therapyDto.getKindOfTherapy(),
                                 therapyDto.getPrice())

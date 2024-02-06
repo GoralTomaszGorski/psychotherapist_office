@@ -35,7 +35,7 @@ public class PatientManagementController {
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
-                "Pacjęt %s %s pseudonim %s został zapisany "
+                "Pacjęt <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
                         .formatted(
                                 patientDto.getName(),
                                 patientDto.getSurname(),

@@ -1,11 +1,14 @@
 package goral.psychotherapistoffice.web;
 
-import goral.psychotherapistoffice.domain.User.UserRegistrationDto;
+import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
+import goral.psychotherapistoffice.domain.user.UserRegistrationDto;
+
 import org.springframework.ui.Model;
-import goral.psychotherapistoffice.domain.User.UserService;
+import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class RegistrationController {
@@ -15,6 +18,8 @@ public class RegistrationController {
         this.userService = userService;
     }
 
+
+
     @GetMapping("/rejestracja")
     public String registrationForm(Model model) {
         UserRegistrationDto userRegistration = new UserRegistrationDto();
@@ -23,7 +28,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/rejestracja")
-    public String register(UserRegistrationDto userRegistration) {
+    public String register(UserRegistrationDto userRegistration, RedirectAttributes redirectAttributes) {
         userService.registerUserWithDefaultRole(userRegistration);
         return "redirect:/";
     }

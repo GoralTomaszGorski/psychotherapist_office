@@ -1,4 +1,4 @@
-package goral.psychotherapistoffice.domain.User;
+package goral.psychotherapistoffice.domain.user;
 
 
 public class UserRegistrationDto {

@@ -10,7 +10,6 @@ import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
-import goral.psychotherapistoffice.web.visitor.VisitorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,8 +63,10 @@ public class MeetingManagementController {
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Pomyślnie dokonano zapisu dla <b>%s</b> na <b>%s</b>"
                         .formatted(
-                                patientService.findPatientById(meetingSave.getPatient()).map(PatientDto::getNick).orElse("Undefined"),
-                                therapyService.findTherapyById(meetingSave.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined")
+                                patientService.findPatientById(meetingSave.getPatient())
+                                        .map(PatientDto::getNick).orElse("Undefined"),
+                                therapyService.findTherapyById(meetingSave.getTherapy())
+                                        .map(TherapyDto::getKindOfTherapy).orElse("Undefined")
                                 )
         );
         return "redirect:/admin";

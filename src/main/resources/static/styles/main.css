@@ -371,4 +371,9 @@ i powinna zajmować większość dostępnej przestrzeni
         text-align: center;
     }
 
+    .registration-link {
+        text-align: center;
+        margin-top: 32px;
+    }
+
 }

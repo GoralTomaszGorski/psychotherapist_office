@@ -1,6 +1,6 @@
-package goral.psychotherapistoffice.domain.User;
+package goral.psychotherapistoffice.domain.user;
 
-import goral.psychotherapistoffice.domain.User.Dto.UserCredentialsDto;
+import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
