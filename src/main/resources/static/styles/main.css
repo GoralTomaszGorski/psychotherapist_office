@@ -95,7 +95,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .menu-login-container,
 .menu-toggle {
     display: block;
-    padding: 16px 32px;
+    padding: 16px 52px;
     font-size: 17px;
 
 }
@@ -218,6 +218,83 @@ i powinna zajmować większość dostępnej przestrzeni
 
 
 
+/*formularze*/
+/*textarea domyślnie nie dziedziczy czcionki z body*/
+.textarea {
+    font-family: inherit;
+}
+/*etykiety i inputy jeden pod drugim z odstępami po bokach*/
+.mc-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+}
+/*odstępy między etykietami i inputami*/
+.mc-form > * {
+    margin-top: 8px;
+}
+/*większe inputy z paddingami*/
+.mc-form > input,
+.mc-form > textarea,
+.mc-form > button {
+    font-size: 1.2rem;
+    color: black;
+    padding: 8px;
+}
+.mc-form > button {
+    margin-top: 16px;
+    background-color: white;
+    color: #ffc107;
+    border: none;
+}
+
+/*panel admina belka z powiadomniniami*/
+.notification-bar {
+    text-align: center;
+    background-color: #ffc107;
+    padding: 8px 0;
+}
+
+/*Tekst nad formularzem logowania*/
+.mc-form-message {
+    color: #ffc107;
+    text-align: center;
+}
+
+.registration-link {
+    text-align: center;
+    margin-top: 32px;
+}
+
+/*Odstęp informacji o spotkaniu od okładki*/
+.meeting-summary-info,
+.therapy-summary-info,
+.patient-summary-info{
+    margin-left: 8px;
+}
+/*Dzień spotkania w kolorze wybanym przez Żonę i odstęp pod nim*/
+.meeting-summary-day {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+
+
+/*error pages START*/
+.error-container {
+    margin: 32px auto;
+}
+.error-container > * {
+    display: block;
+    text-align: center;
+}
+.error-header,
+.error-icon {
+    font-size: 4rem;
+    margin: 16px 0;
+}
+/*error pages END*/
 /*Responsive*/
 @media only screen and (min-width: 992px) {
     /*Na ekranie powyżej 992px ukrywamy przycisk do rozwijania menu*/
@@ -245,7 +322,6 @@ i powinna zajmować większość dostępnej przestrzeni
 
 
 
-    /*meeting2.html*/
     /*offer.html*/
 
     /*Informacje o spotkaniu w jednym rzędzie z odstępem */
@@ -253,7 +329,6 @@ i powinna zajmować większość dostępnej przestrzeni
     .therapy,
     .patient{
     }
-
 
     .meeting-summary,
     .therapy-summary{
@@ -266,8 +341,6 @@ i powinna zajmować większość dostępnej przestrzeni
         flex-direction: column;
     }
 
-
-
     /*Mniejsza ikona na małych ekranach*/
     .meeting-summary-icon {
         object-fit: contain;
@@ -277,103 +350,6 @@ i powinna zajmować większość dostępnej przestrzeni
         padding: 14px 24px;
         color: darkgreen;
 
-    }
-    /*Odstęp informacji o spotkaniu od okładki*/
-    .meeting-summary-info,
-    .therapy-summary-info,
-    .patient-summary-info{
-        margin-left: 8px;
-    }
-    /*Dzień spotkania w kolorze wybanym przez Żonę i odstęp pod nim*/
-    .meeting-summary-day,
-    .patient-summary-day{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 8px;
-
-
-    }
-    /*Odstępy między poszczególnymi informacjami*/
-    .meeting-summary-item {
-        margin: 8px;
-    }
-
-    .therapy123{
-        margin-bottom: 10px;
-        border: 1px #6d6d6d solid;
-        display: block;
-        padding: 14px 24px;
-        font-size: 28px;
-        color: darkgreen;
-        text-align: center;
-    }
-    /*meeting2.html END*/
-
-
-    /*error pages START*/
-    .error-container {
-        margin: 32px auto;
-    }
-    .error-container > * {
-        display: block;
-        text-align: center;
-    }
-    .error-header,
-    .error-icon {
-        font-size: 4rem;
-        margin: 16px 0;
-    }
-    /*error pages END*/
-
-
-
-
-    /*formularze*/
-    /*textarea domyślnie nie dziedziczy czcionki z body*/
-    .textarea {
-        font-family: inherit;
-    }
-    /*etykiety i inputy jeden pod drugim z odstępami po bokach*/
-    .mc-form {
-        display: flex;
-        flex-direction: column;
-        margin: 0 32px;
-    }
-    /*odstępy między etykietami i inputami*/
-    .mc-form > * {
-        margin-top: 8px;
-    }
-    /*większe inputy z paddingami*/
-    .mc-form > input,
-    .mc-form > textarea,
-    .mc-form > button {
-        font-size: 1.2rem;
-        color: black;
-        padding: 8px;
-    }
-    .mc-form > button {
-        margin-top: 16px;
-        background-color: white;
-        color: #ffc107;
-        border: none;
-    }
-
-    /*panel admina belka z powiadomniniami*/
-    .notification-bar {
-        text-align: center;
-        background-color: #ffc107;
-        padding: 8px 0;
-    }
-
-    /*Tekst nad formularzem logowania*/
-    .mc-form-message {
-        color: #ffc107;
-        text-align: center;
-    }
-
-    .registration-link {
-        text-align: center;
-        margin-top: 32px;
     }
 
 }

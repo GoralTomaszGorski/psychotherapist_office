@@ -7,8 +7,7 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
-            Belka z powiadomieniami
+
         <h2 class="list-heading">Zaloguj się</h2>
         <form action="" th:action="@{/login}" method="post" class="mc-form">
             <p th:if="${param.error}"
