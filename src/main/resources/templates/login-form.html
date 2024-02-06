@@ -7,6 +7,8 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
+        <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
+            Belka z powiadomieniami
         <h2 class="list-heading">Zaloguj się</h2>
         <form action="" th:action="@{/login}" method="post" class="mc-form">
             <p th:if="${param.error}"
@@ -22,6 +24,7 @@
             <label for="password">Hasło</label>
             <input id="password" name="password" placeholder="hasło" type="password">
             <button type="submit">Zaloguj się</button>
+            <p class="registration-link">Nie masz jeszcze konta? <a href="#" th:href="@{/rejestracja}">Zarejestruj się</a></p>
         </form>
     </main>
 </div>
