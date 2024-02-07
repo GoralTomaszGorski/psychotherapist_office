@@ -1,4 +1,4 @@
-package goral.psychotherapistoffice.domain.User.Dto;
+package goral.psychotherapistoffice.domain.user.Dto;
 
 import java.util.Set;
 
