@@ -1,4 +1,4 @@
-package goral.psychotherapistoffice.web;
+package goral.psychotherapistoffice.web.registration_login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +8,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginForm() {
-        return "login-form";
+        return "registration_login/login-form";
     }
 }

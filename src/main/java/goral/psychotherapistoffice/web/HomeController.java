@@ -19,6 +19,7 @@ public class HomeController {
     }
 
     /*    home controller włsciwie calender controller - wyrzuca wszyskie terminy bo tak Ewcia chiała do przegadania czy nie lepiej same wolene terminy teraz to jest w zakładce terminy*/
+
     @GetMapping("/")
     public String therms(Model model){
         List<CalenderDto>allTherms = calenderService.findAllTherms();
