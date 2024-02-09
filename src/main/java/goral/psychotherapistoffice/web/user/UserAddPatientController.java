@@ -1,9 +1,7 @@
 package goral.psychotherapistoffice.web.user;
 
-import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import goral.psychotherapistoffice.web.admin.AdminController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +25,11 @@ public class UserAddPatientController {
         return "user/add-patient-form";
     }
 
-
     @PostMapping("/user/dodaj-pacjeta")
-    public String addPatient(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
+    public String addPatientData(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
-                AdminController.NOTIFICATION_ATTRIBUTE,
+                UserController.NOTIFICATION_ATTRIBUTE,
                 "Pacjęt <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
                         .formatted(
                                 patientDto.getName(),

@@ -5,7 +5,7 @@ import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingDto;
-import goral.psychotherapistoffice.domain.meeting.dto.MeetingVisitorSaveDto;
+import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
@@ -50,14 +50,14 @@ public class MeetingManagementController {
         model.addAttribute("patients", allPatients);
         List<CalenderDto> allFreeTherms = calenderService.findAllFreeTherms();
         model.addAttribute("therms", allFreeTherms);
-        MeetingVisitorSaveDto meetingVisitorSaveDto = new MeetingVisitorSaveDto();
-        model.addAttribute( "meetingSave", meetingVisitorSaveDto);
+        MeetingToSaveDto meetingToSaveDto = new MeetingToSaveDto();
+        model.addAttribute( "meetingSave", meetingToSaveDto);
         return "admin/meeting-admin-form";
 
     }
 
     @PostMapping("/admin/dadaj-rezerwacje")
-    public String addMeeting(MeetingVisitorSaveDto meetingSave, RedirectAttributes redirectAttributes) {
+    public String addMeeting(MeetingToSaveDto meetingSave, RedirectAttributes redirectAttributes) {
         meetingService.addMeeting(meetingSave);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,

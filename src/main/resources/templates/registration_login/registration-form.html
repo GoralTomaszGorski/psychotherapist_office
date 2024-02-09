@@ -8,8 +8,6 @@
 </head>
 <body>
 <main class="main-content" layout:fragment="content">
-    <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
-        Belka z powiadomieniami
     <h2 class="list-heading">Zarejestruj się</h2>
     <form action="#" th:action="@{/rejestracja}" method="post" class="mc-form" th:object="${user}">
         <label for="email">Adres email</label>

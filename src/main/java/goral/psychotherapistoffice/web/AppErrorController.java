@@ -5,20 +5,15 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppErrorController implements ErrorController {
-
     private final static Logger LOGGER = LoggerFactory.getLogger(AppErrorController.class);
-
 
     public String getErrorPath(){
         return "/error";
@@ -52,6 +47,4 @@ public class AppErrorController implements ErrorController {
         model.addAttribute("errorInfo", errorInfo);
         return "error/error";
     }
-
-
 }

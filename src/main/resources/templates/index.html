@@ -9,6 +9,8 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
+        <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
+            Belka z powiadomieniami
         <!-- Nagłówek pobieramy z modelu -->
         <h2 class="list-heading" th:text="${headingAllTherm}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
         <!-- godzine pobieramy z modelu -->

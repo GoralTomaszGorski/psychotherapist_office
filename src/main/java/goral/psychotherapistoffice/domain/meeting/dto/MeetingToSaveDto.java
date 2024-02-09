@@ -1,6 +1,6 @@
 package goral.psychotherapistoffice.domain.meeting.dto;
 
-public class MeetingVisitorSaveDto {
+public class MeetingToSaveDto {
     private Long patient;
     private Long therapy;
     private Long calender;

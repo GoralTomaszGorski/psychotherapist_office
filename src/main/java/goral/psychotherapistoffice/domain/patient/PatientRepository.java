@@ -10,6 +10,7 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
     List<Patient>findAll();
 
     Optional<Patient> findPatientById(long id);
+    Optional<Patient> findPatientByNick(String nick);
 
 
 }
