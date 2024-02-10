@@ -18,6 +18,9 @@ public class PatientService {
 
     public Optional<PatientDto> findPatientById(long id){
         return patientRepository.findPatientById(id).map(PatientDtoMapper::map);
+    }    
+    public Optional<PatientDto> findPatientByNick(String nick){
+        return patientRepository.findPatientByNick(nick).map(PatientDtoMapper::map);
     }
 
     public List<PatientDto>findAllPatients(){
