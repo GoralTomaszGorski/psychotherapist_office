@@ -11,6 +11,7 @@ import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
+import goral.psychotherapistoffice.web.IOException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Service
 public class MeetingService {
+
+
 
     public final PatientRepository patientRepository;
     public final CalenderRepository calenderRepository;
@@ -40,9 +43,13 @@ public class MeetingService {
         meeting.setPatient(patient);
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
-        Calender calender = calenderRepository.findById(meetingToSaveDto.getCalender()).orElseThrow();
-        meeting.setCalender(calender);
-        calender.setFree(false);
+        Calender calender = calenderRepository.findCalenderByIdAndFreeIsTrue(meetingToSaveDto.getCalender()).orElseThrow();
+        if (calender.isFree()) {
+            meeting.setCalender(calender);
+            calender.setFree(false);
+        } else {
+            throw new IllegalArgumentException("Therms have to be free");
+        }
         meetingRepository.save(meeting);
         calenderRepository.save(calender);
     }
@@ -55,28 +62,20 @@ public class MeetingService {
     }
     @Transactional
     public void addMeetingWithNewPatient(PatientDto patientDto, MeetingToSaveDto meetingToSaveDto) {
-        Patient patientToSave = new Patient();
-        patientToSave.setNick(patientDto.getNick());
-        patientToSave.setName(patientDto.getName());
-        patientToSave.setSurname(patientDto.getSurname());
-        patientToSave.setTelephone(patientDto.getTelephone());
-        patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
-        patientRepository.save(patientToSave); // Zapisz nowego pacjenta
-
+        patientService.addPatient(patientDto);
 //         Teraz możemy dodać spotkanie z nowym pacjentem
         Meeting meeting = new Meeting();
-        meeting.setPatient(patientToSave); // Ustaw nowego pacjenta
+        meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
         Calender calender = calenderRepository.findById(meetingToSaveDto.getCalender()).orElseThrow();
-
-        meeting.setCalender(calender);
-        calender.setFree(false);
-
+        if (calender.isFree()) {
+            meeting.setCalender(calender);
+            calender.setFree(false);
+        } else {
+            throw new IllegalArgumentException("Therms have to be free");
+        }
         meetingRepository.save(meeting);
         calenderRepository.save(calender);
-
     }
-
-
 }

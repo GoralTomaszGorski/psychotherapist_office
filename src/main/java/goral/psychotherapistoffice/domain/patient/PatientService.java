@@ -19,9 +19,19 @@ public class PatientService {
     public Optional<PatientDto> findPatientById(long id){
         return patientRepository.findPatientById(id).map(PatientDtoMapper::map);
     }    
-    public Optional<PatientDto> findPatientByNick(String nick){
-        return patientRepository.findPatientByNick(nick).map(PatientDtoMapper::map);
+    public List<PatientDto> findPatientByNickOrSurnameOrName(String nick, String surname, String name){
+        return patientRepository.findPatientByNickOrSurnameOrName(nick, surname, name)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
     }
+    public List<PatientDto> findPatientByNick(String nick){
+        return patientRepository.findPatientByNick(nick)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
+    }
+
 
     public List<PatientDto>findAllPatients(){
         return patientRepository.findAll()
@@ -39,8 +49,6 @@ public class PatientService {
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientRepository.save(patientToSave);
     }
-
-
 }
 
 

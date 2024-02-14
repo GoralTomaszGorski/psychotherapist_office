@@ -9,8 +9,6 @@ public class TherapyDtoMapper {
                 therapy.getKindOfTherapy(),
                 therapy.getDescription(),
                 therapy.getPrice()
-
         );
-
     }
 }

@@ -26,10 +26,6 @@ public class TherapyService {
         return therapyRepository.findById(therapyId).map(TherapyDtoMapper::map);
     }
 
-    public Optional<TherapyDto>findByKindOfTherapyIgnoreCase(String kindOfTherapy){
-        return therapyRepository.findByKindOfTherapyIgnoreCase(kindOfTherapy).map(TherapyDtoMapper::map);
-    }
-
     @Transactional
     public void addTherapy(TherapyDto therapyDto){
         Therapy therapyToSave = new Therapy();

@@ -15,8 +15,6 @@ public class Patient {
     private String telephone;
     private int yearOfBrith;
 
-
-
     public Long getId() {
         return id;
     }

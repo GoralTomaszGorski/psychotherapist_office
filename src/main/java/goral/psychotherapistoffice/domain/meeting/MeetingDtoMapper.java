@@ -10,4 +10,4 @@ public class MeetingDtoMapper {
                 meeting.getCalender()
         );
     }
-    }
+}

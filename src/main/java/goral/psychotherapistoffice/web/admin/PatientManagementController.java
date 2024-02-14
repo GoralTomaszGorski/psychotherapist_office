@@ -1,36 +1,32 @@
 package goral.psychotherapistoffice.web.admin;
 
-import goral.psychotherapistoffice.domain.calender.CalenderService;
+
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class PatientManagementController {
     private final PatientService patientService;
-    private final CalenderService calenderService;
 
-    public PatientManagementController(PatientService patientService, CalenderService calenderService) {
+    public PatientManagementController(PatientService patientService) {
         this.patientService = patientService;
-        this.calenderService = calenderService;
     }
 
-    @GetMapping("/admin/dodaj-pacjeta")
+    @GetMapping("/dodaj-pacjeta")
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
         return "admin/admin-add-patient-form";
     }
 
-
-    @PostMapping("/admin/dodaj-pacjeta")
+    @PostMapping("/dodaj-pacjeta")
     public String addPatient(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
@@ -44,11 +40,13 @@ public class PatientManagementController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/pacjeci")
+    @GetMapping("/pacjeci")
     public String patients(Model model){
-        List<PatientDto> allPatients = patientService.findAllPatients();
+        List<PatientDto> patients = patientService.findAllPatients();
         model.addAttribute("patientHeading", "Sprawdź dane pacjętów");
-        model.addAttribute("patients", allPatients);
+        model.addAttribute("patients", patients);
         return "admin/patients";
     }
+
+
 }

@@ -11,15 +11,13 @@
         <section class="patient">
             <h2 class="list-heading" th:text="${patientHeading}">Pacjęci</h2>
 
+
             <!-- Podsumowanie -->
             <div class="patient-summary">
                 <!-- informacje o pacjęcie -->
-
                     <ul class="patients-list" th:remove="all-but-first">
                         <!-- ustawiamy podsatwowe informacje o pacjęcie -->
                         <li class="patients-list-item" th:each="patient: ${patients}">
-
-                                <!-- ustawiamy podsatwowe informacje o terapii -->
                             <h3 class="free-therms-list-item-title" th:text="|Nick pacjęta: ${patient.nick}|">Nick
                                 pacjęta</h3>
                             <p class="patients-list"

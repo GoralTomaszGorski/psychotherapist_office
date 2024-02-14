@@ -12,6 +12,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+    public static final String NOTIFICATION_ATTRIBUTE = "notification";
+
     private final CalenderService calenderService;
 
     public HomeController(CalenderService calenderService){
