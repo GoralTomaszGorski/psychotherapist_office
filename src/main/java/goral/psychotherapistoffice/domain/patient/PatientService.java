@@ -9,32 +9,36 @@ import java.util.Optional;
 
 @Service
 public class PatientService {
-    public final PatientRepository patientRepository;
+
+    private PatientRepository patientRepository;
+    private PatientJpaRepository patientJpaRepository;
 
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, PatientJpaRepository patientJpaRepository) {
         this.patientRepository = patientRepository;
+        this.patientJpaRepository = patientJpaRepository;
     }
 
     public Optional<PatientDto> findPatientById(long id){
-        return patientRepository.findPatientById(id).map(PatientDtoMapper::map);
-    }    
-    public List<PatientDto> findPatientByNickOrSurnameOrName(String nick, String surname, String name){
-        return patientRepository.findPatientByNickOrSurnameOrName(nick, surname, name)
-                .stream()
-                .map(PatientDtoMapper::map)
-                .toList();
-    }
-    public List<PatientDto> findPatientByNick(String nick){
-        return patientRepository.findPatientByNick(nick)
-                .stream()
-                .map(PatientDtoMapper::map)
-                .toList();
+        return patientJpaRepository.findPatientById(id)
+                .map(PatientDtoMapper::map);
     }
 
+    public List <PatientDto> findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(String k){
+        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(k, k)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
+    }
+    public List <PatientDto> findBySurnameContainsIgnoreCase(String surname){
+        return patientJpaRepository.findBySurnameContainsIgnoreCase(surname)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
+    }
 
     public List<PatientDto>findAllPatients(){
-        return patientRepository.findAll()
+        return patientJpaRepository.findAll()
                 .stream()
                 .map(PatientDtoMapper::map).toList();
     }
@@ -47,7 +51,7 @@ public class PatientService {
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
-        patientRepository.save(patientToSave);
+        patientJpaRepository.save(patientToSave);
     }
 }
 

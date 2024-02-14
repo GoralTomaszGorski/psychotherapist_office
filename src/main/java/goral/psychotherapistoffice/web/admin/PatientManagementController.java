@@ -10,8 +10,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/admin")
+
 public class PatientManagementController {
     private final PatientService patientService;
 
@@ -37,12 +39,17 @@ public class PatientManagementController {
                                 patientDto.getSurname(),
                                 patientDto.getNick())
         );
-        return "redirect:/admin";
+        return "redirect:/";
     }
 
     @GetMapping("/pacjeci")
-    public String patients(Model model){
-        List<PatientDto> patients = patientService.findAllPatients();
+    public String patients(@RequestParam(required = false) String keyword,  Model model) {
+        List<PatientDto> patients;
+        if (keyword == null)  {
+            patients = patientService.findAllPatients();
+        } else {
+            patients = patientService.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword);
+        }
         model.addAttribute("patientHeading", "Sprawdź dane pacjętów");
         model.addAttribute("patients", patients);
         return "admin/patients";

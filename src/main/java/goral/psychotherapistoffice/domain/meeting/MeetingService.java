@@ -6,6 +6,7 @@ import goral.psychotherapistoffice.domain.calender.CalenderRepository;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingDto;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
 import goral.psychotherapistoffice.domain.patient.Patient;
+import goral.psychotherapistoffice.domain.patient.PatientJpaRepository;
 import goral.psychotherapistoffice.domain.patient.PatientRepository;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
@@ -23,13 +24,15 @@ public class MeetingService {
 
 
     public final PatientRepository patientRepository;
+    public final PatientJpaRepository patientJpaRepository;
     public final CalenderRepository calenderRepository;
     public final MeetingRepository meetingRepository;
     public final TherapyRepository therapyRepository;
     public final PatientService patientService;
 
-    public MeetingService(PatientRepository patientRepository, CalenderRepository calenderRepository, MeetingRepository meetingRepository, TherapyRepository therapyRepository, PatientService patientService) {
+    public MeetingService(PatientRepository patientRepository, PatientJpaRepository patientJpaRepository, CalenderRepository calenderRepository, MeetingRepository meetingRepository, TherapyRepository therapyRepository, PatientService patientService) {
         this.patientRepository = patientRepository;
+        this.patientJpaRepository = patientJpaRepository;
         this.calenderRepository = calenderRepository;
         this.meetingRepository = meetingRepository;
         this.therapyRepository = therapyRepository;
@@ -39,7 +42,7 @@ public class MeetingService {
     @Transactional
     public void addMeeting(MeetingToSaveDto meetingToSaveDto){
         Meeting meeting = new Meeting();
-        Patient patient = patientRepository.findPatientById(meetingToSaveDto.getPatient()).orElseThrow();
+        Patient patient = patientJpaRepository.findPatientById(meetingToSaveDto.getPatient()).orElseThrow();
         meeting.setPatient(patient);
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);

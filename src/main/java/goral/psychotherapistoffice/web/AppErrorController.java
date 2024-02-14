@@ -40,7 +40,6 @@ public class AppErrorController implements ErrorController {
                 pageTitle = "Brak dostępu (error 403)";
                 errorInfo = "Nie masz uprawnień do strony, którą próbujesz odwiedzić.";
                 LOGGER.error("Error 403");
-
             }
         }
         model.addAttribute("pageTitle", pageTitle);
