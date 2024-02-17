@@ -40,6 +40,10 @@ public class AppErrorController implements ErrorController {
                 pageTitle = "Brak dostępu (error 403)";
                 errorInfo = "Nie masz uprawnień do strony, którą próbujesz odwiedzić.";
                 LOGGER.error("Error 403");
+            } else if (statusCode == HttpStatus.BAD_REQUEST.value()) {
+                pageTitle = "Bad request (error 400)";
+                errorInfo = "Termin który próbujesz zarezerwować jest już zajęty. ";
+                LOGGER.error("Error 400");
             }
         }
         model.addAttribute("pageTitle", pageTitle);

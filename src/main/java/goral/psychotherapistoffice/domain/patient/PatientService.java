@@ -24,18 +24,13 @@ public class PatientService {
                 .map(PatientDtoMapper::map);
     }
 
-    public List <PatientDto> findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(String k){
-        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(k, k)
+    public List <PatientDto> findBySurnameOrName(String keyword){
+        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
                 .stream()
                 .map(PatientDtoMapper::map)
                 .toList();
     }
-    public List <PatientDto> findBySurnameContainsIgnoreCase(String surname){
-        return patientJpaRepository.findBySurnameContainsIgnoreCase(surname)
-                .stream()
-                .map(PatientDtoMapper::map)
-                .toList();
-    }
+
 
     public List<PatientDto>findAllPatients(){
         return patientJpaRepository.findAll()

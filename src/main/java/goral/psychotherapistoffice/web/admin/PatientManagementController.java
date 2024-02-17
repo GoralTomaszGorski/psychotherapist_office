@@ -48,7 +48,7 @@ public class PatientManagementController {
         if (keyword == null)  {
             patients = patientService.findAllPatients();
         } else {
-            patients = patientService.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword);
+            patients = patientService.findBySurnameOrName(keyword);
         }
         model.addAttribute("patientHeading", "Sprawdź dane pacjętów");
         model.addAttribute("patients", patients);

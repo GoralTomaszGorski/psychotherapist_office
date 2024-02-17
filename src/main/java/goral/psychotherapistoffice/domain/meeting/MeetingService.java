@@ -12,9 +12,10 @@ import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
-import goral.psychotherapistoffice.web.IOException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -47,12 +48,9 @@ public class MeetingService {
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
         Calender calender = calenderRepository.findCalenderByIdAndFreeIsTrue(meetingToSaveDto.getCalender()).orElseThrow();
-        if (calender.isFree()) {
-            meeting.setCalender(calender);
-            calender.setFree(false);
-        } else {
-            throw new IllegalArgumentException("Therms have to be free");
-        }
+        meeting.setCalender(calender);
+        calender.setFree(false);
+
         meetingRepository.save(meeting);
         calenderRepository.save(calender);
     }
@@ -68,16 +66,16 @@ public class MeetingService {
         patientService.addPatient(patientDto);
 //         Teraz możemy dodać spotkanie z nowym pacjentem
         Meeting meeting = new Meeting();
-        meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
-        Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
-        meeting.setTherapy(therapy);
         Calender calender = calenderRepository.findById(meetingToSaveDto.getCalender()).orElseThrow();
         if (calender.isFree()) {
             meeting.setCalender(calender);
             calender.setFree(false);
         } else {
-            throw new IllegalArgumentException("Therms have to be free");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+        meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
+        Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
+        meeting.setTherapy(therapy);
         meetingRepository.save(meeting);
         calenderRepository.save(calender);
     }
