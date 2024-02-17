@@ -65,7 +65,7 @@ public class UserAddMeetingController {
         meetingService.addMeetingWithNewPatient(patientToSave, meetingToSaveDto);
         redirectAttributes.addFlashAttribute(
                 HomeController.NOTIFICATION_ATTRIBUTE,
-                "Pacjęt <b>%s %s </b> pseudonim <b>%s</b> został zapisany na <b>%s</b> na dzień <b>%s</b> "
+                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany na <b>%s</b> na dzień <b>%s</b> "
                         .formatted(
                                 patientToSave.getName(),
                                 patientToSave.getSurname(),

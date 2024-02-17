@@ -21,19 +21,19 @@ public class PatientManagementController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/dodaj-pacjeta")
+    @GetMapping("/dodaj-pacjenta")
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
         return "admin/admin-add-patient-form";
     }
 
-    @PostMapping("/dodaj-pacjeta")
+    @PostMapping("/dodaj-pacjenta")
     public String addPatient(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
-                "Pacjęt <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
+                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
                         .formatted(
                                 patientDto.getName(),
                                 patientDto.getSurname(),
@@ -42,7 +42,7 @@ public class PatientManagementController {
         return "redirect:/";
     }
 
-    @GetMapping("/pacjeci")
+    @GetMapping("/pacjenci")
     public String patients(@RequestParam(required = false) String keyword,  Model model) {
         List<PatientDto> patients;
         if (keyword == null)  {
@@ -50,10 +50,8 @@ public class PatientManagementController {
         } else {
             patients = patientService.findBySurnameOrName(keyword);
         }
-        model.addAttribute("patientHeading", "Sprawdź dane pacjętów");
+        model.addAttribute("patientHeading", "Sprawdź dane pacjentów");
         model.addAttribute("patients", patients);
         return "admin/patients";
     }
-
-
 }

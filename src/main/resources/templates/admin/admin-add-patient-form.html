@@ -10,18 +10,18 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading">Dodaj dane nowego Pacjęta</h2>
-        <form action="" th:action="@{/admin/dodaj-pacjeta}" method="post" class="mc-form" th:object="${patientDto}">
+        <h2 class="list-heading">Dodaj dane nowego Pacjenta</h2>
+        <form action="" th:action="@{/admin/dodaj-pacjenta}" method="post" class="mc-form" th:object="${patientDto}">
             <!-- dodawanie pacjenta -->
-            <label for="nick">Nick Pacjęta </label>
+            <label for="nick">Nick Pacjenta </label>
             <input type="text" id="nick" placeholder="np. Wiki23" th:field="*{nick}">
-            <label for="name">Imię Pacjęta </label>
+            <label for="name">Imię Pacjenta </label>
             <input type="text" id="name" placeholder="np. Adam" th:field="*{name}">
-            <label for="surname">Nazwisko Pacjęta </label>
+            <label for="surname">Nazwisko Pacjenta </label>
             <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
-            <label for="telephone">telefon Pacjęta</label>
+            <label for="telephone">telefon Pacjenta</label>
             <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
-            <label for="yearOfBrith">Rok urodzenia Pacjęta</label>
+            <label for="yearOfBrith">Rok urodzenia Pacjenta</label>
             <input type="text" id="yearOfBrith" placeholder="1988" th:field="*{yearOfBrith}">
             <button type="submit">Dodaj</button>
 

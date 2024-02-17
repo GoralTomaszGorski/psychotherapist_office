@@ -18,19 +18,19 @@ public class UserAddPatientController {
     }
 
 
-    @GetMapping("/user/dodaj-pacjeta")
+    @GetMapping("/user/dodaj-pacjenta")
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
         return "user/add-patient-form";
     }
 
-    @PostMapping("/user/dodaj-pacjeta")
+    @PostMapping("/user/dodaj-pacjenta")
     public String addPatientData(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 UserController.NOTIFICATION_ATTRIBUTE,
-                "Pacjęt <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
+                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
                         .formatted(
                                 patientDto.getName(),
                                 patientDto.getSurname(),

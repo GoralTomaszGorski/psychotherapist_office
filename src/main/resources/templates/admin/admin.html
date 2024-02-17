@@ -10,17 +10,15 @@
     <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
         Belka z powiadomieniami
     <h2 class="list-heading">Panel administracyjny</h2>
-    <ul class="list-border">
-        <li><a href="#" th:href="@{/admin/dodaj-terapie}">Dodaj rodzaj terapii</a></li>
-        <li><a href="#" th:href="@{/admin/pacjeci}">Wyświetl pacjętów</a></li>
-        <li><a href="#" th:href="@{/admin/spotkania}">Wyświetl spotkania</a></li>
-        <li><a href="#" th:href="@{/admin/dadaj-rezerwacje}">Zarezerwój spotkanie</a></li>
-        <li><a href="#" th:href="@{/admin/dodaj-terapie}">Dodaj rodzaj terapii</a></li>
-        <li><a href="#" th:href="@{/admin/dodaj-pacjeta}">Dodaj pacjęta</a></li>
-
-
+    <div >
+    <ul class="patients-list123">
+        <li><a href="#" th:href="@{/admin/pacjenci}">1. Wyświetl pacjentów</a></li>
+        <li><a href="#" th:href="@{/admin/dodaj-pacjenta}">2. Dodaj pacjenta</a></li>
+        <li><a href="#" th:href="@{/admin/spotkania}">3. Wyświetl spotkania</a></li>
+        <li><a href="#" th:href="@{/admin/dadaj-rezerwacje}">4. Zarezerwój spotkanie</a></li>
+        <li><a href="#" th:href="@{/admin/dodaj-terapie}">5. Dodaj rodzaj terapii</a></li>
     </ul>
+    </div>
 </main>
-
 </body>
 </html>

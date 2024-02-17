@@ -140,7 +140,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .therapy-therms-list,
 .list-border,
 .patients-list{
-        list-style-type: none;
+    list-style-type: none;
 
 }
 
@@ -152,13 +152,11 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 
-/*Usunięcie dekoracji elementów listy (kropki na początku)*/
 .patients-list123 {
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 4px;
+    font-size: 16px;
+    padding: 40px;
+    line-height: 160%;
 
 }
 
@@ -172,10 +170,10 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .patients-list-item{
-    margin-bottom: 10px;
     max-width: 930px;
     display: block;
     border: 1px #6d6d6d solid;
+    margin: 2px 32px;
 }
 /*Plakat - usuniecie paddingu*/
 .free-therms-list-item-poster {
@@ -189,7 +187,7 @@ i powinna zajmować większość dostępnej przestrzeni
 /*Karta terminu*/
 
 .meeting-button{
-        display: block;
+    display: block;
     padding: 14px 24px;
     font-size: 28px;
     color: darkgreen;
@@ -215,7 +213,12 @@ i powinna zajmować większość dostępnej przestrzeni
 
 /*index END*/
 
-
+.list {
+    font-size: 18px;
+    flex-direction: column;
+    margin: 0 32px;
+    padding: 14px;
+}
 
 
 /*formularze*/

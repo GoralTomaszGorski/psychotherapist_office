@@ -37,9 +37,6 @@ public class CalenderService {
                 .map(CalenderDtoMapper::map);
     }
 
-    public Optional<CalenderDto> findCalenderById(long id){
-        return calenderRepository.findById(id)
-                .map(CalenderDtoMapper::map);
-    }
+
 
 }
