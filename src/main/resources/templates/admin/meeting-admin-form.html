@@ -23,7 +23,7 @@
                 <label for="patient">Pacjęt</label>
                 <select id="patient" th:field="*{patient}" required>
                     <option value="" hidden="">Wyberz Pacjęta</option>
-                    <option th:each="patient: ${patients}" th:value="${patient.id}" th:text="${patient.nick}"></option>
+                    <option th:each="patient: ${patients}" th:value="${patient.id}" th:text="|${patient.nick} ${patient.name} ${patient.surname}|"></option>
                 </select>
                 <label for="calender">Termin</label>
                 <select id="calender" th:field="*{calender}" required>

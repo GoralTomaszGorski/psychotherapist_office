@@ -30,15 +30,15 @@
 
             <div class="mc-form" th:field="*{patient}">
                 <label for="nick">Nick Pacjęta </label>
-                <input type="text" id="nick" placeholder="np. Wiki23" th:field="${patientDto.nick}">
+                <input type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
                 <label for="name">Imię Pacjęta </label>
-                <input type="text" id="name" placeholder="np. Adam" th:field="${patientDto.name}">
+                <input type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
                 <label for="surname">Nazwisko Pacjęta </label>
-                <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientDto.surname}">
+                <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
                 <label for="telephone">telefon Pacjęta</label>
-                <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientDto.telephone}">
+                <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
                 <label for="yearOfBrith">Rok urodzenia Pacjęta</label>
-                <input type="year" id="yearOfBrith" placeholder="1988" th:field="${patientDto.yearOfBrith}">
+                <input type="year" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
             </div>
 
             <button type="submit">Dodaj</button>

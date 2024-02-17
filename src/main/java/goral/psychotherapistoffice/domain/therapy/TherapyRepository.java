@@ -11,9 +11,6 @@ public interface TherapyRepository extends CrudRepository<Therapy, Long> {
 
     Optional<Therapy>findById(Long id);
 
-/*
-    Optional<Therapy> findTherapyByIdString(String id);
-*/
 
     Optional<Therapy> findByKindOfTherapyIgnoreCase(String kindOfTherapy);
 

@@ -3,7 +3,6 @@ package goral.psychotherapistoffice.domain.patient;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Patient")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +13,6 @@ public class Patient {
     private String surname;
     private String telephone;
     private int yearOfBrith;
-
-
 
     public Long getId() {
         return id;
