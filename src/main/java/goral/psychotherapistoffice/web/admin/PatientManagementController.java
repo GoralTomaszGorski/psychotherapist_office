@@ -54,4 +54,14 @@ public class PatientManagementController {
         model.addAttribute("patients", patients);
         return "admin/patients";
     }
+
+    @GetMapping("/pacjeci/delete/{id}")
+    public String deletePatient(@PathVariable (name = "id") Long id, RedirectAttributes redirectAttributes) {
+        patientService.deletePatient(id);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Usunięto Pacjenta "
+        );
+        return "redirect:/admin";
+    }
 }

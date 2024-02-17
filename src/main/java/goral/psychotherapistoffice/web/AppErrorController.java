@@ -36,6 +36,10 @@ public class AppErrorController implements ErrorController {
                 pageTitle = "Błąd - wewnętrzny błąd serwera (error 500)";
                 errorInfo = "Wystąpił błąd wewnętrzny serwera - przepraszamy";
                 LOGGER.error("Error 500");
+            } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                pageTitle = "Błąd - wewnętrzny błąd serwera (error 500)";
+                errorInfo = "Wystąpił błąd wewnętrzny serwera - przepraszamy";
+                LOGGER.error("Error 500");
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
                 pageTitle = "Brak dostępu (error 403)";
                 errorInfo = "Nie masz uprawnień do strony, którą próbujesz odwiedzić.";

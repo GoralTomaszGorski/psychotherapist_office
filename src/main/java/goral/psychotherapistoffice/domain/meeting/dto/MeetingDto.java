@@ -5,6 +5,7 @@ import goral.psychotherapistoffice.domain.patient.Patient;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 
 public class MeetingDto {
+    private Long id;
     private Patient patient;
     private Therapy therapy;
     private Calender calender;
@@ -34,7 +35,16 @@ public class MeetingDto {
         this.calender = calender;
     }
 
-    public MeetingDto(Patient patient, Therapy therapy, Calender calender) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public MeetingDto(Long id, Patient patient, Therapy therapy, Calender calender) {
+        this.id = id;
         this.patient = patient;
         this.therapy = therapy;
         this.calender = calender;
