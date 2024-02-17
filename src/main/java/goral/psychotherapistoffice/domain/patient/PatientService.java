@@ -9,22 +9,31 @@ import java.util.Optional;
 
 @Service
 public class PatientService {
-    public final PatientRepository patientRepository;
+
+    private PatientRepository patientRepository;
+    private PatientJpaRepository patientJpaRepository;
 
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, PatientJpaRepository patientJpaRepository) {
         this.patientRepository = patientRepository;
+        this.patientJpaRepository = patientJpaRepository;
     }
 
     public Optional<PatientDto> findPatientById(long id){
-        return patientRepository.findPatientById(id).map(PatientDtoMapper::map);
-    }    
-    public Optional<PatientDto> findPatientByNick(String nick){
-        return patientRepository.findPatientByNick(nick).map(PatientDtoMapper::map);
+        return patientJpaRepository.findPatientById(id)
+                .map(PatientDtoMapper::map);
     }
 
+    public List <PatientDto> findBySurnameOrName(String keyword){
+        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
+    }
+
+
     public List<PatientDto>findAllPatients(){
-        return patientRepository.findAll()
+        return patientJpaRepository.findAll()
                 .stream()
                 .map(PatientDtoMapper::map).toList();
     }
@@ -37,10 +46,8 @@ public class PatientService {
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
-        patientRepository.save(patientToSave);
+        patientJpaRepository.save(patientToSave);
     }
-
-
 }
 
 

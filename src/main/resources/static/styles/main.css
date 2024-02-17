@@ -229,6 +229,7 @@ i powinna zajmować większość dostępnej przestrzeni
     flex-direction: column;
     margin: 0 32px;
 }
+
 /*odstępy między etykietami i inputami*/
 .mc-form > * {
     margin-top: 8px;

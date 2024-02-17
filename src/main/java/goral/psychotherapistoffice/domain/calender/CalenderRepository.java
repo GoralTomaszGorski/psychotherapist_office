@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface CalenderRepository extends CrudRepository <Calender, Long>{
 
-
     List<Calender> findAll();
 
     List<Calender> findAllByFreeIsTrueOrderById();
@@ -15,6 +14,4 @@ public interface CalenderRepository extends CrudRepository <Calender, Long>{
     Optional<Calender> findById(long id);
     
     Optional<Calender> findCalenderByIdAndFreeIsTrue(long id);
-
-
 }
