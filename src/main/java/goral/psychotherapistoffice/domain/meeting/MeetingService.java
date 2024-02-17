@@ -12,12 +12,14 @@ import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MeetingService {
@@ -78,5 +80,21 @@ public class MeetingService {
         meeting.setTherapy(therapy);
         meetingRepository.save(meeting);
         calenderRepository.save(calender);
+    }
+
+    public  Optional<MeetingDto>findMeetingId(long id){
+        return meetingRepository.findMeetingById(id)
+                .map(MeetingDtoMapper::map);
+    }
+
+
+    @Transactional
+    public void deleteMeeting(Long id){
+        try {
+            meetingRepository.deleteMeetingById(id);
+        } catch (EmptyResultDataAccessException e){
+            // ignore
+
+        }
     }
 }

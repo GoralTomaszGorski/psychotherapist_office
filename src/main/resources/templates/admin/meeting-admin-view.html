@@ -15,11 +15,10 @@
         <!-- Zostawiamy tylko pierwszy element <li> -->
         <ul class="free-therms-list" th:remove="all-but-first">
             <!-- Pętla po wszystkich terminach z modelu -->
-            <li class="free-therms-list-item" th:each="meetingsThermsForAdmin: ${meetingThermsOccupiedForAdmin}">
+            <li class="free-therms-list-item" th:each="meetingsThermsForAdmin: ${meetingsForAdmin}">
 
                 <!-- Link do strony pojedynczego termiu  /termin/5 -->
-                <a href="#" th:href="@{|spotkania/${meetingsThermsForAdmin}|}">
-                    <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
+                <a href="#" th:href="@{|spotkania/${meetingsForAdmin}|}">
                     <button class="meeting-button-booked">
                         <i class="fa-regular fa-calendar-check"></i>
                     </button>
@@ -30,7 +29,13 @@
                         <h4 class="free-therms-list-item-title" th:text="|Termin: ${meetingsThermsForAdmin.calender.dayof} ${meetingsThermsForAdmin.calender.time}|">Termin: </h4>
                         <p class="free-therms-list-item-title" th:text="|Pacjent: ${meetingsThermsForAdmin.patient.surname}  ${meetingsThermsForAdmin.patient.name} Nick: ${meetingsThermsForAdmin.patient.nick} tel. ${meetingsThermsForAdmin.patient.telephone}|">Pacjent</p>
                         <p class="free-therms-list-item-title" th:text="|Rodzaj terapii: ${meetingsThermsForAdmin.therapy.kindOfTherapy}|">Terapia</p>
+                        <a href="admin/pacjeci/delete/"
+                           th:href="@{|spotkania/delete/${meetingsThermsForAdmin.id}|}"
+                           onclick="return confirm('czy na pewno usunąć tego Spotanie? ')"
+                           role="button"
+                        >delete</a>
                     </div>
+
                 </div>
             </li>
         </ul>

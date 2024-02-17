@@ -13,12 +13,15 @@ import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class MeetingManagementController {
 
     private final MeetingService meetingService;
@@ -33,16 +36,16 @@ public class MeetingManagementController {
         this.therapyService = therapyService;
     }
 
-    @GetMapping("admin/spotkania")
+    @GetMapping("/spotkania")
     public String meetingAdmin(Model model){
-        List<MeetingDto> meetingsThermsForAdmin = meetingService.findAllMeetings();
+        List<MeetingDto> meetings = meetingService.findAllMeetings();
         model.addAttribute("headingFA", "Terminy spotkań");
         model.addAttribute("descriptionFA", "Sprawdz terminy spotkań");
-        model.addAttribute("meetingThermsOccupiedForAdmin", meetingsThermsForAdmin);
+        model.addAttribute("meetingsForAdmin", meetings);
         return "admin/meeting-admin-view";
     }
 
-    @GetMapping("/admin/dadaj-rezerwacje")
+    @GetMapping("/dadaj-rezerwacje")
     public String addMeetingForm(Model model){
         List<TherapyDto>allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);
@@ -56,7 +59,7 @@ public class MeetingManagementController {
 
     }
 
-    @PostMapping("/admin/dadaj-rezerwacje")
+    @PostMapping("/dadaj-rezerwacje")
     public String addMeeting(MeetingToSaveDto meetingSave, RedirectAttributes redirectAttributes) {
         meetingService.addMeeting(meetingSave);
         redirectAttributes.addFlashAttribute(
@@ -68,6 +71,16 @@ public class MeetingManagementController {
                                 therapyService.findTherapyById(meetingSave.getTherapy())
                                         .map(TherapyDto::getKindOfTherapy).orElse("Undefined")
                                 )
+        );
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/spotkania/delete/{id}")
+    public String deleteMeeting(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) {
+        meetingService.deleteMeeting(id);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Usunięto Spotkanie "
         );
         return "redirect:/admin";
     }

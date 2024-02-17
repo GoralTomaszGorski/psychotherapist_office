@@ -13,4 +13,7 @@ public interface PatientJpaRepository extends JpaRepository<Patient, Long> {
 
     List<Patient> findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(String surname, String name);
 
+    void deletePatientById(long id);
+
+
 }

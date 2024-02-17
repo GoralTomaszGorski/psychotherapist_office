@@ -1,6 +1,8 @@
 package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+import org.apache.commons.collections4.iterators.CollatingIterator;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +50,15 @@ public class PatientService {
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
     }
-}
 
+    @Transactional
+    public void deletePatient(Long id) {
+        try {
+            patientJpaRepository.deletePatientById(id);
+        } catch (EmptyResultDataAccessException e){
+            // ignore
+        }
+    }
+}
 
 
