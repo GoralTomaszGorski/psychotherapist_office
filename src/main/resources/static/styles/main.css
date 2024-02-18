@@ -157,9 +157,21 @@ i powinna zajmować większość dostępnej przestrzeni
     font-size: 16px;
     padding: 40px;
     line-height: 160%;
-
 }
-
+.about-me {
+    list-style-type: none;
+    font-size: 16px;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2%;
+    line-height: 160%;
+    text-align: justify;
+    text-indent: 8%;
+}
+.about-me-photo {
+    object-fit: contain;
+    max-width: 200px;
+}
 
 /*Margines i ramka wokół pojedynczego posta*/
 .free-therms-list-item{
