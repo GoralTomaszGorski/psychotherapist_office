@@ -1,7 +1,6 @@
 package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import org.apache.commons.collections4.iterators.CollatingIterator;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,12 +11,11 @@ import java.util.Optional;
 @Service
 public class PatientService {
 
-    private PatientRepository patientRepository;
+
     private PatientJpaRepository patientJpaRepository;
 
 
-    public PatientService(PatientRepository patientRepository, PatientJpaRepository patientJpaRepository) {
-        this.patientRepository = patientRepository;
+    public PatientService(PatientJpaRepository patientJpaRepository) {
         this.patientJpaRepository = patientJpaRepository;
     }
 

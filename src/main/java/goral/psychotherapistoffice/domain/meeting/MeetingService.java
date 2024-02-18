@@ -24,8 +24,6 @@ import java.util.Optional;
 @Service
 public class MeetingService {
 
-
-
     public final PatientRepository patientRepository;
     public final PatientJpaRepository patientJpaRepository;
     public final CalenderRepository calenderRepository;
@@ -90,11 +88,12 @@ public class MeetingService {
 
     @Transactional
     public void deleteMeeting(Long id){
+        Calender calender = meetingRepository.findMeetingById(id).get().getCalender();
+        calender.setFree(true);
         try {
             meetingRepository.deleteMeetingById(id);
         } catch (EmptyResultDataAccessException e){
             // ignore
-
         }
     }
 }
