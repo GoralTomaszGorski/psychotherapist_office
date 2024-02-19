@@ -7,13 +7,18 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <div class="about-me">
-            <h2 class="list-heading" th:text="${heading}">Kto to</h2>
-            <img src="../static/images/babanakrzeske.jpg.jpg"
-                 class="about-me-photo"
-            />
-            <div >
-                <p class="about-me">
+
+        <div class="about-me-top">
+            <h2 class="about-me-heading" th:text="${heading}">Kto to</h2>
+            <div class="about-me-photo">
+                <!--                <img src="src/main/resources/static/images/Ewcia.jpg" title="zdjęcie terapełty">-->
+            </div>
+        </div>
+
+        <div>
+            <h3 class="about-me">Wykształcenie i doświadzczenie zawodowe: </h3>
+
+            <p class="about-me">
                     Jestem psychologiem oraz psychoterapeutą pracującym w nurcie psychodynamicznym i integracyjnym,
                     <strong>ukończyłam 4-letni kurs psychoterapii organizowany przez Collegium Medicum Uniwersytetu
                     Jagiellońskiego w Krakowie,</strong> magistrem psychologii (specjalność: kliniczna i osobowości)
@@ -45,10 +50,7 @@
                 <p class="about-me">
                     Prywatnie jestem żoną, mamą dwójki dzieci, miłośnikiem książek i tańca:)
                 </p>
-
-
             </div>
-        </div>
     </main>
 </div>
 </body>

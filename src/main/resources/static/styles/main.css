@@ -158,19 +158,44 @@ i powinna zajmować większość dostępnej przestrzeni
     padding: 40px;
     line-height: 160%;
 }
+
+.about-me-heading {
+    text-align: center;
+    margin: 16px 0;
+    padding-top: 6%;
+    float: right
+}
+
+.about-me-photo {
+    object-fit: contain;
+    width: 150px;
+    height: 200px;
+    background-image: url("../images/Ewcia.jpg");
+    background-size: cover;
+    border: 1px #6d6d6d solid;
+    float: left;
+    margin: 2%;
+
+}
+
+
 .about-me {
     list-style-type: none;
     font-size: 16px;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
     padding-bottom: 2%;
     line-height: 160%;
     text-align: justify;
     text-indent: 8%;
 }
-.about-me-photo {
-    object-fit: contain;
-    max-width: 200px;
+
+
+.about-me-top {
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 2%;
+    line-height: 160%;
 }
 
 /*Margines i ramka wokół pojedynczego posta*/
