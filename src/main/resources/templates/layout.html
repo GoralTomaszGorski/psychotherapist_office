@@ -24,42 +24,46 @@
 <body>
 <div class="container">
 
-    <ul class="menu">
+    <ul class="menu rounded">
         <li class="menu-logo-container">
-            <a href="#" th:href="@{/}">
-                <i class="fa-regular fa-compass"></i> Home</a>
+            <a href="#" th:href="@{/}" class="btn btn-light">
+                <i class="fa-regular fa-compass"></i> Home
+            </a>
         </li>
         <li class="menu-toggle">
-            <a href="#"><i id="toggle-icon" class="far fa-plus-square"></i></a>
+            <a href="#" class="btn btn-light"><i id="toggle-icon" class="far fa-plus-square"></i></a>
         </li>
         <li class="menu-item">
-            <a href="#" th:href="@{/omnie}"><i class="fa-solid fa-clipboard-user"></i> O mnie</a>
+            <a href="#" th:href="@{/omnie}" class="btn btn-light"><i class="fa-solid fa-clipboard-user"></i> O mnie</a>
         </li>
         <li class="menu-item">
-            <a href="#" th:href="@{/offerta}"><i class="fa-solid fa-hand-holding-heart"></i> Oferta</a>
+            <a href="#" th:href="@{/offerta}" class="btn btn-light"><i class="fa-solid fa-hand-holding-heart"></i>
+                Oferta</a>
         </li>
         <li class="menu-item">
-            <a href="#" th:href="@{/terminy}"><i class="fa-regular fa-calendar-days"></i> Terminy</a>
+            <a href="#" th:href="@{/terminy}" class="btn btn-light"><i class="fa-regular fa-calendar-days"></i> Terminy</a>
         </li>
         <li class="menu-item">
-            <a href="#"><i class="fa-regular fa-envelope"></i> Kontakt</a>
+            <a href="#" class="btn btn-light"><i class="fa-regular fa-envelope"></i> Kontakt</a>
         </li>
         <li class="menu-item">
-
             <div sec:authorize="hasAnyRole('ADMIN')">
-                <a href="#" th:href="@{/admin}"><i class="fa-solid fa-screwdriver-wrench"></i> Narzędzia</a>
+                <a href="#" th:href="@{/admin}" class="btn btn-light">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Narzędzia
+                </a>
             </div>
             <div sec:authorize="hasAnyRole('USER')">
-                <a href="#" th:href="@{/user}"><i class="fa-solid fa-screwdriver-wrench"></i> Narzędzia</a>
+                <a href="#" th:href="@{/user}" class="btn btn-light">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Narzędzia
+                </a>
             </div>
         </li>
         <li class="menu-login-container">
-
-            <a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">
+            <a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-light">
                 <i class="fa-solid fa-right-to-bracket"></i>
                 Zaloguj
             </a>
-            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">
+            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()" class="btn btn-light">
                 <i class="fa-solid fa-right-to-bracket"></i>
                 Wyloguj
             </a>
