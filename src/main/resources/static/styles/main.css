@@ -8,8 +8,7 @@
 /*Zmiana domyślnego fontu*/
 body {
     font-family: 'Montserrat';
-    background-image: url("../images/gory2.jpg");
-    background-position: top;
+    background: url("../images/gory2.jpg") no-repeat fixed 0 0 transparent;
 }
 /*Ustawienie koloru odnośników i usunięcie podkreśleń*/
 a {
@@ -158,19 +157,44 @@ i powinna zajmować większość dostępnej przestrzeni
     padding: 40px;
     line-height: 160%;
 }
+
+.about-me-heading {
+    text-align: center;
+    margin: 16px 0;
+    padding-top: 6%;
+    float: right
+}
+
+.about-me-photo {
+    object-fit: contain;
+    width: 150px;
+    height: 200px;
+    background-image: url("../images/Ewcia.jpg");
+    background-size: cover;
+    border: 1px #6d6d6d solid;
+    float: left;
+    margin: 2%;
+
+}
+
+
 .about-me {
     list-style-type: none;
     font-size: 16px;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
     padding-bottom: 2%;
     line-height: 160%;
     text-align: justify;
     text-indent: 8%;
 }
-.about-me-photo {
-    object-fit: contain;
-    max-width: 200px;
+
+
+.about-me-top {
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 2%;
+    line-height: 160%;
 }
 
 /*Margines i ramka wokół pojedynczego posta*/
@@ -368,4 +392,135 @@ i powinna zajmować większość dostępnej przestrzeni
 
     }
 
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.col-25p {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+.col-75p {
+    flex: 0 0 auto;
+    width: 75%;
+}
+
+.p-50px {
+    padding: 50px;
+}
+
+.px-10px {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.py-50px {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.my-20px {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mt-20px{
+    margin-top: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.main-content, .rounded {
+    border-radius: 0.25rem;
+}
+
+.btn {
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-light {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.photo-psychotherapist {
+    transition: transform 0.5s;
+}
+
+.photo-psychotherapist:hover {
+    transform: scaleX(-1);
+}
+
+.width-240px {
+    width: 240px;
+}
+
+.flip-box {
+  background-color: transparent;
+  width: 200px;
+  height: 300px;
+  border: 2px solid #ffb6ae;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front, .flip-box-back {
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-box-back {
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.float-right {
+    float:right;
 }
