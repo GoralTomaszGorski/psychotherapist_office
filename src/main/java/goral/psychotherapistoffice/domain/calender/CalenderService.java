@@ -26,17 +26,9 @@ public class CalenderService {
                 .map(CalenderDtoMapper::map).toList();
     }
 
-    public Optional<CalenderDto> findCalenderById(long id){
-        return calenderRepository.findById(id)
-                .map(CalenderDtoMapper::map);
-    }
-
-
-    public Optional<CalenderDto> findCalByIdIsFree(long id){
+    public  Optional<CalenderDto> findCalenderByIdIfFreeIsTrue(long id){
         return calenderRepository.findCalenderByIdAndFreeIsTrue(id)
                 .map(CalenderDtoMapper::map);
     }
-
-
 
 }
