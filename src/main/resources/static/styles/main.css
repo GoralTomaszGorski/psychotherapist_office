@@ -524,3 +524,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .float-right {
     float:right;
 }
+
+.d-none {
+    display: none;
+}
