@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.meeting;
 
 import goral.psychotherapistoffice.domain.calender.Calender;
 import goral.psychotherapistoffice.domain.calender.CalenderRepository;
+import goral.psychotherapistoffice.domain.exception.TermIsBusyException;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingDto;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
 import goral.psychotherapistoffice.domain.patient.Patient;
@@ -13,10 +14,8 @@ import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -71,7 +70,7 @@ public class MeetingService {
             meeting.setCalender(calender);
             calender.setFree(false);
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new TermIsBusyException();
         }
         meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
