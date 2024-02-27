@@ -56,7 +56,7 @@ public class MeetingService {
 
 
     public List<MeetingDto> findAllMeetings() {
-        return  meetingRepository.findAllByCalenderIsNotNullOrderByCalender()
+        return  meetingRepository.findAll()
                 .stream().map(MeetingDtoMapper::map).toList();
 
     }
