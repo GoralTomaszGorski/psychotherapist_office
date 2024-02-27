@@ -16,7 +16,7 @@ public class CalenderService {
     }
 
     public List<CalenderDto>findAllFreeTherms(){
-        return calenderRepository.findAllByFreeIsTrueOrderById().stream()
+        return calenderRepository.findAllByFreeIsTrue().stream()
                 .map(CalenderDtoMapper::map).toList();
     }
 
