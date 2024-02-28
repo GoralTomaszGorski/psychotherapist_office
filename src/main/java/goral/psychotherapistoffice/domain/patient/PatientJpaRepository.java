@@ -15,5 +15,4 @@ public interface PatientJpaRepository extends JpaRepository<Patient, Long> {
 
     void deletePatientById(long id);
 
-
 }

@@ -56,7 +56,7 @@ public class MeetingService {
 
 
     public List<MeetingDto> findAllMeetings() {
-        return  meetingRepository.findAll()
+        return  meetingRepository.findAllByCalenderIsNotNullOrderByCalender()
                 .stream().map(MeetingDtoMapper::map).toList();
 
     }
@@ -72,7 +72,10 @@ public class MeetingService {
         } else {
             throw new TermIsBusyException();
         }
-        meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
+        
+        Patient patient = patientService.addPatient(patientDto);
+        meeting.setPatient(patient);
+
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
         meetingRepository.save(meeting);
