@@ -14,8 +14,6 @@
         <h4 class="list-heading">Twoje dane będzie widział jedynie terapeuta, ogólnodostępne będzie jednynie NICK</h4>
         <div class="mc-form">
         <form th:action="@{/admin/dadaj-rezerwacje}" method="post" class="mc-form"th:object="${meetingSave}">
-            <!-- dodawanie spotkania -->
-
                 <label for="therapy">Terapia</label>
                 <select class="option-box" id="therapy" th:field="*{therapy}" required>
                     <option value="" hidden="">Wyberz Rodzaj terapii</option>
@@ -31,7 +29,6 @@
                     <option value="" hidden="">Wyberz Termin</option>
                     <option class="option-box-inside" th:each="calender: ${therms}" th:value="${calender.id}" th:text="|${calender.dayof} ${calender.time}|"></option>
                 </select>
-
             <button type="submit">Dodaj</button>
         </form>
         </div>
