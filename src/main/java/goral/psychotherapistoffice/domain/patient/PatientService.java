@@ -39,7 +39,7 @@ public class PatientService {
     }
 
     @Transactional
-    public void addPatient(PatientDto patientDto){
+    public Patient addPatient(PatientDto patientDto){
         Patient patientToSave = new Patient();
         patientToSave.setNick(patientDto.getNick());
         patientToSave.setName(patientDto.getName());
@@ -47,6 +47,7 @@ public class PatientService {
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
+        return patientToSave;
     }
 
     public void deletePatient(Long id) {

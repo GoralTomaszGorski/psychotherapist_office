@@ -39,9 +39,9 @@
                 <div class="free-therms-list-item-card">
                     <div class="free-therms-list-item-content">
 
-                        <h3 class="free-therms-list-item-title" th:text="|Termin: ${meetingsTherms.calender.dayof} ${meetingsTherms.calender.time}|">Termin</h3>
-                        <p class="free-therms-list-item-title" th:text="|Nick: ${meetingsTherms.patient.nick}|">Pacjent</p>
-                        <p class="free-therms-list-item-title" th:text="|Rodzaj terapii: ${meetingsTherms.therapy.kindOfTherapy}|">Terapia</p>
+                        <h3 class="free-therms-list-item-title" th:text="|Termin: ${meetingsTherms.getCalender().dayof} ${meetingsTherms.getCalender().time}|">Termin</h3>
+                        <p class="free-therms-list-item-title" th:text="|Nick: ${meetingsTherms.getPatient().nick}|">Pacjent</p>
+                        <p class="free-therms-list-item-title" th:text="|Rodzaj terapii: ${meetingsTherms.getTherapy().kindOfTherapy}|">Terapia</p>
                     </div>
                 </div>
             </li>
