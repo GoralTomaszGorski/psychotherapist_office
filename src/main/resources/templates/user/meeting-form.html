@@ -12,33 +12,34 @@
         <h4 class="list-heading">Twoje dane będzie widział jedynie terapeuta, ogólnodostępne będzie jednynie NICK</h4>
 
         <section class="mc-form" th:object="${calender}">
-            <h4>Termin spotkania: </h4>
-            <p th:text="|${calender.dayof} ${calender.time}|"
+            <h4 >Termin spotkania: </h4>
+            <p class="option-box" th:text="|${calender.dayof} ${calender.time}|"
                th:value="${calender.id}">
             </p>
         </section>
 
 
         <form action="#" th:action="@{/termin/add}"
-              method="post" class="mc-form" th:object="${meetingSave}">
+              method="post" th:object="${meetingSave}"
+        class="mc-form">
 
-            <label class="mc-form" for="therapy">Terapia - wybierz rodzaj terapii</label>
-            <select id="therapy" required th:field="*{therapy}">
+            <label for="therapy">Terapia - wybierz rodzaj terapii</label>
+            <select class="option-box" id="therapy" required th:field="*{therapy}">
                 <option th:each="therapy: ${therapies}"
                         th:text="${therapy.kindOfTherapy}" th:value="${therapy.id}"></option>
             </select>
 
-            <div class="mc-form" th:field="*{patient}">
+            <div class="mc-form-patient" th:field="*{patient}">
                 <label for="nick">Nick Pacjenta </label>
-                <input type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
+                <input class="option-box" type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
                 <label for="name">Imię Pacjenta </label>
-                <input type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
+                <input class="option-box" type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
                 <label for="surname">Nazwisko Pacjenta </label>
-                <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
+                <input class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
                 <label for="telephone">telefon Pacjenta</label>
-                <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
+                <input class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
                 <label for="yearOfBrith">Rok urodzenia Pacjenta</label>
-                <input type="year" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
+                <input class="option-box" type="year" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
             </div>
 
             <button type="submit">Dodaj</button>

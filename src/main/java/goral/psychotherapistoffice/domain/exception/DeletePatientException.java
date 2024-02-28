@@ -11,6 +11,6 @@ public class DeletePatientException extends ResponseStatusException implements U
 
     @Override
     public String getUserMessage() {
-        return "Nie można usunąć pacjęta.";
+        return "Nie można usunąć pacjęta. Pacjęt jest umuwiony na wizytę";
     }
 }
