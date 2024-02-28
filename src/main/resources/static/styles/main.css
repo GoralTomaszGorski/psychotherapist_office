@@ -137,8 +137,7 @@ i powinna zajmować większość dostępnej przestrzeni
 /*Usunięcie dekoracji elementów listy (kropki na początku)*/
 .free-therms-list,
 .therapy-therms-list,
-.list-border,
-.patients-list{
+.list-border {
     list-style-type: none;
 
 }
@@ -196,9 +195,34 @@ i powinna zajmować większość dostępnej przestrzeni
     line-height: 160%;
 }
 
+.patients-list{
+    list-style-type: none;
+
+}
+
+.patient-description{
+    display: table;
+
+}
+
+
+
+.patient-summary{
+    display: block;
+    flex-direction: column;
+
+}
+.delete-button-link{
+    display: flow;
+    float: right;
+    right: 2%;
+
+}
 
 .delete-button{
-    float:right;
+    right: 2%;
+    padding: 14px 24px;
+    font-size: 28px;
 }
 
 /*Margines i ramka wokół pojedynczego posta*/
@@ -235,7 +259,7 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .free-therms-list-item-card{
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-between;
     padding: 4px;
@@ -409,10 +433,7 @@ i powinna zajmować większość dostępnej przestrzeni
         margin-top: 16px;
 
     }
-    .patient-summary{
-        display: flex;
-        flex-direction: column;
-    }
+
 
     /*Mniejsza ikona na małych ekranach*/
     .meeting-summary-icon {
