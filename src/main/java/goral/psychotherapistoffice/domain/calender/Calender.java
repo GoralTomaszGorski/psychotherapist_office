@@ -2,6 +2,8 @@ package goral.psychotherapistoffice.domain.calender;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "calender")
+
 public class Calender {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -9,8 +11,6 @@ public class Calender {
     private String dayof;
     private String time;
     private boolean free;
-
-
 
     public Calender() {
     }
