@@ -1,18 +1,18 @@
-package goral.psychotherapistoffice.domain.messeges.dto;
+package goral.psychotherapistoffice.domain.messeges;
 
-public class MessageDto {
 
-        private Long id;
-        private String email;
-        private String text;
-        private boolean confirmation;
+import jakarta.persistence.*;
 
-    public MessageDto(Long id, String email, String text, boolean confirmation) {
-        this.id = id;
-        this.email = email;
-        this.text = text;
-        this.confirmation = confirmation;
-    }
+@Entity
+@Table(name = "message")
+
+public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String email;
+    private String text;
+    private boolean confirmation;
 
     public Long getId() {
         return id;
