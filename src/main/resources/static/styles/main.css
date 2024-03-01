@@ -77,10 +77,11 @@ i powinna zajmować większość dostępnej przestrzeni
 /*Elementy menu domyślnie są ukryte*/
 .menu-item{
     width: 100%;
-    padding: 16px;
+    padding: 8px;
     border-bottom: 1px #6d6d6d solid;
     text-align: center;
-    display: none;
+    display: block;
+
 }
 
 
@@ -93,8 +94,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .menu-logo-container,
 .menu-login-container,
 .menu-toggle {
-    display: block;
-    padding: 16px 52px;
+    display: flex;
     font-size: 17px;
 
 }
@@ -137,8 +137,7 @@ i powinna zajmować większość dostępnej przestrzeni
 /*Usunięcie dekoracji elementów listy (kropki na początku)*/
 .free-therms-list,
 .therapy-therms-list,
-.list-border,
-.patients-list{
+.list-border {
     list-style-type: none;
 
 }
@@ -174,7 +173,6 @@ i powinna zajmować większość dostępnej przestrzeni
     border: 1px #6d6d6d solid;
     float: left;
     margin: 2%;
-
 }
 
 
@@ -195,6 +193,36 @@ i powinna zajmować większość dostępnej przestrzeni
     padding-right: 6%;
     padding-bottom: 2%;
     line-height: 160%;
+}
+
+.patients-list{
+    list-style-type: none;
+
+}
+
+.patient-description{
+    display: table;
+
+}
+
+
+
+.patient-summary{
+    display: block;
+    flex-direction: column;
+
+}
+.delete-button-link{
+    display: flow;
+    float: right;
+    right: 2%;
+
+}
+
+.delete-button{
+    right: 2%;
+    padding: 14px 24px;
+    font-size: 28px;
 }
 
 /*Margines i ramka wokół pojedynczego posta*/
@@ -231,7 +259,7 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .free-therms-list-item-card{
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-between;
     padding: 4px;
@@ -268,6 +296,13 @@ i powinna zajmować większość dostępnej przestrzeni
     flex-direction: column;
     margin: 0 32px;
 }
+.mc-form-patient {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.0rem;
+    color: black;
+}
 
 /*odstępy między etykietami i inputami*/
 .mc-form > * {
@@ -284,10 +319,35 @@ i powinna zajmować większość dostępnej przestrzeni
 .mc-form > button {
     margin-top: 16px;
     background-color: white;
-    color: #ffc107;
-    border: none;
+    color: black;
+    border: 1px #6d6d6d solid;
+}
+.option-box{
+    font-size: 1.2rem;
+    color: black;
+    padding: 8px;
+    background-color: white;
+    margin-bottom: 8px;
+    border: 1px #6d6d6d solid;
 }
 
+.option-box-inside{
+    font-size: 0.8rem;
+    color: black;
+    padding: 8px;
+
+    background-color: lightgray;
+    margin-top: 16px;
+    border: none;
+}
+.input-box{
+    font-size: 1.2rem;
+    color: black;
+    padding: 8px;
+    background-color: white;
+    margin-top: 16px;
+    border: 1px #6d6d6d solid;
+}
 /*panel admina belka z powiadomniniami*/
 .notification-bar {
     text-align: center;
@@ -348,9 +408,6 @@ i powinna zajmować większość dostępnej przestrzeni
         width: auto;
         border-bottom: 0;
     }
-    .menu-logo-container{
-        flex: 1;
-    }
 
 
     /*Na dużym ekranie ograniczamy szerokość do 960px*/
@@ -376,10 +433,7 @@ i powinna zajmować większość dostępnej przestrzeni
         margin-top: 16px;
 
     }
-    .patient-summary{
-        display: flex;
-        flex-direction: column;
-    }
+
 
     /*Mniejsza ikona na małych ekranach*/
     .meeting-summary-icon {

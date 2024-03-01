@@ -18,7 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 public class AppErrorController implements ErrorController {
     private final static Logger LOGGER = LoggerFactory.getLogger(AppErrorController.class);
-
     private final ErrorAttributes errorAttributes;
 
     @Autowired

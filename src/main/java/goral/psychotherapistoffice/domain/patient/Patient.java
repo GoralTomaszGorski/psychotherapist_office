@@ -1,6 +1,9 @@
 package goral.psychotherapistoffice.domain.patient;
 
+import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 public class Patient {
@@ -63,4 +66,14 @@ public class Patient {
     }
 
 
+    @OneToMany(mappedBy = "patient")
+    private Collection<Meeting> meeting;
+
+    public Collection<Meeting> getMeeting() {
+        return meeting;
+    }
+
+    public void setMeeting(Collection<Meeting> meeting) {
+        this.meeting = meeting;
+    }
 }

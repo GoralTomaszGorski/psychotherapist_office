@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface MeetingRepository extends CrudRepository <Meeting, Long>{
 
 
+    List<Meeting>findAll();
     List<Meeting>findAllByCalenderIsNotNullOrderByCalender();
 
     Optional<Meeting> findMeetingById(long id);

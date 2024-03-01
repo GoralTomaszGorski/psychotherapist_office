@@ -72,7 +72,10 @@ public class MeetingService {
         } else {
             throw new TermIsBusyException();
         }
-        meeting.setPatient(meeting.getPatient()); // Ustaw nowego pacjenta
+        
+        Patient patient = patientService.addPatient(patientDto);
+        meeting.setPatient(patient);
+
         Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
         meetingRepository.save(meeting);

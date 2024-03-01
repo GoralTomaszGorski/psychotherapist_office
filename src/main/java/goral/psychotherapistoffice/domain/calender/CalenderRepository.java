@@ -10,8 +10,10 @@ public interface CalenderRepository extends CrudRepository <Calender, Long>{
     List<Calender> findAll();
 
     List<Calender> findAllByFreeIsTrueOrderById();
+    List<Calender> findAllByFreeIsTrue();
+
+    Optional<Calender> findCalenderByIdAndFreeIsTrue(long id);
 
     Optional<Calender> findById(long id);
     
-    Optional<Calender> findCalenderByIdAndFreeIsTrue(long id);
 }
