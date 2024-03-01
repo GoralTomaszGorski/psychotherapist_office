@@ -6,6 +6,8 @@ import goral.psychotherapistoffice.domain.therapy.Therapy;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "meeting")
+
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
