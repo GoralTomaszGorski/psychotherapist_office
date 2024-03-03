@@ -2,7 +2,7 @@ package goral.psychotherapistoffice.domain.messeges;
 
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.boot.web.servlet.server.Session;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,7 @@ public class MessageService implements MailService{
     private JavaMailSender mailSender;
 
 
+
     private String to;
     private String user;
     private static final String CONFIRM_MSG_TITLE = "Potwierdzneie otrzymania wiadomości";
@@ -25,6 +26,8 @@ public class MessageService implements MailService{
 
     Properties properties = MailConfiguration.getConfiguration();
     MailAuthentication authentication = new MailAuthentication();
+
+
 
 
 //    private void sendEmail(MessageDto messageDto){
@@ -36,23 +39,23 @@ public class MessageService implements MailService{
 //        mailSender.send(message);
 //    }
 
-    public String sendMessage(String to, String from, String subject, String body) {
+    public void sendMessage(MessageDto messageDto){
         MimeMessage mimeMessage;
         try {
             mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-            mimeMessageHelper.setTo(to);
-            mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.setSubject(subject);
-            mimeMessageHelper.setText(body);
+            mimeMessageHelper.setTo(messageDto.getTo());
+            mimeMessageHelper.setFrom(messageDto.getFrom());
+            mimeMessageHelper.setSubject(messageDto.getSubject());
+            mimeMessageHelper.setText(messageDto.getBody());
             mailSender.send(mimeMessage);
-            return CONFIRM_MSG_INF + "" + subject;
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
     }
+
 }
 
 

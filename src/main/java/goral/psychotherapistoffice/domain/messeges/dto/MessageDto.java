@@ -2,47 +2,52 @@ package goral.psychotherapistoffice.domain.messeges.dto;
 
 public class MessageDto {
 
-        private Long id;
-        private String email;
-        private String text;
-        private boolean confirmation;
+        private String to;
+        private String from;
+        private String subject;
+        private String body;
 
-    public MessageDto(Long id, String email, String text, boolean confirmation) {
-        this.id = id;
-        this.email = email;
-        this.text = text;
-        this.confirmation = confirmation;
+    public MessageDto(String to, String from, String subject, String body) {
+        this.to = to;
+        this.from = from;
+        this.subject = subject;
+        this.body = body;
     }
 
-    public Long getId() {
-        return id;
+    public MessageDto() {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public String getTo() {
+        return to;
     }
 
-    public String getEmail() {
-        return email;
+    public void setTo(String to) {
+        this.to = to;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getFrom() {
+        return from;
     }
 
-    public String getText() {
-        return text;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getSubject() {
+        return subject;
     }
 
-    public boolean isConfirmation() {
-        return confirmation;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public void setConfirmation(boolean confirmation) {
-        this.confirmation = confirmation;
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
