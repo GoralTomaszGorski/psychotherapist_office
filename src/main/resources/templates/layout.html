@@ -44,7 +44,7 @@
             <a href="#" th:href="@{/terminy}" class="btn btn-light"><i class="fa-regular fa-calendar-days"></i> Terminy</a>
         </li>
         <li class="menu-item">
-            <a href="#" class="btn btn-light"><i class="fa-regular fa-envelope"></i> Kontakt</a>
+            <a href="#" th:href="@{/mail}" class="btn btn-light"><i class="fa-regular fa-envelope"></i> Kontakt</a>
         </li>
         <li class="menu-item">
             <div sec:authorize="hasAnyRole('ADMIN')">

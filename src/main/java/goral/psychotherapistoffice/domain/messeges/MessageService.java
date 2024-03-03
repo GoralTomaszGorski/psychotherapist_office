@@ -1,57 +1,43 @@
 package goral.psychotherapistoffice.domain.messeges;
 
+import goral.psychotherapistoffice.domain.exception.MailSenderException;
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.boot.web.servlet.server.Session;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 
 import java.util.Properties;
 
 
 @Service
-public class MessageService implements MailService{
+public class MessageService{
 
-    private JavaMailSender mailSender;
+    public boolean sendMail(MessageDto messageDto) throws MessagingException {
+        boolean flag = false;
+        Properties properties = MailConfiguration.getConfiguration();
+//        MailAuthentication authentication = new MailAuthentication();
 
-
-    private String to;
-    private String user;
-    private static final String CONFIRM_MSG_TITLE = "Potwierdzneie otrzymania wiadomości";
-    private static final String CONFIRM_MSG_INF = "Otrzymaliśmy Twoją wiadomość: '";
-    private static final String EMAIL_TXT = " , email: ";
-
-    Properties properties = MailConfiguration.getConfiguration();
-    MailAuthentication authentication = new MailAuthentication();
-
-
-//    private void sendEmail(MessageDto messageDto){
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setTo(recipient);
-//        message.setFrom(user);
-//        message.setText(messageDto.getText());
-//        message.setText(messageDto.getId() + messageDto.getEmail());
-//        mailSender.send(message);
-//    }
-
-    public String sendMessage(String to, String from, String subject, String body) {
-        MimeMessage mimeMessage;
+        String username = "goralek_z_gor@o2.pl";
+        String password = "harnas";
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
         try {
-            mimeMessage = mailSender.createMimeMessage();
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
-            mimeMessageHelper.setTo(to);
-            mimeMessageHelper.setFrom(from);
-            mimeMessageHelper.setSubject(subject);
-            mimeMessageHelper.setText(body);
-            mailSender.send(mimeMessage);
-            return CONFIRM_MSG_INF + "" + subject;
-
+            Message message = new MimeMessage(session);
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(messageDto.getRecipient()));
+            message.setFrom(new InternetAddress(messageDto.getFrom()));
+            message.setText(messageDto.getBody());
+            message.setSubject(messageDto.getSubject());
+            Transport.send(message);
+            flag = true;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new MailSenderException();
         }
-
+        return flag;
     }
 }
 
