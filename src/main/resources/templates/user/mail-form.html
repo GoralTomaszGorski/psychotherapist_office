@@ -13,7 +13,7 @@
         <h2 class="list-heading">Dodaj nowy rodzaj terapii/usługi</h2>
         <form action="#" th:action="@{/mail}" method="post" class="mc-form" th:object="${mailDto}">
             <label for="to">Do kogo</label>
-            <input type="text" id="to" placeholder="mail" th:field="*{to}">
+            <input type="text" id="to" placeholder="mail" th:field="*{recipient}">
             <label for="body">Treść wiadomości</label>
             <textarea id="body" rows="10" th:field="*{body}"></textarea>
             <label for="subject">Temat </label>
