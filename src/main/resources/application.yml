@@ -10,3 +10,4 @@ spring:
 
   jpa:
     show-sql: false
+
