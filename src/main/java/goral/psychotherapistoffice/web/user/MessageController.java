@@ -3,7 +3,6 @@ package goral.psychotherapistoffice.web.user;
 import goral.psychotherapistoffice.domain.messeges.MessageService;
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.web.admin.AdminController;
-import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public class MessageController {
 
 
     @PostMapping("")
-    public String sendMail(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes) throws MessagingException {
+    public String sendMail(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes) {
         messageService.sendMail(messageDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
