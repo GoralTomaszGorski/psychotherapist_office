@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/mail")
 public class MessageController {
 
-    private MessageService messageService;
+    private final MessageService messageService;
 
     public MessageController(MessageService messageService) {
         this.messageService = messageService;
@@ -27,16 +27,16 @@ public class MessageController {
         return "user/mail-form";
     }
 
+
     @PostMapping("")
-    public String sendMail(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes){
-//    public String sendMail(@RequestParam String to, String from, String subject, String body){
-        messageService.sendMessage(messageDto);
+    public String sendMail(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes) {
+        messageService.sendMail(messageDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "widomość <b>%s</b> została wysłana do <b>%s</b>  "
                         .formatted(
                                 messageDto.getSubject(),
-                                messageDto.getTo())
+                                messageDto.getRecipient())
                         );
         return "index";
     }
