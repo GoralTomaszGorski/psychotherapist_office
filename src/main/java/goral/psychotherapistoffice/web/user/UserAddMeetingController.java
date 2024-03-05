@@ -41,7 +41,7 @@ public class UserAddMeetingController {
     @GetMapping("/termin/{calenderId}")
     public String addMeetingByUserForm(@PathVariable long calenderId, Model model) {
         //1. wybranie z kalendarza
-        CalenderDto calender = calenderService.findCalenderByIdIfFreeIsTrue(calenderId)
+        CalenderDto calender = calenderService.findCalenderById(calenderId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("calender", calender);
 
@@ -70,7 +70,7 @@ public class UserAddMeetingController {
                                 patientToSave.getSurname(),
                                 patientToSave.getNick(),
                                 therapyService.findTherapyById(meetingToSaveDto.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined"),
-                                calenderService.findCalenderByIdIfFreeIsTrue(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
+                                calenderService.findCalenderById(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
         );
         return "redirect:/";
     };
