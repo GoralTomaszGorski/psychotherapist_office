@@ -2,18 +2,16 @@ package goral.psychotherapistoffice.web.user;
 
 import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
+import goral.psychotherapistoffice.domain.exception.TermIsBusyException;
 import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
-import goral.psychotherapistoffice.domain.user.UserService;
 import goral.psychotherapistoffice.web.HomeController;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -23,27 +21,22 @@ public class UserAddMeetingController {
 
     public static final String NOTIFICATION_ATTRIBUTE = "notification";
 
-    private final UserService userService;
     private final CalenderService calenderService;
     private final MeetingService meetingService;
     private final TherapyService therapyService;
-
     private long calenderIdLocal ;
-    private PatientDto patient;
-
-    public UserAddMeetingController(UserService userService, CalenderService calenderService, MeetingService meetingService, TherapyService therapyService) {
-        this.userService = userService;
+    public UserAddMeetingController(CalenderService calenderService, MeetingService meetingService, TherapyService therapyService) {
         this.calenderService = calenderService;
         this.meetingService = meetingService;
         this.therapyService = therapyService;
     }
 
     @GetMapping("/termin/{calenderId}")
-    public String addMeetingByUserForm(@PathVariable long calenderId, Model model) {
+    public String addMeetingByUserForm(@PathVariable long calenderId, Model model) throws TermIsBusyException{
         //1. wybranie z kalendarza
-        CalenderDto calender = calenderService.findCalenderById(calenderId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        CalenderDto calender = calenderService.findCalenderById(calenderId).orElseThrow(TermIsBusyException::new);
         model.addAttribute("calender", calender);
+        calenderIdLocal = calenderId;
 
         List<TherapyDto> allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);
@@ -53,7 +46,6 @@ public class UserAddMeetingController {
 
         MeetingToSaveDto meetingToSaveDto = new MeetingToSaveDto();
         model.addAttribute("meetingSave", meetingToSaveDto);
-        calenderIdLocal = calenderId;
         return "user/meeting-form";
     }
 
@@ -73,6 +65,5 @@ public class UserAddMeetingController {
                                 calenderService.findCalenderById(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
         );
         return "redirect:/";
-    };
-
+    }
 }

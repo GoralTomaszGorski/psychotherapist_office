@@ -30,9 +30,5 @@ public class CalenderService {
         return calenderRepository.findCalenderByIdAndFreeIsTrue(id)
                 .map(CalenderDtoMapper::map);
     }
-    public  CalenderDto findCalenderId(long id){return calenderRepository.findById(id);
-    }
-
-
 
 }
