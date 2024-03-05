@@ -28,13 +28,13 @@
             <li class="free-therms-list-item" th:each="meetingsTherms: ${meetingThermsOccupied}">
 
                 <!-- Link do strony pojedynczego termiu  /termin/5 -->
-                <a href="#" th:href="@{|/terminy/${meetingsTherms}|}">
+                <p th:href="@{|/terminy/${meetingsTherms}|}">
                     <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
                     <button class="meeting-button-booked">
                         <i class="fa-regular fa-calendar-check"></i>
                     </button>
 
-                </a>
+                </p>
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">
                     <div class="free-therms-list-item-content">
