@@ -14,8 +14,11 @@ import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -69,7 +72,7 @@ public class MeetingService {
         if (calender.isFree()) {
             meeting.setCalender(calender);
             calender.setFree(false);
-        } else {
+        } else  {
             throw new TermIsBusyException();
         }
         
