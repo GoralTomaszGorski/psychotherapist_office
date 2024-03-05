@@ -4,7 +4,6 @@ import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
-import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
@@ -42,7 +41,7 @@ public class UserAddMeetingController {
     @GetMapping("/termin/{calenderId}")
     public String addMeetingByUserForm(@PathVariable long calenderId, Model model) {
         //1. wybranie z kalendarza
-        CalenderDto calender = calenderService.findCalenderByIdIfFreeIsTrue(calenderId)
+        CalenderDto calender = calenderService.findCalenderById(calenderId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         model.addAttribute("calender", calender);
 
@@ -71,7 +70,7 @@ public class UserAddMeetingController {
                                 patientToSave.getSurname(),
                                 patientToSave.getNick(),
                                 therapyService.findTherapyById(meetingToSaveDto.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined"),
-                                calenderService.findCalenderByIdIfFreeIsTrue(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
+                                calenderService.findCalenderById(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
         );
         return "redirect:/";
     };
