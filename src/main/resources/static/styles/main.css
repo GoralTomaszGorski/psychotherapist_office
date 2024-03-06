@@ -168,7 +168,7 @@ i powinna zajmować większość dostępnej przestrzeni
     object-fit: contain;
     width: 150px;
     height: 200px;
-    background-image: url("../images/Ewcia.jpg");
+    background-image: url("../images/Ewcia_na_strone.jpg");
     background-size: cover;
     border: 1px #6d6d6d solid;
     float: left;
@@ -193,6 +193,13 @@ i powinna zajmować większość dostępnej przestrzeni
     padding-right: 6%;
     padding-bottom: 2%;
     line-height: 160%;
+}
+
+.office-photo {
+    object-fit: contain;
+    border: 1px #6d6d6d solid;
+    float: right;
+    margin: 2%;
 }
 
 .patients-list{
@@ -455,13 +462,18 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .col-25p {
-    flex: 0 0 auto;
-    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1%;
+
+    width: 24%;
 }
 
 .col-75p {
-    flex: 0 0 auto;
-    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2%;
+    width: 73%;
 }
 
 .p-50px {
@@ -539,36 +551,38 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .flip-box {
-  background-color: transparent;
-  width: 200px;
-  height: 300px;
-  border: 2px solid #ffb6ae;
+    display: flex;
+
+    background-color: transparent;
+    width: 200px;
+    height: 300px;
+    border: 2px solid #ffb6ae;
 }
 
 .flip-box-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .flip-box:hover .flip-box-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flip-box-front, .flip-box-back {
-  background-color: #fff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
 }
 
 .flip-box-back {
-  color: #333;
-  transform: rotateY(180deg);
+    color: #333;
+    transform: rotateY(180deg);
 }
 
 .cursor-pointer {
