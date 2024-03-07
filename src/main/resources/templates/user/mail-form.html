@@ -5,21 +5,23 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">>
 
-
-
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading">Dodaj nowy rodzaj terapii/usługi</h2>
-        <form action="#" th:action="@{/mail}" method="post" class="mc-form" th:object="${mailDto}">
-            <label for="to">Do kogo</label>
-            <input type="text" id="to" placeholder="mail" th:field="*{recipient}">
+        <h2 class="list-heading">Wyślij wiadomość do terapeuty </h2>
+        <form action="#" th:action="@{/mail}"
+              method="post" class="mc-form" th:object="${mailDto}">
+            <label for="subject">Temat</label>
+            <input type="text" id="subject"
+                   placeholder="tamat wiadomości" th:field="*{subject}">
             <label for="body">Treść wiadomości</label>
             <textarea id="body" rows="10" th:field="*{body}"></textarea>
-            <label for="subject">Temat </label>
-            <input type="text" id="subject" placeholder="temat" th:field="*{subject}">
             <label for="from">mail własny </label>
-            <input type="email" id="from" placeholder="mail własny" th:field="*{from}">
+            <input type="email" id="from"
+                   placeholder="mail własny" th:field="*{from}">
+            <label for="phone">telefon </label>
+            <input type="text" id="phone"
+                   placeholder="telefon" th:field="*{phone}">
             <button type="submit">Dodaj</button>
         </form>
     </main>

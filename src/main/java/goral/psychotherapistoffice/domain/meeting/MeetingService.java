@@ -43,11 +43,14 @@ public class MeetingService {
     @Transactional
     public void addMeeting(MeetingToSaveDto meetingToSaveDto){
         Meeting meeting = new Meeting();
-        Patient patient = patientJpaRepository.findPatientById(meetingToSaveDto.getPatient()).orElseThrow();
+        Patient patient = patientJpaRepository.findPatientById(
+                meetingToSaveDto.getPatient()).orElseThrow();
         meeting.setPatient(patient);
-        Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
+        Therapy therapy = therapyRepository.findById(
+                meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
-        Calender calender = calenderRepository.findCalenderByIdAndFreeIsTrue(meetingToSaveDto.getCalender()).orElseThrow();
+        Calender calender = calenderRepository.findCalenderByIdAndFreeIsTrue(
+                meetingToSaveDto.getCalender()).orElseThrow();
         meeting.setCalender(calender);
         calender.setFree(false);
         calenderRepository.save(calender);
@@ -63,7 +66,8 @@ public class MeetingService {
     @Transactional
     public void addMeetingWithNewPatient(PatientDto patientDto, MeetingToSaveDto meetingToSaveDto) {
         Meeting meeting = new Meeting();
-        Calender calender = calenderRepository.findById(meetingToSaveDto.getCalender()).orElseThrow();
+        Calender calender = calenderRepository.findById(
+                meetingToSaveDto.getCalender()).orElseThrow();
         if (calender.isFree()) {
             meeting.setCalender(calender);
             calender.setFree(false);
@@ -75,7 +79,8 @@ public class MeetingService {
         Patient patient = patientService.addPatient(patientDto);
         meeting.setPatient(patient);
 
-        Therapy therapy = therapyRepository.findById(meetingToSaveDto.getTherapy()).orElseThrow();
+        Therapy therapy = therapyRepository.findById(
+                meetingToSaveDto.getTherapy()).orElseThrow();
         meeting.setTherapy(therapy);
         meetingRepository.save(meeting);
     }
