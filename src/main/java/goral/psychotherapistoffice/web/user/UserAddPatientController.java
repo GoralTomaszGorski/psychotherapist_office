@@ -44,4 +44,14 @@ public class UserAddPatientController {
         return "redirect:/user";
     }
 
+    @GetMapping("/pacjeci/delete/{id}")
+    public String deletePatient(@PathVariable(name = "id")
+                                    Long id, RedirectAttributes redirectAttributes) {
+        patientService.deletePatient(id);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Usunięto Pacjenta "
+        );
+        return "redirect:/patients";
+    }
 }

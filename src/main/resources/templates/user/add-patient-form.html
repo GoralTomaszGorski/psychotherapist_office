@@ -18,12 +18,13 @@
             <label for="nick">Nick  </label>
             <input type="text" id="nick" placeholder="np. Wiki23" th:field="*{nick}">
             <label for="name">Imię  </label>
-            <input required type="text" id="name" placeholder="np. Adam" th:field="*{name}">
+            <input type="text" id="name" placeholder="np. Adam" th:field="*{name}">
             <label for="surname">Nazwisko  </label>
-            <input required type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
+            <input type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
             <label for="telephone">Telefon </label>
-            <input required type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
-
+            <input type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
+            <label for="email">Email </label>
+            <input type="email" id="email" placeholder="jan.kowalski@op.pl" th:field="*{email}">
             <label for="yearOfBrith">Rok urodzenia </label>
             <input type="text" id="yearOfBrith" placeholder="1988" th:field="*{yearOfBrith}">
             <button type="submit">Dodaj</button>
