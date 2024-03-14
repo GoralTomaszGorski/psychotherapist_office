@@ -25,7 +25,9 @@ public class PatientManagementController {
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
-        return "admin/admin-add-patient-form";
+        model.addAttribute("heading", "Podaj dane nowego Pacjęta");
+        model.addAttribute("description", "Dodaj informacje w celu umuwienia wizyty");
+        return "user/add-patient-form";
     }
 
     @PostMapping("/dodaj-pacjenta")

@@ -24,11 +24,14 @@ public class UserAddPatientController {
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
+        model.addAttribute("heading", "Podaj dane Pacjęta");
+        model.addAttribute("description", "Dodaj informacje w celu umuwienia wizyty");
         return "user/add-patient-form";
     }
 
     @PostMapping("/user/dodaj-pacjenta")
-    public String addPatientData(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
+    public String addPatientData(@ModelAttribute("patient")
+                                     PatientDto patientDto, RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 UserController.NOTIFICATION_ATTRIBUTE,
@@ -42,7 +45,8 @@ public class UserAddPatientController {
     }
 
     @GetMapping("/pacjeci/delete/{id}")
-    public String deletePatient(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) {
+    public String deletePatient(@PathVariable(name = "id")
+                                    Long id, RedirectAttributes redirectAttributes) {
         patientService.deletePatient(id);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,

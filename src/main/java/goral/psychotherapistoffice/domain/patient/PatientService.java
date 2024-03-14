@@ -45,6 +45,7 @@ public class PatientService {
         patientToSave.setName(patientDto.getName());
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
+        patientToSave.setEmail(patientDto.getEmail());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;
