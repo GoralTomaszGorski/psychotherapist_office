@@ -1,5 +1,6 @@
 package goral.psychotherapistoffice.domain.user;
 
+
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);
     }
+
 
     @Transactional
     public void registerUserWithDefaultRole(UserRegistrationDto userRegistration) {
