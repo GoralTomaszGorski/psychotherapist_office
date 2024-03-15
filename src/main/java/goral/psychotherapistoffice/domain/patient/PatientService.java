@@ -2,6 +2,8 @@ package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+import goral.psychotherapistoffice.domain.user.User;
+import goral.psychotherapistoffice.domain.user.UserRegistrationDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +14,9 @@ import java.util.Optional;
 public class PatientService {
 
 
-    private PatientJpaRepository patientJpaRepository;
 
+    private PatientJpaRepository patientJpaRepository;
+    private User user;
 
     public PatientService(PatientJpaRepository patientJpaRepository) {
         this.patientJpaRepository = patientJpaRepository;
@@ -45,7 +48,7 @@ public class PatientService {
         patientToSave.setName(patientDto.getName());
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
-        patientToSave.setEmail(patientDto.getEmail());
+        patientToSave.setEmail(user.getEmail());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;
