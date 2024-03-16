@@ -1,9 +1,12 @@
 package goral.psychotherapistoffice.domain.patient;
 
+import goral.psychotherapistoffice.config.security.CustomSecurityConfig;
+import goral.psychotherapistoffice.config.security.CustomUserDetailsService;
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import goral.psychotherapistoffice.domain.user.User;
-import goral.psychotherapistoffice.domain.user.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +18,13 @@ public class PatientService {
 
 
 
-    private PatientJpaRepository patientJpaRepository;
-    private User user;
+    private final PatientJpaRepository patientJpaRepository;
+    private final User user;
 
-    public PatientService(PatientJpaRepository patientJpaRepository) {
+
+    public PatientService(PatientJpaRepository patientJpaRepository, User user) {
         this.patientJpaRepository = patientJpaRepository;
+        this.user = user;
     }
 
     public Optional<PatientDto> findPatientById(long id){
@@ -49,6 +54,7 @@ public class PatientService {
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setEmail(user.getEmail());
+
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;

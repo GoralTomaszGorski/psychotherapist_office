@@ -11,8 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
-
 @Configuration
 public class CustomSecurityConfig {
     private static final String ADMIN_ROLE = "ADMIN";
@@ -37,7 +35,6 @@ public class CustomSecurityConfig {
                 );
         return httpSecurity.build();
     }
-
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
