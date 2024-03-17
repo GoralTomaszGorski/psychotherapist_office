@@ -21,6 +21,8 @@ public class CustomSecurityConfig {
         httpSecurity.authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
                         .requestMatchers("/termin/**", "/user/**").hasAnyRole(ADMIN_ROLE, USER_ROLE)
+                        .requestMatchers("/secured", "/change-password").hasAnyRole(ADMIN_ROLE, USER_ROLE)
+                        .requestMatchers("/register", "/confirmation").permitAll()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login

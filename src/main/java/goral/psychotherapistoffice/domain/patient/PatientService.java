@@ -1,12 +1,9 @@
 package goral.psychotherapistoffice.domain.patient;
 
-import goral.psychotherapistoffice.config.security.CustomSecurityConfig;
-import goral.psychotherapistoffice.config.security.CustomUserDetailsService;
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
-import goral.psychotherapistoffice.domain.user.User;
-import org.springframework.security.core.userdetails.UserDetails;
+
+import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,12 +16,12 @@ public class PatientService {
 
 
     private final PatientJpaRepository patientJpaRepository;
-    private final User user;
+    private final UserService userService;
 
 
-    public PatientService(PatientJpaRepository patientJpaRepository, User user) {
+    public PatientService(PatientJpaRepository patientJpaRepository, UserService userService) {
         this.patientJpaRepository = patientJpaRepository;
-        this.user = user;
+        this.userService = userService;
     }
 
     public Optional<PatientDto> findPatientById(long id){
@@ -53,8 +50,11 @@ public class PatientService {
         patientToSave.setName(patientDto.getName());
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
-        patientToSave.setEmail(user.getEmail());
-
+        if (patientDto.getEmail().isEmpty()) {
+            patientToSave.setEmail(userService.getCurrentUserName());
+        }else {
+            patientToSave.setEmail(patientDto.getEmail());
+        }
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;
@@ -67,6 +67,7 @@ public class PatientService {
             throw new DeletePatientException();
         }
     }
+
 }
 
 

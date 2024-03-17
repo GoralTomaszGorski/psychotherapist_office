@@ -2,6 +2,7 @@ package goral.psychotherapistoffice.domain.user;
 
 
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,4 +38,17 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void changeCurrentUserPassword(String newPassword) {
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName(); //1
+        User currentUser = userRepository.findByEmail(currentUsername).orElseThrow(); //2
+        String newPasswordHash = passwordEncoder.encode(newPassword); //3
+        currentUser.setPassword(newPasswordHash); //4
+    }
+
+
+    public String getCurrentUserName() {
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();;
+        return currentUsername;
+    }
 }
