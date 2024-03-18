@@ -1,11 +1,14 @@
 package goral.psychotherapistoffice.web.admin;
 
 
+import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -25,7 +28,9 @@ public class PatientManagementController {
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
-        return "admin/admin-add-patient-form";
+        model.addAttribute("heading", "Podaj dane nowego Pacjęta");
+        model.addAttribute("description", "Dodaj informacje w celu umuwienia wizyty");
+        return "user/add-patient-form";
     }
 
     @PostMapping("/dodaj-pacjenta")
@@ -56,8 +61,15 @@ public class PatientManagementController {
     }
 
     @GetMapping("/pacjeci/delete/{id}")
-    public String deletePatient(@PathVariable (name = "id") Long id, RedirectAttributes redirectAttributes) {
-        patientService.deletePatient(id);
+    public String deletePatient(
+            @PathVariable (name = "id") Long id,
+            RedirectAttributes redirectAttributes) {
+        try {
+            patientService.deletePatient(id);
+        } catch (Exception e) {
+            throw new DeletePatientException(HttpStatus.BAD_REQUEST);
+        }
+
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Usunięto Pacjenta "

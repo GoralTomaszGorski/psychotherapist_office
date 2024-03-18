@@ -1,5 +1,7 @@
 package goral.psychotherapistoffice.config.security;
 
+import goral.psychotherapistoffice.domain.patient.Patient;
+import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.security.core.userdetails.User;
@@ -9,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
     public CustomUserDetailsService(UserService userService) {
@@ -25,6 +27,7 @@ class CustomUserDetailsService implements UserDetailsService {
                                 String.format("User with email %s not found", username)));
     }
 
+
     private UserDetails createUserDetails(UserCredentialsDto credentials) {
         return User.builder()
                 .username(credentials.getEmail())
@@ -32,4 +35,5 @@ class CustomUserDetailsService implements UserDetailsService {
                 .roles(credentials.getRoles().toArray(String[]::new))
                 .build();
     }
+
 }

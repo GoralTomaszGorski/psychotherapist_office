@@ -12,6 +12,7 @@ public interface MeetingRepository extends CrudRepository <Meeting, Long>{
     List<Meeting>findAllByCalenderIsNotNullOrderByCalender();
 
     Optional<Meeting> findMeetingById(long id);
+    List<Meeting> findMeetingByPatientEmail(String email);
 
     void deleteMeetingById(long id);
 

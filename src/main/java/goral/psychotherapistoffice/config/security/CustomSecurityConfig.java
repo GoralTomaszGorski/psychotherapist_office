@@ -4,7 +4,6 @@ package goral.psychotherapistoffice.config.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -22,6 +21,8 @@ public class CustomSecurityConfig {
         httpSecurity.authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
                         .requestMatchers("/termin/**", "/user/**").hasAnyRole(ADMIN_ROLE, USER_ROLE)
+                        .requestMatchers("/secured", "/change-password").hasAnyRole(ADMIN_ROLE, USER_ROLE)
+                        .requestMatchers("/register", "/confirmation").permitAll()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login

@@ -2,6 +2,8 @@ package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
+import goral.psychotherapistoffice.domain.user.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,49 +14,68 @@ import java.util.Optional;
 public class PatientService {
 
 
-    private PatientJpaRepository patientJpaRepository;
+    private final PatientJpaRepository patientJpaRepository;
+    private final UserService userService;
 
-
-    public PatientService(PatientJpaRepository patientJpaRepository) {
+    public PatientService(PatientJpaRepository patientJpaRepository, UserService userService) {
         this.patientJpaRepository = patientJpaRepository;
+        this.userService = userService;
+
     }
 
-    public Optional<PatientDto> findPatientById(long id){
+    public Optional<PatientDto> findPatientById(long id) {
         return patientJpaRepository.findPatientById(id)
                 .map(PatientDtoMapper::map);
     }
 
-    public List <PatientDto> findBySurnameOrName(String keyword){
+    public List<PatientDto> findBySurnameOrName(String keyword) {
         return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
                 .stream()
                 .map(PatientDtoMapper::map)
                 .toList();
     }
 
-
-    public List<PatientDto>findAllPatients(){
+    public List<PatientDto> findAllPatients() {
         return patientJpaRepository.findAll()
                 .stream()
                 .map(PatientDtoMapper::map).toList();
     }
 
     @Transactional
-    public Patient addPatient(PatientDto patientDto){
+    public Patient addPatient(PatientDto patientDto) {
         Patient patientToSave = new Patient();
-        patientToSave.setNick(patientDto.getNick());
+        if (patientDto.getNick().isEmpty()) {
+            StringBuilder sB = new StringBuilder();
+            String tel = patientDto.getTelephone();
+            int n = tel.length();
+            for (int i = (n - 3);
+                 i < n;
+                 i++) {
+                char c = patientDto.getTelephone().charAt(i);
+                sB.append(c);
+            }
+            sB.append(patientDto.getName().charAt(0));
+            sB.append(patientDto.getSurname().charAt(0));
+            sB.append(patientDto.getSurname().charAt(1));
+            patientToSave.setNick(String.valueOf(sB));
+        } else {
+            patientToSave.setNick(patientDto.getNick());
+        }
         patientToSave.setName(patientDto.getName());
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
+        patientToSave.setEmail(userService.getCurrentUserName());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;
     }
 
+    @Transactional
     public void deletePatient(Long id) {
         try {
             patientJpaRepository.deletePatientById(id);
         } catch (Throwable e) {
-            throw new DeletePatientException();
+            throw new DeletePatientException(HttpStatus.BAD_REQUEST);
         }
     }
 }

@@ -30,16 +30,16 @@
             </select>
 
             <div class="mc-form-patient" th:field="*{patient}">
-                <label for="nick">Nick Pacjenta </label>
+                <label for="nick">Nick </label>
                 <input class="option-box" type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
-                <label for="name">Imię Pacjenta </label>
-                <input class="option-box" type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
-                <label for="surname">Nazwisko Pacjenta </label>
-                <input class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
-                <label for="telephone">telefon Pacjenta</label>
-                <input class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
-                <label for="yearOfBrith">Rok urodzenia Pacjenta</label>
-                <input class="option-box" type="year" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
+                <label for="name">Imię  </label>
+                <input required class="option-box" type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
+                <label for="surname">Nazwisko </label>
+                <input required class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
+                <label for="telephone">Telefon </label>
+                <input required class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
+                <label  for="yearOfBrith">Rok urodzenia Pacjenta</label>
+                <input class="option-box" type="text" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
             </div>
 
             <button type="submit">Dodaj</button>

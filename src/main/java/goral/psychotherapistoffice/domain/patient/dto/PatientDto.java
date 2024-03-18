@@ -1,15 +1,28 @@
 package goral.psychotherapistoffice.domain.patient.dto;
 
+import java.time.Year;
 
 public class PatientDto {
     private Long id;
     private String nick;
     private String name;
     private String surname;
+    private String email;
     private String telephone;
-    private int yearOfBrith;
+    private Year yearOfBrith;
 
     public PatientDto() {
+
+    }
+
+    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, Year yearOfBrith) {
+        this.id = id;
+        this.nick = nick;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.telephone = telephone;
+        this.yearOfBrith = yearOfBrith;
     }
 
     public Long getId() {
@@ -44,6 +57,14 @@ public class PatientDto {
         this.surname = surname;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getTelephone() {
         return telephone;
     }
@@ -52,22 +73,11 @@ public class PatientDto {
         this.telephone = telephone;
     }
 
-    public int getYearOfBrith() {
+    public Year getYearOfBrith() {
         return yearOfBrith;
     }
 
-    public void setYearOfBrith(int yearOfBrith) {
+    public void setYearOfBrith(Year yearOfBrith) {
         this.yearOfBrith = yearOfBrith;
     }
-
-    public PatientDto(Long id, String nick, String name, String surname, String telephone, int yearOfBrith) {
-        this.id = id;
-        this.nick = nick;
-        this.name = name;
-        this.surname = surname;
-        this.telephone = telephone;
-        this.yearOfBrith = yearOfBrith;
-
-    }
-
 }

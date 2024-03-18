@@ -12,6 +12,7 @@ public class PatientDtoMapper {
                 patient.getNick(),
                 patient.getName(),
                 patient.getSurname(),
+                patient.getEmail(),
                 patient.getTelephone(),
                 patient.getYearOfBrith()
         );

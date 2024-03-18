@@ -3,21 +3,23 @@ package goral.psychotherapistoffice.domain.patient;
 import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
 
+import java.sql.Date;
+import java.time.Year;
 import java.util.Collection;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "Patient")
 
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nick;
     private String name;
     private String surname;
+    private String email;
     private String telephone;
-    private int yearOfBrith;
+    private Year yearOfBrith;
 
     public Long getId() {
         return id;
@@ -51,6 +53,14 @@ public class Patient {
         this.surname = surname;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getTelephone() {
         return telephone;
     }
@@ -59,14 +69,13 @@ public class Patient {
         this.telephone = telephone;
     }
 
-    public int getYearOfBrith() {
+    public Year getYearOfBrith() {
         return yearOfBrith;
     }
 
-    public void setYearOfBrith(int yearOfBrith) {
+    public void setYearOfBrith(Year yearOfBrith) {
         this.yearOfBrith = yearOfBrith;
     }
-
 
     @OneToMany(mappedBy = "patient")
     private Collection<Meeting> meeting;
@@ -78,4 +87,5 @@ public class Patient {
     public void setMeeting(Collection<Meeting> meeting) {
         this.meeting = meeting;
     }
+
 }
