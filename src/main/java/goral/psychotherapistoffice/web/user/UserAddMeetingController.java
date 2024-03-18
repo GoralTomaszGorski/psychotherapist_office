@@ -32,9 +32,12 @@ public class UserAddMeetingController {
     }
 
     @GetMapping("/termin/{calenderId}")
-    public String addMeetingByUserForm(@PathVariable long calenderId, Model model) throws TermIsBusyException{
+    public String addMeetingByUserForm(
+            @PathVariable long calenderId,
+            Model model) throws TermIsBusyException{
         //1. wybranie z kalendarza
-        CalenderDto calender = calenderService.findFreeCalenderById(calenderId).orElseThrow(TermIsBusyException::new);
+        CalenderDto calender = calenderService.findFreeCalenderById(calenderId)
+                .orElseThrow(TermIsBusyException::new);
         model.addAttribute("calender", calender);
         calenderIdLocal = calenderId;
 

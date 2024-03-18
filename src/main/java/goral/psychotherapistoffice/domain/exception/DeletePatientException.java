@@ -5,9 +5,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class DeletePatientException extends ResponseStatusException implements UserMessageExceptionInterface {
 
-    public DeletePatientException() {
-        super(HttpStatus.BAD_REQUEST);
-    }
+    public DeletePatientException(HttpStatus BAD_REQUEST) {
+        super(HttpStatus.BAD_REQUEST);    }
 
     @Override
     public String getUserMessage() {
