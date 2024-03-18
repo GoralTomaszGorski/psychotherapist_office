@@ -13,12 +13,14 @@ import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 import goral.psychotherapistoffice.domain.therapy.TherapyRepository;
+import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -30,14 +32,16 @@ public class MeetingService {
     public final MeetingRepository meetingRepository;
     public final TherapyRepository therapyRepository;
     public final PatientService patientService;
+    public final UserService userService;
 
-    public MeetingService(PatientJpaRepository patientJpaRepository, CalenderRepository calenderRepository, CalenderService calenderService, MeetingRepository meetingRepository, TherapyRepository therapyRepository, PatientService patientService) {
+    public MeetingService(PatientJpaRepository patientJpaRepository, CalenderRepository calenderRepository, CalenderService calenderService, MeetingRepository meetingRepository, TherapyRepository therapyRepository, PatientService patientService, UserService userService) {
         this.patientJpaRepository = patientJpaRepository;
         this.calenderRepository = calenderRepository;
         this.calenderService = calenderService;
         this.meetingRepository = meetingRepository;
         this.therapyRepository = therapyRepository;
         this.patientService = patientService;
+        this.userService = userService;
     }
 
     @Transactional
@@ -95,4 +99,12 @@ public class MeetingService {
             // ignore
         }
     }
+
+    public List<MeetingDto> findMeetingByUserMail(){
+        String email = userService.getCurrentUserName();
+        return meetingRepository.findMeetingByPatientEmail(email)
+                .stream()
+                .map(MeetingDtoMapper::map).toList();
+    }
+
 }

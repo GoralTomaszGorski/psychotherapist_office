@@ -8,7 +8,7 @@ import java.time.Year;
 import java.util.Collection;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "Patient")
 
 public class Patient {
     @Id
@@ -87,4 +87,5 @@ public class Patient {
     public void setMeeting(Collection<Meeting> meeting) {
         this.meeting = meeting;
     }
+
 }

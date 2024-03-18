@@ -34,7 +34,7 @@ public class UserAddMeetingController {
     @GetMapping("/termin/{calenderId}")
     public String addMeetingByUserForm(@PathVariable long calenderId, Model model) throws TermIsBusyException{
         //1. wybranie z kalendarza
-        CalenderDto calender = calenderService.findCalenderById(calenderId).orElseThrow(TermIsBusyException::new);
+        CalenderDto calender = calenderService.findFreeCalenderById(calenderId).orElseThrow(TermIsBusyException::new);
         model.addAttribute("calender", calender);
         calenderIdLocal = calenderId;
 
@@ -50,20 +50,27 @@ public class UserAddMeetingController {
     }
 
     @PostMapping("/termin/add")
-    public String addMeetingWithNewPatient(@ModelAttribute MeetingToSaveDto meetingToSaveDto, PatientDto patientToSave, Model model, RedirectAttributes redirectAttributes){
+    public String addMeetingWithNewPatient(
+            @ModelAttribute MeetingToSaveDto meetingToSaveDto,
+            PatientDto patientToSave,
+            Model model,
+            RedirectAttributes redirectAttributes) {
         model.addAttribute("meetingSave", meetingToSaveDto);
         meetingToSaveDto.setCalender(calenderIdLocal);
         meetingService.addMeetingWithNewPatient(patientToSave, meetingToSaveDto);
         redirectAttributes.addFlashAttribute(
                 HomeController.NOTIFICATION_ATTRIBUTE,
-                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany na <b>%s</b> na dzień <b>%s</b> "
+                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany na <b>%s</b> na <b>%s</b>"
                         .formatted(
                                 patientToSave.getName(),
                                 patientToSave.getSurname(),
                                 patientToSave.getNick(),
-                                therapyService.findTherapyById(meetingToSaveDto.getTherapy()).map(TherapyDto::getKindOfTherapy).orElse("Undefined"),
-                                calenderService.findCalenderById(meetingToSaveDto.getCalender()).map(CalenderDto::getDayof).orElse("Undefined"))
-        );
+                                calenderService.findCalenderById(calenderIdLocal)
+                                        .map(CalenderDto::getDayof).orElse("Undefined"),
+                                therapyService.findTherapyById(meetingToSaveDto.getTherapy())
+                                        .map(TherapyDto::getKindOfTherapy).orElse("Undefined")
+                        )
+                );
         return "redirect:/";
     }
 }
