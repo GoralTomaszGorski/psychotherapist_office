@@ -46,15 +46,27 @@ public class PatientService {
     @Transactional
     public Patient addPatient(PatientDto patientDto){
         Patient patientToSave = new Patient();
-        patientToSave.setNick(patientDto.getNick());
+        if (patientDto.getNick().isEmpty()) {
+            StringBuilder sB = new StringBuilder();
+            String tel = patientDto.getTelephone();
+            int n = tel.length();
+            for (int i = (n - 3);
+                 i < n;
+                 i++) {
+                char c = patientDto.getTelephone().charAt(i);
+                sB.append(c);
+            }
+            sB.append(patientDto.getName().charAt(0));
+            sB.append(patientDto.getSurname().charAt(0));
+            sB.append(patientDto.getSurname().charAt(1));
+            patientToSave.setNick(String.valueOf(sB));
+        }else {
+            patientToSave.setNick(patientDto.getNick());
+        }
         patientToSave.setName(patientDto.getName());
         patientToSave.setSurname(patientDto.getSurname());
         patientToSave.setTelephone(patientDto.getTelephone());
-        if (patientDto.getEmail().isEmpty()) {
-            patientToSave.setEmail(userService.getCurrentUserName());
-        }else {
-            patientToSave.setEmail(patientDto.getEmail());
-        }
+        patientToSave.setEmail(userService.getCurrentUserName());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
         patientJpaRepository.save(patientToSave);
         return patientToSave;
