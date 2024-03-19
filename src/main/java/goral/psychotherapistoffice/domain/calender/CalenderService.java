@@ -2,18 +2,23 @@ package goral.psychotherapistoffice.domain.calender;
 
 
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
+import goral.psychotherapistoffice.domain.exception.CalenderNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CalenderService {
-    public CalenderRepository calenderRepository;
+    private final CalenderRepository calenderRepository;
+    public CalenderDtoMapper calenderDtoMapper;
 
     public CalenderService(CalenderRepository calenderRepository) {
         this.calenderRepository = calenderRepository;
     }
+
 
     public List<CalenderDto>findAllFreeTherms(){
         return calenderRepository.findAllByFreeIsTrue().stream()
@@ -35,6 +40,28 @@ public class CalenderService {
                 .map(CalenderDtoMapper::map);
     }
 
+    @Transactional
+    public void addCalender(CalenderDto calenderDto){
+        Calender calenderToSave = new Calender();
+        calenderToSave.setId(calenderDto.getId());
+        calenderToSave.setDayof(calenderDto.getDayof());
+        calenderToSave.setTime(calenderDto.getTime());
+        calenderToSave.setFree(true);
+        calenderRepository.save(calenderToSave);
+    }
 
+    void editCalender(Long id, CalenderDto calenderDto){
+        try {
+            findCalenderById(id).get();
+            Calender calenderToSave = new Calender();
+            calenderToSave.setId(calenderDto.getId());
+            calenderToSave.setDayof(calenderDto.getDayof());
+            calenderToSave.setTime(calenderDto.getTime());
+            calenderToSave.setFree(true);
+            calenderRepository.save(calenderToSave);
 
+        } catch (Throwable e){
+            throw new CalenderNotFoundException(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
