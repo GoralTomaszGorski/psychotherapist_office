@@ -31,22 +31,21 @@
                     </button>
                 </p>
                 <div class="patient-description">
-                        <h3 class="free-therms-list-item-title" th:text="|Termin: ${meetingsThermsForAdmin.calender.dayof} ${meetingsThermsForAdmin.calender.time}|">Termin: </h3>
+                        <h3 class="free-therms-list-item-title"
+                            th:text="|Termin: ${meetingsThermsForAdmin.calender.dayof}
+                            ${meetingsThermsForAdmin.calender.time}|">Termin: </h3>
                         <p class="patients-list"
-                           th:text="|Pacjent: ${meetingsThermsForAdmin.patient.surname}  ${meetingsThermsForAdmin.patient.name} Nick: ${meetingsThermsForAdmin.patient.nick} tel. ${meetingsThermsForAdmin.patient.telephone} email. ${meetingsThermsForAdmin.patient.email}|">Pacjent</p>
+                           th:text="|Pacjent: ${meetingsThermsForAdmin.patient.surname}
+                           ${meetingsThermsForAdmin.patient.name}
+                           Nick: ${meetingsThermsForAdmin.patient.nick}|">Pacjent</p>
+                        <p class="patients-list"
+                           th:text="|tel. ${meetingsThermsForAdmin.patient.telephone}
+                           email. ${meetingsThermsForAdmin.patient.email}|">Pacjent</p>
                         <p class="patients-list"
                            th:text="|Rodzaj terapii: ${meetingsThermsForAdmin.therapy.kindOfTherapy}|">Terapia</p>
-
                 </div>
-
-                <!-- Link do strony pojedynczego termiu  /termin/5 -->
-
-
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">
-
-
-
                 </div>
             </li>
         </ul>

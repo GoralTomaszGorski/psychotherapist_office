@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <h2 class="list-heading" th:text="${heading}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
+        <!-- godzine pobieramy z modelu -->
+        <p class="list-description" th:text="${description}">Podaj dane nowego Terminu w kalendarzu</p>
+        <form action="#" th:action="@{/admin/dodaj-termin}" method="post" class="mc-form" th:object="${calenderDto}">
+            <!-- dodawanie terapii -->
+            <label for="getId">Id terminu</label>
+            <input type="number" id="getId" placeholder="np. 31" th:field="*{id}">
+
+            <label for="Dayof">Dzień tygodnia</label>
+            <input type="text" id="dayof" placeholder="np. Piątek" th:field="*{dayof}" >
+
+            <label for="time">Godzina rozpoczęcia terapii</label>
+            <input type="text" id="time" placeholder="np. 08:00"  th:field="*{time}">
+
+            <button type="submit">Zapisz</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

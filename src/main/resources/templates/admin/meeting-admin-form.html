@@ -11,24 +11,27 @@
         <h2 class="list-heading">Podaj swoje dane, aby umówić wizytę</h2>
         <h4 class="list-heading">Twoje dane będzie widział jedynie terapeuta, ogólnodostępne będzie jednynie NICK</h4>
         <div class="mc-form">
-        <form th:action="@{/admin/dadaj-rezerwacje}" method="post" class="mc-form"th:object="${meetingSave}">
+            <form th:action="@{/admin/dadaj-rezerwacje}" method="post" class="mc-form" th:object="${meetingSave}">
                 <label for="therapy">Terapia</label>
                 <select class="option-box" id="therapy" th:field="*{therapy}" required>
                     <option value="" hidden="">Wyberz Rodzaj terapii</option>
-                    <option class="option-box-inside" th:each="therapy: ${therapies}" th:value="${therapy.id}" th:text="${therapy.kindOfTherapy}"></option>
+                    <option class="option-box-inside" th:each="therapy: ${therapies}" th:value="${therapy.id}"
+                            th:text="${therapy.kindOfTherapy}"></option>
                 </select>
-            <label for="patient">Pacjent</label>
+                <label for="patient">Pacjent</label>
                 <select class="option-box" id="patient" th:field="*{patient}" required>
                     <option value="" hidden="">Wyberz Pacjenta</option>
-                    <option class="option-box-inside" th:each="patient: ${patients}" th:value="${patient.id}" th:text="|${patient.nick} ${patient.name} ${patient.surname} ${patient.email}|"></option>
+                    <option class="option-box-inside" th:each="patient: ${patients}" th:value="${patient.id}"
+                            th:text="|${patient.nick} ${patient.name} ${patient.surname} ${patient.email}|"></option>
                 </select>
                 <label for="calender">Termin</label>
                 <select class="option-box" id="calender" th:field="*{calender}" required>
                     <option value="" hidden="">Wyberz Termin</option>
-                    <option class="option-box-inside" th:each="calender: ${therms}" th:value="${calender.id}" th:text="|${calender.dayof} ${calender.time}|"></option>
+                    <option class="option-box-inside" th:each="calender: ${therms}" th:value="${calender.id}"
+                            th:text="|${calender.dayof} ${calender.time}|"></option>
                 </select>
-            <button type="submit">Dodaj</button>
-        </form>
+                <button type="submit">Dodaj</button>
+            </form>
         </div>
     </main>
 </div>

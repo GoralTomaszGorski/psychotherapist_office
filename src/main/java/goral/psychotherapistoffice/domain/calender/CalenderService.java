@@ -31,7 +31,7 @@ public class CalenderService {
                 .map(CalenderDtoMapper::map).toList();
     }
 
-    public  Optional<CalenderDto> findFreeCalenderById(long id){
+    public Optional<CalenderDto> findFreeCalenderById(long id){
         return calenderRepository.findCalenderByIdAndFreeIsTrue(id)
                 .map(CalenderDtoMapper::map);
     }
@@ -50,6 +50,7 @@ public class CalenderService {
         calenderRepository.save(calenderToSave);
     }
 
+    @Transactional
     void editCalender(Long id, CalenderDto calenderDto){
         try {
             findCalenderById(id).get();
