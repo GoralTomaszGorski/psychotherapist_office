@@ -14,6 +14,10 @@ public class CalenderDto {
         this.free = free;
     }
 
+    public CalenderDto() {
+
+    }
+
     public Long getId() {
         return id;
     }
