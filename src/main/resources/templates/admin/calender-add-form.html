@@ -8,10 +8,12 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading" th:text="${heading}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
+        <h2 class="list-heading" th:text="${heading}">Wyświetla wolne terminy</h2>
         <!-- godzine pobieramy z modelu -->
-        <p class="list-description" th:text="${description}">Podaj dane nowego Terminu w kalendarzu</p>
-        <form action="#" th:action="@{/admin/dodaj-termin}" method="post" class="mc-form" th:object="${calenderDto}">
+        <p class="list-description"
+           th:text="${description}">Podaj dane nowego Terminu w kalendarzu</p>
+        <form action="#" th:action="@{/admin/dodaj-termin}"
+              method="post" class="mc-form" th:object="${calenderDto}">
             <!-- dodawanie terapii -->
             <label for="getId">Id terminu</label>
             <input type="number" id="getId" placeholder="np. 31" th:field="*{id}">

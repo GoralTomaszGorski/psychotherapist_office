@@ -35,6 +35,9 @@ public class UserAddMeetingController {
     public String addMeetingByUserForm(
             @PathVariable long calenderId,
             Model model) throws TermIsBusyException{
+        model.addAttribute("heading", "Podaj swoje dane, aby umówić wizytę");
+        model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
+        model.addAttribute("additinal", "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, 2 pierwsze litery nazwiska i pierwsza litera imienia.");
         //1. wybranie z kalendarza
         CalenderDto calender = calenderService.findFreeCalenderById(calenderId)
                 .orElseThrow(TermIsBusyException::new);

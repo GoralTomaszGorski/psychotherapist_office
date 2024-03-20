@@ -4,13 +4,13 @@ package goral.psychotherapistoffice.web.admin;
 import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
+import goral.psychotherapistoffice.domain.exception.TherapyNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -57,8 +57,9 @@ public class CalenderManagementController {
 
     @GetMapping("/calender/edit/{id}")
     public String editCalender(Model model,
-                               @PathVariable(name = "id") Long id) {
-        Optional<CalenderDto> calenderDto = calenderService.findCalenderById(id);
+                               @PathVariable(name = "id") Long id) throws TherapyNotFoundException {
+        CalenderDto calenderDto = calenderService.findCalenderById(id)
+                .orElseThrow(TherapyNotFoundException::new);
         model.addAttribute("calenderDto", calenderDto);
         model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
         model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjętów");
