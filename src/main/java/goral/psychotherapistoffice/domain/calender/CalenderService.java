@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.calender;
 
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.exception.CalenderNotFoundException;
+import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,9 +61,18 @@ public class CalenderService {
             calenderToSave.setTime(calenderDto.getTime());
             calenderToSave.setFree(true);
             calenderRepository.save(calenderToSave);
-
         } catch (Throwable e){
             throw new CalenderNotFoundException(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Transactional
+    public void deleteCalender(Long id) {
+            try {
+                calenderRepository.deleteById(id);
+            } catch (Throwable e) {
+                throw new DeleteCalenderException(HttpStatus.BAD_REQUEST);
+            }
+    }
+
 }
