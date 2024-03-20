@@ -4,8 +4,6 @@ package goral.psychotherapistoffice.web.admin;
 import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
-import goral.psychotherapistoffice.domain.exception.DeletePatientException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -74,7 +72,7 @@ public class CalenderManagementController {
         try {
             calenderService.deleteCalender(id);
         } catch (Exception e) {
-            throw new DeleteCalenderException(HttpStatus.BAD_REQUEST);
+            throw new DeleteCalenderException();
         }
 
         redirectAttributes.addFlashAttribute(

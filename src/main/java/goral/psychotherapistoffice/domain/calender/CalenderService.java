@@ -14,8 +14,6 @@ import java.util.Optional;
 @Service
 public class CalenderService {
     private final CalenderRepository calenderRepository;
-    public CalenderDtoMapper calenderDtoMapper;
-
     public CalenderService(CalenderRepository calenderRepository) {
         this.calenderRepository = calenderRepository;
     }
@@ -54,7 +52,7 @@ public class CalenderService {
     @Transactional
     void editCalender(Long id, CalenderDto calenderDto){
         try {
-            findCalenderById(id).get();
+            findCalenderById(id);
             Calender calenderToSave = new Calender();
             calenderToSave.setId(calenderDto.getId());
             calenderToSave.setDayof(calenderDto.getDayof());
@@ -71,7 +69,7 @@ public class CalenderService {
             try {
                 calenderRepository.deleteById(id);
             } catch (Throwable e) {
-                throw new DeleteCalenderException(HttpStatus.BAD_REQUEST);
+                throw new DeleteCalenderException();
             }
     }
 

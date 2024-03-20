@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 public class DeleteCalenderException extends ResponseStatusException implements UserMessageExceptionInterface {
-    public DeleteCalenderException(HttpStatus BAD_REQUEST) {
+    public DeleteCalenderException() {
             super(HttpStatus.BAD_REQUEST);
     }
 
