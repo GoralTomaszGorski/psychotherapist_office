@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public class Therapy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String kindOfTherapy;
     private String description;

@@ -39,7 +39,7 @@ public class MeetingManagementController {
         if (keyword == null){
             meetings = meetingService.findAllMeetings();
         } else {
-            meetings = meetingService.findAllMeetings();
+            meetings = meetingService.fbkw(keyword);
         }
         model.addAttribute("headingFA", "Terminy spotkań");
         model.addAttribute("descriptionFA", "Sprawdz terminy spotkań");

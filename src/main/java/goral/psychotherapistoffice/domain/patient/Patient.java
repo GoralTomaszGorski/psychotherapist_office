@@ -11,6 +11,7 @@ import java.util.Collection;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String nick;
     private String name;

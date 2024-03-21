@@ -106,12 +106,12 @@ public class MeetingService {
                 .map(MeetingDtoMapper::map).toList();
     }
 
-//    public List<MeetingDto> fbyd(String keyword){
-//        return meetingRepository
-//                .findByKeyword(keyword)
-//                .stream()
-//                .map(MeetingDtoMapper::map)
-//                .toList();
-//    }
+    public List<MeetingDto> fbkw(String keyword){
+        return meetingRepository
+                .findByKeyword(keyword)
+                .stream()
+                .map(MeetingDtoMapper::map)
+                .toList();
+    }
 
 }
