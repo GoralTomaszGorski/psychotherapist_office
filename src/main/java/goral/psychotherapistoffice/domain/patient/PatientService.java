@@ -29,7 +29,8 @@ public class PatientService {
     }
 
     public List<PatientDto> findBySurnameOrName(String keyword) {
-        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
+        return patientJpaRepository
+                .findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
                 .stream()
                 .map(PatientDtoMapper::map)
                 .toList();

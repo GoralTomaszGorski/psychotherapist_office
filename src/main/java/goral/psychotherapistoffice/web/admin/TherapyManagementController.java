@@ -1,8 +1,11 @@
 package goral.psychotherapistoffice.web.admin;
 
+import goral.psychotherapistoffice.domain.exception.DeletePatientException;
+import goral.psychotherapistoffice.domain.exception.DeleteTherapyException;
 import goral.psychotherapistoffice.domain.exception.TherapyNotFoundException;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +56,22 @@ public class TherapyManagementController {
         model.addAttribute("therapyDto", therapyDto);
         model.addAttribute("heading", "Edytuj rodzaj terapii, opis, cenę");
         return "admin/therapy-form";
+    }
+
+    @GetMapping("/offer/delete/{id}")
+    public String deletePatient(
+            @PathVariable (name = "id") Long id,
+            RedirectAttributes redirectAttributes) {
+        try {
+            therapyService.deleteTherapy(id);
+        } catch (Exception e) {
+            throw new DeleteTherapyException(HttpStatus.BAD_REQUEST);
+        }
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Usunięto rodzaj terapii "
+        );
+        return "redirect:/admin";
     }
 
 }

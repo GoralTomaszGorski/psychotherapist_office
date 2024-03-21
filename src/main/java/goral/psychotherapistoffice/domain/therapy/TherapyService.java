@@ -1,7 +1,10 @@
 package goral.psychotherapistoffice.domain.therapy;
 
 
+import goral.psychotherapistoffice.domain.exception.DeletePatientException;
+import goral.psychotherapistoffice.domain.exception.DeleteTherapyException;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +36,15 @@ public class TherapyService {
         therapyToSave.setDescription(therapyDto.getDescription());
         therapyToSave.setPrice(therapyDto.getPrice());
         therapyRepository.save(therapyToSave);
+    }
+
+    @Transactional
+    public void deleteTherapy(Long id) {
+        try {
+            therapyRepository.deleteById(id);
+        } catch (Throwable e) {
+            throw new DeleteTherapyException(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

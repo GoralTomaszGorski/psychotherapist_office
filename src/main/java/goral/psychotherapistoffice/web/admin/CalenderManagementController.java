@@ -27,7 +27,7 @@ public class CalenderManagementController {
         CalenderDto calenderDto = new CalenderDto();
         model.addAttribute("calenderDto", calenderDto);
         model.addAttribute("heading", "Podaj dane nowego Terminu w kalendarzu");
-        model.addAttribute("description", "Dodaj informacje dotyczące nowego teminu spotkań dostępnego pacjętów");
+        model.addAttribute("description", "Dodaj informacje dotyczące nowego teminu spotkań dostępnego pacjentów");
         return "admin/calender-add-form";
     }
 
@@ -51,7 +51,7 @@ public class CalenderManagementController {
         List<CalenderDto> calenderTherms = calenderService.findAllTherms();
         model.addAttribute("calenderS", calenderTherms);
         model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
-        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjętów");
+        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
         return "admin/calender-therms-view";
     }
 
@@ -62,7 +62,7 @@ public class CalenderManagementController {
                 .orElseThrow(TherapyNotFoundException::new);
         model.addAttribute("calenderDto", calenderDto);
         model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
-        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjętów");
+        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
         return "admin/calender-add-form";
     }
 
@@ -75,7 +75,6 @@ public class CalenderManagementController {
         } catch (Exception e) {
             throw new DeleteCalenderException();
         }
-
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Usunięto Termin "

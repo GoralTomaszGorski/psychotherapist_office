@@ -12,13 +12,15 @@
 
             <form id="serch-form" class="mc-form">
                 <label> Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter </label>
-                <input th:action="@{admin/pacjeci}" type="text" th:name="keyword" placeholder="szukaj po imieniu lub nazwisku">
+                <input th:action="@{admin/pacjeci}" type="text"
+                       th:name="keyword" placeholder="szukaj po imieniu lub nazwisku">
                 <button type="submit">Szukaj</button>
             </form>
 
         <div class="mc-form">
             <ul th:remove="all-but-first">
-                <li class="free-therms-list-item" th:each="patient: ${patients}">
+                <li class="free-therms-list-item"
+                    th:each="patient: ${patients}">
                     <a class="delete-button-link"
                        href="admin/pacjeci/delete/"
                        th:href="@{|pacjeci/delete/${patient.id}|}"

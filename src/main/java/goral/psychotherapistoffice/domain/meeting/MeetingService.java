@@ -1,6 +1,5 @@
 package goral.psychotherapistoffice.domain.meeting;
 
-
 import goral.psychotherapistoffice.domain.calender.Calender;
 import goral.psychotherapistoffice.domain.calender.CalenderRepository;
 import goral.psychotherapistoffice.domain.calender.CalenderService;
@@ -18,9 +17,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Service
@@ -91,7 +89,8 @@ public class MeetingService {
 
     @Transactional
     public void deleteMeeting(Long id){
-        Calender calender = meetingRepository.findMeetingById(id).get().getCalender();
+        Calender calender = meetingRepository.findMeetingById(id)
+                .get().getCalender();
         calender.setFree(true);
         try {
             meetingRepository.deleteMeetingById(id);
@@ -106,5 +105,13 @@ public class MeetingService {
                 .stream()
                 .map(MeetingDtoMapper::map).toList();
     }
+
+//    public List<MeetingDto> fbyd(String keyword){
+//        return meetingRepository
+//                .findByKeyword(keyword)
+//                .stream()
+//                .map(MeetingDtoMapper::map)
+//                .toList();
+//    }
 
 }
