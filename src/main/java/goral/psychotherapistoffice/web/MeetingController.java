@@ -1,7 +1,5 @@
 package goral.psychotherapistoffice.web;
 
-import goral.psychotherapistoffice.domain.calender.CalenderService;
-import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingDto;
 import org.springframework.stereotype.Controller;
@@ -26,7 +24,7 @@ public class MeetingController {
         List<MeetingDto> meetingsTherms = meetingService.findAllMeetings();
         model.addAttribute("heading", "Ustalone terminy spotkań");
         model.addAttribute("description", "Sprawdz termin swojej wizyty");
-        model.addAttribute("meetingThermsOccupied", meetingsTherms);
+        model.addAttribute("meetingsTherms", meetingsTherms);
         return "meeting";
     }
 

@@ -14,7 +14,7 @@
         <p class="list-description" th:text="${descriptionFA}">Sprawdz terminy spotkań</p>
 
         <form id="serch-form" class="mc-form">
-            <label> Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter </label>
+            <label> Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter lub wyszukaj dzień tygodnia w ten sam sposób </label>
             <input th:action="@{admin/spotkania}" type="text"
                    th:name="keyword" placeholder="szukaj po imieniu lub nazwisku">
             <button type="submit">Szukaj</button>
@@ -40,17 +40,16 @@
 
                 <div class="patient-description">
                         <h3 class="free-therms-list-item-title"
-                            th:text="|Termin: ${meetings.calender.dayof}
-                            ${meetings.calender.time}|">Termin: </h3>
+                            th:text="|Termin: ${meetings.dayof}
+                            ${meetings.time}|">Termin: </h3>
                         <p class="patients-list"
-                           th:text="|Pacjent: ${meetings.patient.surname}
-                           ${meetings.patient.name}
-                           Nick: ${meetings.patient.nick}|">Pacjent</p>
+                           th:text="|Pacjent: ${meetings.surname}
+                           ${meetings.name}
+                           Nick: ${meetings.nick}|">Pacjent</p>
                         <p class="patients-list"
-                           th:text="|tel. ${meetings.patient.telephone}
-                           email. ${meetings.patient.email}|">Pacjent</p>
+                           th:text="|tel. ${meetings.telephone}|">Pacjent</p>
                         <p class="patients-list"
-                           th:text="|Rodzaj terapii: ${meetings.therapy.kindOfTherapy}|">Terapia</p>
+                           th:text="|Rodzaj terapii: ${meetings.kindOfTherapy}|">Terapia</p>
                 </div>
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">

@@ -62,9 +62,18 @@ public class MeetingService {
 
     public List<MeetingDto> findAllMeetings() {
         return  meetingRepository.findAllByCalenderIsNotNullOrderByCalender()
+                .stream()
+                .map(MeetingDtoMapper::map)
+                .toList();
+
+    }
+
+    public List<MeetingDto> findAllMeetings2() {
+        return  meetingRepository.findAll()
                 .stream().map(MeetingDtoMapper::map).toList();
 
     }
+
     @Transactional
     public void addMeetingWithNewPatient(PatientDto patientDto, MeetingToSaveDto meetingToSaveDto) {
         Meeting meeting = new Meeting();
@@ -106,9 +115,9 @@ public class MeetingService {
                 .map(MeetingDtoMapper::map).toList();
     }
 
-    public List<MeetingDto> fbkw(String keyword){
+    public List<MeetingDto> findByKeyword(String keyword){
         return meetingRepository
-                .findByKeyword(keyword)
+                .findMeetingsByCalenderDayofContainsIgnoreCaseOrPatientSurnameContainsIgnoreCaseOrPatientNameContainsIgnoreCaseOrderByCalender(keyword, keyword, keyword)
                 .stream()
                 .map(MeetingDtoMapper::map)
                 .toList();

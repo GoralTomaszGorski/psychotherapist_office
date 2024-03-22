@@ -37,9 +37,11 @@ public class MeetingManagementController {
     public String meetingAdmin(@RequestParam(required = false) String keyword, Model model){
         List<MeetingDto> meetings;
         if (keyword == null){
-            meetings = meetingService.findAllMeetings();
+            meetings = meetingService.findAllMeetings2();
+        } else if  (keyword.isEmpty()) {
+            meetings = meetingService.findAllMeetings2();
         } else {
-            meetings = meetingService.fbkw(keyword);
+            meetings = meetingService.findByKeyword(keyword);
         }
         model.addAttribute("headingFA", "Terminy spotkań");
         model.addAttribute("descriptionFA", "Sprawdz terminy spotkań");

@@ -21,9 +21,12 @@
                         <li th:each="therapy: ${therapies}">
                             <fieldset>
                                 <!-- ustawiamy podsatwowe informacje o terapii -->
-                                <h3 class="meeting-summary" th:text="${therapy.kindOfTherapy}">Rodzaj terapii</h3>
-                                <p class="meeting-summary-day" th:text="|${therapy.description}|">opis</p>
-                                <p class="meeting-summary-day" th:text="|cena: ${therapy.price} zł|">cena</p>
+                                <h3 class="meeting-summary"
+                                    th:text="${therapy.kindOfTherapy}">Rodzaj terapii</h3>
+                                <p class="meeting-summary-day"
+                                   th:text="|${therapy.description}|">opis</p>
+                                <p class="meeting-summary-day"
+                                   th:text="|cena: ${therapy.price} zł|">cena</p>
                             </fieldset>
                         </li>
                     </ul>
