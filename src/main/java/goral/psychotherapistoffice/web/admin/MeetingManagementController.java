@@ -37,14 +37,15 @@ public class MeetingManagementController {
     public String meetingAdmin(@RequestParam(required = false) String keyword, Model model){
         List<MeetingDto> meetings;
         if (keyword == null){
-            meetings = meetingService.findAllMeetings2();
+            meetings = meetingService.findAllMeetings();
         } else if  (keyword.isEmpty()) {
-            meetings = meetingService.findAllMeetings2();
+            meetings = meetingService.findAllMeetings();
         } else {
             meetings = meetingService.findByKeyword(keyword);
         }
         model.addAttribute("headingFA", "Terminy spotkań");
-        model.addAttribute("descriptionFA", "Sprawdz terminy spotkań");
+        model.addAttribute("descriptionFA",
+                "Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter lub wyszukaj dzień tygodnia w ten sam sposób.");
         model.addAttribute("meetings", meetings);
         return "admin/meeting-admin-view";
     }

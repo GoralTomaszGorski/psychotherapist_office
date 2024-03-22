@@ -12,11 +12,9 @@ public interface MeetingRepository extends JpaRepository <Meeting, Long>{
 
     List<Meeting>findAll();
     List<Meeting>findAllByCalenderIsNotNullOrderByCalender();
-    List<Meeting>findAllByCalenderIsNotNullOrderById();
 
     Optional<Meeting> findMeetingById(long id);
     List<Meeting> findMeetingByPatientEmail(String email);
-    List<Meeting> searchAllByCalender_DayofOrPatient_SurnameOrPatient_Name(String day, String surname, String name);
     List<Meeting> findMeetingsByCalenderDayofContainsIgnoreCaseOrPatientSurnameContainsIgnoreCaseOrPatientNameContainsIgnoreCaseOrderByCalender(String day, String surname, String name);
 
 

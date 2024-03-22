@@ -14,9 +14,8 @@
         <p class="list-description" th:text="${descriptionFA}">Sprawdz terminy spotkań</p>
 
         <form id="serch-form" class="mc-form">
-            <label> Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter lub wyszukaj dzień tygodnia w ten sam sposób </label>
-            <input th:action="@{admin/spotkania}" type="text"
-                   th:name="keyword" placeholder="szukaj po imieniu lub nazwisku">
+                <input th:action="@{admin/spotkania}" type="text"
+                       th:name="keyword" placeholder="szukaj po imieniu, nazwisku lub dniu tygodnia">
             <button type="submit">Szukaj</button>
         </form>
 
