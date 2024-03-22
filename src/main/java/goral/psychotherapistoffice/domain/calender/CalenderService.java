@@ -50,14 +50,13 @@ public class CalenderService {
     }
 
     @Transactional
-    void editCalender(Long id, CalenderDto calenderDto){
+    public void editCalender(Long id, CalenderDto calenderDto){
         try {
             findCalenderById(id);
             Calender calenderToSave = new Calender();
             calenderToSave.setId(calenderDto.getId());
             calenderToSave.setDayof(calenderDto.getDayof());
             calenderToSave.setTime(calenderDto.getTime());
-            calenderToSave.setFree(true);
             calenderRepository.save(calenderToSave);
         } catch (Throwable e){
             throw new CalenderNotFoundException(HttpStatus.BAD_REQUEST);

@@ -68,12 +68,6 @@ public class MeetingService {
 
     }
 
-    public List<MeetingDto> findAllMeetings2() {
-        return  meetingRepository.findAll()
-                .stream().map(MeetingDtoMapper::map).toList();
-
-    }
-
     @Transactional
     public void addMeetingWithNewPatient(PatientDto patientDto, MeetingToSaveDto meetingToSaveDto) {
         Meeting meeting = new Meeting();

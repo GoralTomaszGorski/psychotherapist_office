@@ -11,10 +11,10 @@
         <!-- Nagłówek pobieramy z modelu -->
         <h2 class="list-heading" th:text="${headingFA}">Wyświetla terminy w pętli thymeleaf'a</h2>
         <!-- godzine pobieramy z modelu -->
-        <p class="list-description" th:text="${descriptionFA}">Sprawdz terminy spotkań</p>
 
         <form id="serch-form" class="mc-form">
-                <input th:action="@{admin/spotkania}" type="text"
+            <label th:text="${descriptionFA}">Sprawdz terminy spotkań</label>
+            <input th:action="@{admin/spotkania}" type="text"
                        th:name="keyword" placeholder="szukaj po imieniu, nazwisku lub dniu tygodnia">
             <button type="submit">Szukaj</button>
         </form>

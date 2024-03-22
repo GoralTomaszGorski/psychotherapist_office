@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.web.admin;
 
 import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
+import goral.psychotherapistoffice.domain.exception.CalenderNotFoundException;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
 import goral.psychotherapistoffice.domain.exception.TherapyNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ public class CalenderManagementController {
         model.addAttribute("calenderDto", calenderDto);
         model.addAttribute("heading", "Podaj dane nowego Terminu w kalendarzu");
         model.addAttribute("description", "Dodaj informacje dotyczące nowego teminu spotkań dostępnego pacjentów");
+        model.addAttribute("admin/dodaj-termin", "admin/dodaj-termin");
         return "admin/calender-add-form";
     }
 
@@ -46,6 +48,8 @@ public class CalenderManagementController {
         return "redirect:/admin";
     }
 
+
+
     @GetMapping("/calender/view")
     public String showCalenderTherms(Model model) {
         List<CalenderDto> calenderTherms = calenderService.findAllTherms();
@@ -57,13 +61,28 @@ public class CalenderManagementController {
 
     @GetMapping("/calender/edit/{id}")
     public String editCalender(Model model,
-                               @PathVariable(name = "id") Long id) throws TherapyNotFoundException {
+                               @PathVariable(name = "id") Long id) throws CalenderNotFoundException {
         CalenderDto calenderDto = calenderService.findCalenderById(id)
-                .orElseThrow(TherapyNotFoundException::new);
+                .orElseThrow();
         model.addAttribute("calenderDto", calenderDto);
         model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
         model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
-        return "admin/calender-add-form";
+        model.addAttribute("calender/edit", "calender/edit");
+        return "admin/calender-edit-form";
+    }
+    @PostMapping("/calender/edit")
+    public String editCalender(Model model, CalenderDto calenderDto, Long id, RedirectAttributes redirectAttributes) {
+        calenderService.editCalender(id, calenderDto);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Termin nr <b>%S %s %s </b>  został dodany jest wolny"
+                        .formatted(
+                                calenderDto.getId(),
+                                calenderDto.getDayof(),
+                                calenderDto.getTime()
+                        )
+        );
+        return "redirect:/admin";
     }
 
     @GetMapping("/calender/delete/{id}")

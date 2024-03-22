@@ -19,7 +19,6 @@ public class UserCheckMeetingController {
             this.meetingService = meetingService;
         }
 
-
         @GetMapping("/user/spotkania")
         public String meetingByUser(Model model) {
             List<MeetingDto> meetingsTherms = meetingService.findMeetingByUserMail();
