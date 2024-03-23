@@ -1,6 +1,5 @@
 package goral.psychotherapistoffice.web.admin;
 
-import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.exception.DeleteTherapyException;
 import goral.psychotherapistoffice.domain.exception.TherapyNotFoundException;
 import goral.psychotherapistoffice.domain.therapy.TherapyService;
@@ -23,15 +22,18 @@ public class TherapyManagementController {
         this.therapyService = therapyService;
     }
 
-    @GetMapping("/dodaj-terapie")
+    @GetMapping("/offer/add")
     public String addTherapyForm(Model model) {
         TherapyDto therapyDto = new TherapyDto();
         model.addAttribute("therapyDto", therapyDto);
+        model.addAttribute("heading",
+                "Dodaj rodzaj terapii, opis, cenę. Nie wpisuj Id, zostanie wygenerowane autoamtycznie");
         return "admin/therapy-form";
     }
 
-    @PostMapping("/dodaj-terapie")
-    public String addTherapy(@ModelAttribute("therapy") TherapyDto therapyDto, RedirectAttributes redirectAttributes){
+    @PostMapping("/offer/add")
+    public String addTherapy(@ModelAttribute("therapy")
+                                 TherapyDto therapyDto, RedirectAttributes redirectAttributes){
         therapyService.addTherapy(therapyDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
@@ -46,16 +48,32 @@ public class TherapyManagementController {
     public String showTherapies(Model model) {
         List<TherapyDto> therapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", therapies);
-        model.addAttribute("heading", "Edytuj/usuń rodzaj terapii, opis, cenę");
+        model.addAttribute("heading",
+                "Edytuj/usuń rodzaj terapii, opis, cenę");
         return "admin/offer-view";
     }
     @GetMapping("/offer/edit/{id}")
-    public String editTherapy(@PathVariable long id, Model model) throws TherapyNotFoundException{
+    public String showEditTherapy(@PathVariable("id") long id, Model model)
+            throws TherapyNotFoundException{
         TherapyDto therapyDto = therapyService.findTherapyById(id)
                 .orElseThrow(TherapyNotFoundException::new);
+        model.addAttribute("heading",
+                "Edytuj rodzaj terapii, opis, cenę");
         model.addAttribute("therapyDto", therapyDto);
-        model.addAttribute("heading", "Edytuj rodzaj terapii, opis, cenę");
         return "admin/therapy-form";
+    }
+
+    @PostMapping("/offer/edit/{id}")
+    public String showEditTherapy(@PathVariable("id") TherapyDto therapyDto, RedirectAttributes redirectAttributes){
+        therapyService.editTherapy(therapyDto);
+        redirectAttributes.addFlashAttribute(
+                AdminController.NOTIFICATION_ATTRIBUTE,
+                "Terapia <b>%s</b> została zapisana cena <b>%s</b>  zł"
+                        .formatted(
+                                therapyDto.getKindOfTherapy(),
+                                therapyDto.getPrice())
+        );
+        return "redirect:/admin";
     }
 
     @GetMapping("/offer/delete/{id}")

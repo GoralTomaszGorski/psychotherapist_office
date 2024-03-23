@@ -5,7 +5,6 @@ import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.exception.CalenderNotFoundException;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
-import goral.psychotherapistoffice.domain.exception.TherapyNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +35,7 @@ public class CalenderManagementController {
     @PostMapping("/dodaj-termin")
     public String addCalender(@ModelAttribute("calender") CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
         calenderService.addCalender(calenderDto);
+        boolean free2 = calenderDto.isFree();
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Termin nr <b>%S %s %s </b>  został dodany jest wolny"
@@ -47,8 +47,6 @@ public class CalenderManagementController {
         );
         return "redirect:/admin";
     }
-
-
 
     @GetMapping("/calender/view")
     public String showCalenderTherms(Model model) {
@@ -70,9 +68,10 @@ public class CalenderManagementController {
         model.addAttribute("calender/edit", "calender/edit");
         return "admin/calender-edit-form";
     }
+
     @PostMapping("/calender/edit")
-    public String editCalender(Model model, CalenderDto calenderDto, Long id, RedirectAttributes redirectAttributes) {
-        calenderService.editCalender(id, calenderDto);
+    public String editCalender(CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
+        calenderService.editCalender(calenderDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Termin nr <b>%S %s %s </b>  został dodany jest wolny"

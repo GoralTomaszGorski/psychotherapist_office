@@ -2,9 +2,7 @@ package goral.psychotherapistoffice.domain.calender;
 
 
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
-import goral.psychotherapistoffice.domain.exception.CalenderNotFoundException;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,24 +16,27 @@ public class CalenderService {
         this.calenderRepository = calenderRepository;
     }
 
-
     public List<CalenderDto>findAllFreeTherms(){
-        return calenderRepository.findAllByFreeIsTrue().stream()
-                .map(CalenderDtoMapper::map).toList();
+        return calenderRepository.findAllByFreeIsTrue()
+                .stream()
+                .map(CalenderDtoMapper::map)
+                .toList();
     }
 
     public List<CalenderDto>findAllTherms(){
         return calenderRepository.findAll()
                 .stream()
-                .map(CalenderDtoMapper::map).toList();
+                .map(CalenderDtoMapper::map)
+                .toList();
     }
 
     public Optional<CalenderDto> findFreeCalenderById(long id){
         return calenderRepository.findCalenderByIdAndFreeIsTrue(id)
                 .map(CalenderDtoMapper::map);
     }
-    public  Optional<CalenderDto> findCalenderById(long id){
-        return calenderRepository.findById(id)
+    public Optional<CalenderDto> findCalenderById(long id){
+        return calenderRepository
+                .findById(id)
                 .map(CalenderDtoMapper::map);
     }
 
@@ -45,22 +46,18 @@ public class CalenderService {
         calenderToSave.setId(calenderDto.getId());
         calenderToSave.setDayof(calenderDto.getDayof());
         calenderToSave.setTime(calenderDto.getTime());
-        calenderToSave.setFree(true);
+        calenderToSave.setFree(calenderDto.isFree());
         calenderRepository.save(calenderToSave);
     }
 
     @Transactional
-    public void editCalender(Long id, CalenderDto calenderDto){
-        try {
-            findCalenderById(id);
-            Calender calenderToSave = new Calender();
-            calenderToSave.setId(calenderDto.getId());
-            calenderToSave.setDayof(calenderDto.getDayof());
-            calenderToSave.setTime(calenderDto.getTime());
-            calenderRepository.save(calenderToSave);
-        } catch (Throwable e){
-            throw new CalenderNotFoundException(HttpStatus.BAD_REQUEST);
-        }
+    public void editCalender(CalenderDto calenderDto){
+        Calender calenderToSave = new Calender();
+        calenderToSave.setId(calenderDto.getId());
+        calenderToSave.setDayof(calenderDto.getDayof());
+        calenderToSave.setTime(calenderDto.getTime());
+        calenderToSave.setFree(calenderDto.isFree());
+        calenderRepository.save(calenderToSave);
     }
 
     @Transactional

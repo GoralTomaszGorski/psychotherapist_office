@@ -1,7 +1,6 @@
 package goral.psychotherapistoffice.domain.therapy;
 
 
-import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.exception.DeleteTherapyException;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import org.springframework.http.HttpStatus;
@@ -26,12 +25,14 @@ public class TherapyService {
     }
 
     public Optional<TherapyDto>findTherapyById(long therapyId){
-        return therapyRepository.findById(therapyId).map(TherapyDtoMapper::map);
+        return therapyRepository
+                .findById(therapyId).map(TherapyDtoMapper::map);
     }
 
     @Transactional
     public void addTherapy(TherapyDto therapyDto){
         Therapy therapyToSave = new Therapy();
+        therapyToSave.setId(therapyDto.getId());
         therapyToSave.setKindOfTherapy(therapyDto.getKindOfTherapy());
         therapyToSave.setDescription(therapyDto.getDescription());
         therapyToSave.setPrice(therapyDto.getPrice());
@@ -47,4 +48,12 @@ public class TherapyService {
         }
     }
 
+    public void editTherapy(TherapyDto therapyDto) {
+        Therapy therapyToSave = new Therapy();
+        therapyToSave.setId(therapyDto.getId());
+        therapyToSave.setKindOfTherapy(therapyDto.getKindOfTherapy());
+        therapyToSave.setDescription(therapyDto.getDescription());
+        therapyToSave.setPrice(therapyDto.getPrice());
+        therapyRepository.save(therapyToSave);
+    }
 }

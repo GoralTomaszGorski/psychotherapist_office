@@ -12,7 +12,7 @@ public class Calender {
     @Column(name = "dayof")
     private String dayof;
     private String time;
-    private boolean free;
+    private boolean free = true;
 
     public Calender() {
     }

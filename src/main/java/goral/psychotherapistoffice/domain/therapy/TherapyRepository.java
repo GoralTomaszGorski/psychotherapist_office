@@ -9,5 +9,4 @@ public interface TherapyRepository extends CrudRepository<Therapy, Long> {
     List<Therapy>findAll();
 
     Optional<Therapy>findById(Long id);
-
 }

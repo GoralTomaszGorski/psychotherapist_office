@@ -19,8 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
-
 @Service
 public class MeetingService {
 
@@ -65,7 +63,6 @@ public class MeetingService {
                 .stream()
                 .map(MeetingDtoMapper::map)
                 .toList();
-
     }
 
     @Transactional
@@ -92,8 +89,10 @@ public class MeetingService {
 
     @Transactional
     public void deleteMeeting(Long id){
-        Calender calender = meetingRepository.findMeetingById(id)
-                .get().getCalender();
+        Calender calender = meetingRepository
+                .findMeetingById(id)
+                .get()
+                .getCalender();
         calender.setFree(true);
         try {
             meetingRepository.deleteMeetingById(id);
