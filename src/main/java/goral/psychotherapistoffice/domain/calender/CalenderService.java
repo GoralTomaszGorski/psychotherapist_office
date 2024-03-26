@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.calender;
 
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
 import goral.psychotherapistoffice.domain.exception.DeleteCalenderException;
+import goral.psychotherapistoffice.domain.meeting.MeetingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +13,11 @@ import java.util.Optional;
 @Service
 public class CalenderService {
     private final CalenderRepository calenderRepository;
-    public CalenderService(CalenderRepository calenderRepository) {
+    private final MeetingRepository meetingRepository;
+
+    public CalenderService(CalenderRepository calenderRepository, MeetingRepository meetingRepository) {
         this.calenderRepository = calenderRepository;
+        this.meetingRepository = meetingRepository;
     }
 
     public List<CalenderDto>findAllFreeTherms(){
@@ -46,7 +50,7 @@ public class CalenderService {
         calenderToSave.setId(calenderDto.getId());
         calenderToSave.setDayof(calenderDto.getDayof());
         calenderToSave.setTime(calenderDto.getTime());
-        calenderToSave.setFree(calenderDto.isFree());
+        calenderToSave.setFree(true);
         calenderRepository.save(calenderToSave);
     }
 
@@ -56,7 +60,11 @@ public class CalenderService {
         calenderToSave.setId(calenderDto.getId());
         calenderToSave.setDayof(calenderDto.getDayof());
         calenderToSave.setTime(calenderDto.getTime());
-        calenderToSave.setFree(calenderDto.isFree());
+        if (meetingRepository.findMeetingsByCalender_Id(calenderDto.getId()) == null){
+            calenderToSave.setFree(true);
+        } else {
+            calenderToSave.setFree(false);
+        }
         calenderRepository.save(calenderToSave);
     }
 

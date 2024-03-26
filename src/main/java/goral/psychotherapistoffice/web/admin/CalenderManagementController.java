@@ -35,7 +35,6 @@ public class CalenderManagementController {
     @PostMapping("/dodaj-termin")
     public String addCalender(@ModelAttribute("calender") CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
         calenderService.addCalender(calenderDto);
-        boolean free2 = calenderDto.isFree();
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Termin nr <b>%S %s %s </b>  został dodany jest wolny"

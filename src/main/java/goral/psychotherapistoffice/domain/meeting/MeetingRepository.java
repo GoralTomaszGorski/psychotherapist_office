@@ -17,4 +17,6 @@ public interface MeetingRepository extends JpaRepository <Meeting, Long>{
 
     void deleteMeetingById(long id);
 
+    Meeting findMeetingsByCalender_Id(long id);
+
 }

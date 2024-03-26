@@ -12,7 +12,7 @@ public class Calender {
     @Column(name = "dayof")
     private String dayof;
     private String time;
-    private boolean free = true;
+    private boolean free;
 
     public Calender() {
     }
@@ -48,4 +48,5 @@ public class Calender {
     public void setFree(boolean free) {
         this.free = free;
     }
+
 }
