@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.patient;
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.user.UserService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +30,8 @@ public class PatientService {
     }
 
     public List<PatientDto> findBySurnameOrName(String keyword) {
-        return patientJpaRepository.findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
+        return patientJpaRepository
+                .findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(keyword, keyword)
                 .stream()
                 .map(PatientDtoMapper::map)
                 .toList();

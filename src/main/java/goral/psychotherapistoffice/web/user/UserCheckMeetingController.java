@@ -19,13 +19,12 @@ public class UserCheckMeetingController {
             this.meetingService = meetingService;
         }
 
-
         @GetMapping("/user/spotkania")
         public String meetingByUser(Model model) {
             List<MeetingDto> meetingsTherms = meetingService.findMeetingByUserMail();
             model.addAttribute("heading", "Ustalone terminy spotkań");
             model.addAttribute("description", "Sprawdz termin swojej wizyty");
-            model.addAttribute("meetingThermsOccupied", meetingsTherms);
+            model.addAttribute("meetingsTherms", meetingsTherms);
             return "meeting";
         }
     }

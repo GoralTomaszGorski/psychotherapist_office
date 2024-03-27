@@ -12,10 +12,7 @@ import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -37,13 +34,22 @@ public class MeetingManagementController {
     }
 
     @GetMapping("/spotkania")
-    public String meetingAdmin(Model model){
-        List<MeetingDto> meetings = meetingService.findAllMeetings();
+    public String meetingAdmin(@RequestParam(required = false) String keyword, Model model){
+        List<MeetingDto> meetings;
+        if (keyword == null){
+            meetings = meetingService.findAllMeetings();
+        } else if  (keyword.isEmpty()) {
+            meetings = meetingService.findAllMeetings();
+        } else {
+            meetings = meetingService.findByKeyword(keyword);
+        }
         model.addAttribute("headingFA", "Terminy spotkań");
-        model.addAttribute("descriptionFA", "Sprawdz terminy spotkań");
-        model.addAttribute("meetingsForAdmin", meetings);
+        model.addAttribute("descriptionFA",
+                "Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter lub wyszukaj dzień tygodnia w ten sam sposób.");
+        model.addAttribute("meetings", meetings);
         return "admin/meeting-admin-view";
     }
+
 
     @GetMapping("/dadaj-rezerwacje")
     public String addMeetingForm(Model model){

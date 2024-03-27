@@ -9,9 +9,9 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading" th:text="${heading}">Dodaj dane nowego Pacjenta</h2>
-        <h4 class="list-heading" th:text="${description}">Dodaj dane nowego Pacjenta</h4>
-
+        <h2 class="list-heading" th:text="${heading}">Podaj swoje dane, aby umówić wizytę</h2>
+        <h4 class="list-heading" th:text="${description}">Twoje dane będzie widział jedynie terapeuta</h4>
+        <p class="list-heading" th:text="${additinal}">ogólnodostępne będzie jednynie NICK</p>
         <!--suppress LanguageDetectionInspection -->
         <form action="" th:action="@{/user/dodaj-pacjenta}" method="post" class="mc-form" th:object="${patientDto}">
             <!-- dodawanie pacjenta -->

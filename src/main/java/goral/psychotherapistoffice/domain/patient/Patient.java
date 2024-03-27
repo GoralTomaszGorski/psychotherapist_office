@@ -2,17 +2,16 @@ package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
-
-import java.sql.Date;
 import java.time.Year;
 import java.util.Collection;
 
 @Entity
-@Table(name = "Patient")
+@Table(name = "patient")
 
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String nick;
     private String name;
@@ -83,9 +82,4 @@ public class Patient {
     public Collection<Meeting> getMeeting() {
         return meeting;
     }
-
-    public void setMeeting(Collection<Meeting> meeting) {
-        this.meeting = meeting;
-    }
-
 }
