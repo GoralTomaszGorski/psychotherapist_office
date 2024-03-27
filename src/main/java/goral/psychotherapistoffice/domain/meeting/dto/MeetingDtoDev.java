@@ -4,18 +4,19 @@ import goral.psychotherapistoffice.domain.calender.Calender;
 import goral.psychotherapistoffice.domain.patient.Patient;
 import goral.psychotherapistoffice.domain.therapy.Therapy;
 
-public class MeetingDto {
+public class MeetingDtoDev {
     private Long id;
     private Patient patient;
-    private String nick;
-    private String name;
-    private String surname;
-    private String telephone;
-    private Therapy therapy;
-    private String kindOfTherapy;
+    private String nick = getPatient().getNick();
+    private String name = getPatient().getName();
+    private String surname = getPatient().getSurname();
+    private String telephone = getPatient().getTelephone();
     private Calender calender;
-    private String dayof;
-    private String time;
+    private String dayof = getCalender().getDayof();
+    private String time = getCalender().getTime();
+
+    public MeetingDtoDev(Long id, Patient patient, String name, String surname, Calender calender, String time, String dayof) {
+    }
 
     public Long getId() {
         return id;
@@ -65,22 +66,6 @@ public class MeetingDto {
         this.telephone = telephone;
     }
 
-    public Therapy getTherapy() {
-        return therapy;
-    }
-
-    public void setTherapy(Therapy therapy) {
-        this.therapy = therapy;
-    }
-
-    public String getKindOfTherapy() {
-        return kindOfTherapy;
-    }
-
-    public void setKindOfTherapy(String kindOfTherapy) {
-        this.kindOfTherapy = kindOfTherapy;
-    }
-
     public Calender getCalender() {
         return calender;
     }
@@ -102,20 +87,6 @@ public class MeetingDto {
     }
 
     public void setTime(String time) {
-        this.time = time;
-    }
-
-    public MeetingDto(Long id, String nick, String name, String surname, String telephone, String kindOfTherapy, String dayof, String time) {
-        this.id = id;
-        this.patient = patient;
-        this.nick = nick;
-        this.name = name;
-        this.surname = surname;
-        this.telephone = telephone;
-        this.therapy = therapy;
-        this.kindOfTherapy = kindOfTherapy;
-        this.calender = calender;
-        this.dayof = dayof;
         this.time = time;
     }
 }

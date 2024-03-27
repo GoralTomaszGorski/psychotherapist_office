@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <section class="therapy">
+            <h2 class="list-heading" th:text="${heading}">Rodzaje terapii/zakres usług</h2>
+
+            <!-- Podsumowanie -->
+            <div class="therapy-summary">
+                <!-- informacje o terapii -->
+                <div class="mc-form">
+
+                    <ul th:remove="all-but-first">
+                        <!-- ustawiamy podsatwowe informacje o terapii -->
+                        <li class="free-therms-list-item" th:each="therapy: ${therapies}">
+                            <div class="">
+                                <a class="delete-button-link"
+                                   href="admin/calender/delete/"
+                                   th:href="@{|delete/${therapy.id}|}"
+                                   onclick="return confirm('czy na pewno usunąć ten rodzaj terapii? ')"
+                                   role="button">
+                                    <button class="meeting-button-booked">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </a>
+
+                                <a class="delete-button-link"
+                                   th:href="@{|edit/${therapy.id}|}"
+                                   onclick="return confirm('czy na pewno edytować ten rodzaj terapii? ')"
+                                   role="button">
+                                    <button class="meeting-button-free">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+
+                                </a>
+                                <!-- ustawiamy podsatwowe informacje o terapii -->
+                                <h3 class="meeting-summary" th:text="${therapy.kindOfTherapy}">Rodzaj terapii</h3>
+                                <p class="meeting-summary-day" th:text="|${therapy.description}|">opis</p>
+                                <p class="meeting-summary-day" th:text="|cena: ${therapy.price} zł|">cena</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

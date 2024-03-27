@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Dodana przestrzeń nazw th -->
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+<body>
+<div class="container">
+    <main class="main-content" layout:fragment="content">
+        <h2 class="list-heading" th:text="${heading}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
+        <!-- godzine pobieramy z modelu -->
+        <p class="list-description" th:text="${description}">Podaj dane nowego Terminu w kalendarzu</p>
+
+        <div class="mc-form">
+            <ul th:remove="all-but-first">
+                <li class="free-therms-list-item" th:each="calenderTherms: ${calenderS}">
+                    <a class="delete-button-link"
+                       href="admin/calender/delete/"
+                       th:href="@{|delete/${calenderTherms.id}|}"
+                       onclick="return confirm('czy na pewno usunąć ten termin? ')"
+                       role="button">
+                        <button class="delete-button">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </a>
+
+                    <a class="delete-button-link"
+                       th:href="@{|edit/${calenderTherms.id}|}"
+                       onclick="return confirm('czy na pewno edytować ten termin? ')"
+                       role="button">
+                        <span th:switch="${calenderTherms.free}">
+                            <button th:case="false" class="meeting-button-booked">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button th:case="true" class="meeting-button-free">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </button>
+                        </span>
+                    </a>
+
+                    <div class="patient-description">
+                        <h3 class="free-therms-list-item-title"
+                            th:text="|Termin nr:  ${calenderTherms.id}|">Id Terminu</h3>
+                        <p class="patients-list"
+                           th:text="|${calenderTherms.dayof}
+                            ${calenderTherms.time} |">Dzień i godzina:"></p>
+                        <p class="patients-list"
+                           th:text="|Termin jest wolny?
+                           ${calenderTherms.free}|">Dzień i godzina:"></p>
+                    </div>
+                    <!--dane do pojedynczego spotkania terminu-->
+                    <div class="free-therms-list-item-card">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

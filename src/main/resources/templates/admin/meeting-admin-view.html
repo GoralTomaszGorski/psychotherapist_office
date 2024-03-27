@@ -11,42 +11,47 @@
         <!-- Nagłówek pobieramy z modelu -->
         <h2 class="list-heading" th:text="${headingFA}">Wyświetla terminy w pętli thymeleaf'a</h2>
         <!-- godzine pobieramy z modelu -->
-        <p class="list-description" th:text="${descriptionFA}">Sprawdz terminy spotkań</p>
+
+        <form id="serch-form" class="mc-form">
+            <label th:text="${descriptionFA}">Sprawdz terminy spotkań</label>
+            <input th:action="@{admin/spotkania}" type="text"
+                       th:name="keyword" placeholder="szukaj po imieniu, nazwisku lub dniu tygodnia">
+            <button type="submit">Szukaj</button>
+        </form>
 
         <div class="mc-form">
         <ul th:remove="all-but-first">
-            <li class="free-therms-list-item" th:each="meetingsThermsForAdmin: ${meetingsForAdmin}">
+            <li class="free-therms-list-item"
+                th:each="meetings: ${meetings}">
                 <a class="delete-button-link"
-                   href="admin/pacjeci/delete/"
-                   th:href="@{|spotkania/delete/${meetingsThermsForAdmin.id}|}"
+                   th:href="@{|spotkania/delete/${meetings.id}|}"
                    onclick="return confirm('czy na pewno usunąć tego Spotanie? ')"
                    role="button">
                     <button class="delete-button">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </a>
-                <p th:href="@{|spotkania/${meetingsForAdmin}|}">
+                <p th:href="@{|spotkania/${meetings}|}">
                     <button class="meeting-button-booked">
                         <i class="fa-regular fa-calendar-check"></i>
                     </button>
                 </p>
+
                 <div class="patient-description">
-                        <h3 class="free-therms-list-item-title" th:text="|Termin: ${meetingsThermsForAdmin.calender.dayof} ${meetingsThermsForAdmin.calender.time}|">Termin: </h3>
+                        <h3 class="free-therms-list-item-title"
+                            th:text="|Termin: ${meetings.dayof}
+                            ${meetings.time}|">Termin: </h3>
                         <p class="patients-list"
-                           th:text="|Pacjent: ${meetingsThermsForAdmin.patient.surname}  ${meetingsThermsForAdmin.patient.name} Nick: ${meetingsThermsForAdmin.patient.nick} tel. ${meetingsThermsForAdmin.patient.telephone} email. ${meetingsThermsForAdmin.patient.email}|">Pacjent</p>
+                           th:text="|Pacjent: ${meetings.surname}
+                           ${meetings.name}
+                           Nick: ${meetings.nick}|">Pacjent</p>
                         <p class="patients-list"
-                           th:text="|Rodzaj terapii: ${meetingsThermsForAdmin.therapy.kindOfTherapy}|">Terapia</p>
-
+                           th:text="|tel. ${meetings.telephone}|">Pacjent</p>
+                        <p class="patients-list"
+                           th:text="|Rodzaj terapii: ${meetings.kindOfTherapy}|">Terapia</p>
                 </div>
-
-                <!-- Link do strony pojedynczego termiu  /termin/5 -->
-
-
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">
-
-
-
                 </div>
             </li>
         </ul>

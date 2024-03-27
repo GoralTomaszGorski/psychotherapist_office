@@ -2,12 +2,10 @@ package goral.psychotherapistoffice.web.user;
 
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import goral.psychotherapistoffice.web.admin.AdminController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,8 +22,13 @@ public class UserAddPatientController {
     public String addPatientFrom(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
-        model.addAttribute("heading", "Podaj dane Pacjęta");
-        model.addAttribute("description", "Dodaj informacje w celu umuwienia wizyty");
+        model.addAttribute("heading",
+                "Podaj swoje dane, aby umówić wizytę");
+        model.addAttribute("description",
+                "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
+        model.addAttribute("additinal",
+                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
+                        "2 pierwsze litery nazwiska i pierwsza litera imienia.");
         return "user/add-patient-form";
     }
 
