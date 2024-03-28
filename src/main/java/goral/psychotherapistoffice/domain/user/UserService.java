@@ -1,17 +1,13 @@
 package goral.psychotherapistoffice.domain.user;
 
 
-import goral.psychotherapistoffice.config.security.TokenRepository;
-import goral.psychotherapistoffice.domain.messeges.MessageService;
-import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDateTime;
+
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -20,16 +16,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final MessageService messageService;
-    private final TokenRepository tokenRepository;
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, MessageService messageService, TokenRepository tokenRepository) {
+    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.messageService = messageService;
-        this.tokenRepository = tokenRepository;
     }
-
 
     public Optional<UserCredentialsDto> findCredentialsByEmail(String email) {
         return userRepository.findByEmail(email)
@@ -40,8 +31,8 @@ public class UserService {
     @Transactional
     public void registerUserWithDefaultRole(
             UserRegistrationDto userRegistration) {
-        UserRole defaultRole = userRoleRepository.findByName(DEFAULT_USER_ROLE).orElseThrow();
-
+        UserRole defaultRole = userRoleRepository
+                .findByName(DEFAULT_USER_ROLE).orElseThrow();
         User user = new User();
         user.setEmail(userRegistration
                 .getEmail());
@@ -51,34 +42,23 @@ public class UserService {
         userRepository.save(user);
     }
 
-
-    public String generateResetToken(User user) {
-        UUID uuid = UUID.randomUUID();
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime expiryDateTime = currentDateTime.plusMinutes(30);
-        ChangePasswordToken resetToken = new ChangePasswordToken();
-        resetToken.setUser(user);
-        resetToken.setToken(uuid.toString());
-        resetToken.setExpiryDateTime(expiryDateTime);
-        resetToken.setUser(user);
-        ChangePasswordToken token = tokenRepository.save(resetToken);
-        if (token != null) {
-            String endpointUrl = "http://localhost:8080/resetPassword";
-            return endpointUrl + "/" + resetToken.getToken();
-        }
-        return "/";
+    @Transactional
+    public void changeCurrentUserPassword(String newPassword) {
+        String currentUsername = SecurityContextHolder
+                .getContext().getAuthentication().getName(); //1
+        User currentUser = userRepository
+                .findByEmail(currentUsername).orElseThrow(); //2
+        String newPasswordHash = passwordEncoder
+                .encode(newPassword); //3
+        currentUser.setPassword(newPasswordHash); //4
     }
+
 
     public String getCurrentUserName() {
         String currentUsername = SecurityContextHolder
                 .getContext()
                 .getAuthentication()
-                .getName();
+                .getName();;
         return currentUsername;
-    }
-
-    public boolean hasExipred(LocalDateTime expiryDateTime) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        return expiryDateTime.isAfter(currentDateTime);
     }
 }
