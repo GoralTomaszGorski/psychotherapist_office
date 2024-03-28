@@ -53,16 +53,21 @@ public class MeetingManagementController {
 
     @GetMapping("/dadaj-rezerwacje")
     public String addMeetingForm(Model model){
+        model.addAttribute("heading", "Podaj swoje dane, aby umówić wizytę");
+        model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
+
         List<TherapyDto>allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);
+
         List<PatientDto>allPatients = patientService.findAllPatients();
-        model.addAttribute("patients", allPatients);
+        model.addAttribute("patient", allPatients);
+
         List<CalenderDto> allFreeTherms = calenderService.findAllFreeTherms();
         model.addAttribute("therms", allFreeTherms);
+
         MeetingToSaveDto meetingToSaveDto = new MeetingToSaveDto();
         model.addAttribute( "meetingSave", meetingToSaveDto);
         return "admin/meeting-admin-form";
-
     }
 
     @PostMapping("/dadaj-rezerwacje")
