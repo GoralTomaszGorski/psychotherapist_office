@@ -27,7 +27,6 @@ public class UserService {
                 .map(UserCredentialsDtoMapper::map);
     }
 
-
     @Transactional
     public void registerUserWithDefaultRole(
             UserRegistrationDto userRegistration) {
@@ -43,16 +42,13 @@ public class UserService {
     }
 
     @Transactional
-    public void changeCurrentUserPassword(String newPassword) {
-        String currentUsername = SecurityContextHolder
-                .getContext().getAuthentication().getName(); //1
-        User currentUser = userRepository
-                .findByEmail(currentUsername).orElseThrow(); //2
-        String newPasswordHash = passwordEncoder
-                .encode(newPassword); //3
-        currentUser.setPassword(newPasswordHash); //4
-    }
+    public String changeCurrentUserPassword(String newPassword) {
+        String currentUsername =
+                SecurityContextHolder.getContext().getAuthentication().getName(); //1
+        Optional<User> currentUser = userRepository.findByEmail(currentUsername);
 
+        return currentUsername;
+    }
 
     public String getCurrentUserName() {
         String currentUsername = SecurityContextHolder
