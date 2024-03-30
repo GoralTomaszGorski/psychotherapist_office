@@ -18,8 +18,14 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-
     private Set<UserRole> roles = new HashSet<>();
+    @OneToOne
+    @JoinColumn
+            (name = "change_password_token", referencedColumnName = "id")
+    private ChangePasswordToken changePasswordToken;
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -51,5 +57,13 @@ public class User {
 
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
+    }
+
+    public ChangePasswordToken getChangePasswordToken() {
+        return changePasswordToken;
+    }
+
+    public void setChangePasswordToken(ChangePasswordToken changePasswordToken) {
+        this.changePasswordToken = changePasswordToken;
     }
 }

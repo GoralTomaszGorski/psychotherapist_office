@@ -33,6 +33,29 @@ public class MessageService{
             throw new MailSenderException();
         }
     }
+
+    public void sendToken(String resetLink) {
+        //logic
+        //smtp properties
+        Properties properties = MailConfiguration.getConfiguration();
+        MailAuthentication authenticator = new MailAuthentication();
+        //session
+        Session session = Session.getInstance(properties, authenticator);
+        try {
+            Message message = new MimeMessage(session);
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(
+                    authenticator.getPasswordAuthentication().getUserName()));
+
+
+            message.setText("Hello \n\n" + "Please click on this link to Reset your Password :" + resetLink + ". \n\n"
+                    + "Regards \n" + "Gabinet psychoterapetyczny Ewa Górsk");
+            message.setSubject("Gabinet psychoterapetyczny Ewa Górska reset hasła do API");
+            Transport.send(message);
+        }
+        catch (Throwable e) {
+            throw new MailSenderException();
+        }
+    }
 }
 
 
