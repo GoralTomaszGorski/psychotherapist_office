@@ -39,11 +39,12 @@ public class UserService {
                 .map(UserCredentialsDtoMapper::map);
     }
 
+
     @Transactional
     public void registerUserWithDefaultRole(
             UserRegistrationDto userRegistration) {
-        UserRole defaultRole = userRoleRepository
-                .findByName(DEFAULT_USER_ROLE).orElseThrow();
+        UserRole defaultRole = userRoleRepository.findByName(DEFAULT_USER_ROLE).orElseThrow();
+
         User user = new User();
         user.setEmail(userRegistration
                 .getEmail());
@@ -51,6 +52,13 @@ public class UserService {
                 .encode(userRegistration.getPassword()));
         user.getRoles().add(defaultRole);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void saveUser(
+
+            ){
+
     }
 
     public String sendEmailToken(User user) {
@@ -75,24 +83,25 @@ public class UserService {
         resetToken.setUser(user);
         ChangePasswordToken token = tokenRepository.save(resetToken);
         if (token != null) {
-            String endpointUrl = "/change-password";
+            String endpointUrl = "/resetPassword";
             return endpointUrl + "/" + resetToken.getToken();
         }
         return "/";
     }
 
-    @Transactional
-    public void changeCurrentUserPassword(ChangePasswordToken request, Principal connectedUser) {
-        var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
-        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())){
-            throw new IllegalMonitorStateException(" Wrong password. Złe hasło");
-        }
-        if (!request.getNewPassword().equals(request.getConfirmationPassword())){
-            throw new IllegalMonitorStateException(" Password doesn't match. Hasło nie pasuje");
-        }
-        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-        userRepository.save(user);
-    }
+//    @Transactional
+//    public void changeCurrentUserPassword(
+//            ChangePasswordToken request, Principal connectedUser) {
+//        var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
+//        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())){
+//            throw new IllegalMonitorStateException(" Wrong password. Złe hasło");
+//        }
+//        if (!request.getNewPassword().equals(request.getConfirmationPassword())){
+//            throw new IllegalMonitorStateException(" Password doesn't match. Hasło nie pasuje");
+//        }
+//        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+//        userRepository.save(user);
+//    }
 
     public String getCurrentUserName() {
         String currentUsername = SecurityContextHolder
