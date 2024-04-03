@@ -51,7 +51,12 @@ przyciski dod sprawdzenia zarezerwowanych i wolnych terminów
     color: orangered;
 }
 
-
+.success-container {
+    background-color: green;
+}
+.error-container {
+    background-color: red;
+}
 
 /*Główna sekcja powinna być skalowana wraz z rozciąganiem okna przeglądarki
 i powinna zajmować większość dostępnej przestrzeni

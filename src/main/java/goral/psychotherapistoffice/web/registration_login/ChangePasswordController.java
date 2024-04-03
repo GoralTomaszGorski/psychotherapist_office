@@ -7,7 +7,6 @@ import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 
 @RequestMapping("/change-password")
 @Controller
@@ -28,9 +27,11 @@ public class ChangePasswordController {
     }
 
     @PostMapping()
-    public String changePassword(@ModelAttribute UserCredentialsDto userCredentialsDto) {
+    public String changePassword(
+            @ModelAttribute UserCredentialsDto userCredentialsDto) {
         String output = "";
-        User user = userRepository.findUsersByEmail(userCredentialsDto.getEmail());
+        User user = userRepository.findUsersByEmail(
+                userCredentialsDto.getEmail());
         if (user != null){
             output = userService.sendEmailToken(user);
         }
