@@ -17,7 +17,7 @@ public class ChangePasswordToken {
     private String newPassword;
     private String confirmationPassword;
     private LocalDateTime expiryDateTime;
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
