@@ -34,14 +34,14 @@ public class MessageService{
         }
     }
 
-    public void sendMail(MessageDto messageDto) {
+    public void sendMail(MessageDto messageDto, String resetLink) {
 
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(messageDto.getRecipient()));
-            message.setFrom(new InternetAddress(messageDto.getFrom()));
-            message.setText(messageDto.getBody());
-            message.setSubject(messageDto.getSubject());
+            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: "  + resetLink+ ". \n\n"
+                    + "Regards \n" + "ABC");
+            message.setSubject("Reset hasła -  Gabinet Psychoterapeutyczny Ewa Górska");
             Transport.send(message);
         }
         catch (Throwable e) {
