@@ -395,7 +395,7 @@ i powinna zajmować większość dostępnej przestrzeni
 
 /*Tekst nad formularzem logowania*/
 .mc-form-message {
-    color: #ffc107;
+    color: darkgreen;
     text-align: center;
 }
 

@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.user;
 
 import goral.psychotherapistoffice.config.security.TokenRepository;
 import goral.psychotherapistoffice.domain.messeges.MessageService;
+import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -61,16 +62,20 @@ public class UserService {
 
     }
 
-    public String sendEmailToken(User user) {
+    public String sendEmailToken(User user, MessageDto messageDto) {
         try {
             String resetLink = generateResetToken(user);
-            messageService.sendToken(resetLink);
-
+            messageDto.setRecipient(messageDto.getRecipient());
+            messageDto.setSubject("Reset hasła");
+            messageDto.setBody(   "Hello \n\n" + "Please click on this link to Reset your Password :" + resetLink + ". \n\n"
+                    + "Regards \n" + "ABC");
+            messageService.sendMail(messageDto);
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
             return "error";
         }
+
     }
     public String generateResetToken(User user) {
         UUID uuid = UUID.randomUUID();
@@ -83,7 +88,7 @@ public class UserService {
         resetToken.setUser(user);
         ChangePasswordToken token = tokenRepository.save(resetToken);
         if (token != null) {
-            String endpointUrl = "/resetPassword";
+            String endpointUrl = "http://localhost:8080/resetPassword";
             return endpointUrl + "/" + resetToken.getToken();
         }
         return "/";
