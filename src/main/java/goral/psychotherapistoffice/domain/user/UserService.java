@@ -5,14 +5,10 @@ import goral.psychotherapistoffice.config.security.TokenRepository;
 import goral.psychotherapistoffice.domain.messeges.MessageService;
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
-
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
@@ -55,25 +51,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    @Transactional
-    public void saveUser(
 
-            ){
-
-    }
-
-    public String emailToken(User user, MessageDto messageDto) {
-        try {
-            String resetLink = generateResetToken(user);
-
-            messageService.sendMail(messageDto, resetLink);
-            return "success";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
-
-    }
     public String generateResetToken(User user) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -91,25 +69,11 @@ public class UserService {
         return "/";
     }
 
-//    @Transactional
-//    public void changeCurrentUserPassword(
-//            ChangePasswordToken request, Principal connectedUser) {
-//        var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
-//        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())){
-//            throw new IllegalMonitorStateException(" Wrong password. Złe hasło");
-//        }
-//        if (!request.getNewPassword().equals(request.getConfirmationPassword())){
-//            throw new IllegalMonitorStateException(" Password doesn't match. Hasło nie pasuje");
-//        }
-//        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-//        userRepository.save(user);
-//    }
-
     public String getCurrentUserName() {
         String currentUsername = SecurityContextHolder
                 .getContext()
                 .getAuthentication()
-                .getName();;
+                .getName();
         return currentUsername;
     }
 
