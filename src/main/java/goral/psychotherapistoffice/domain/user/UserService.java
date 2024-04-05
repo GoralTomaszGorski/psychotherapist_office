@@ -62,14 +62,11 @@ public class UserService {
 
     }
 
-    public String sendEmailToken(User user, MessageDto messageDto) {
+    public String emailToken(User user, MessageDto messageDto) {
         try {
             String resetLink = generateResetToken(user);
-            messageDto.setRecipient(messageDto.getRecipient());
-            messageDto.setSubject("Reset hasła");
-            messageDto.setBody(   "Hello \n\n" + "Please click on this link to Reset your Password :" + resetLink + ". \n\n"
-                    + "Regards \n" + "ABC");
-            messageService.sendMail(messageDto);
+
+            messageService.sendMail(messageDto, resetLink);
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
