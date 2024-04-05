@@ -31,7 +31,7 @@ public class MessageController {
 
     @PostMapping("")
     public String sendMail(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes) {
-        messageService.sendMail(messageDto);
+        messageService.sendMailByMessagebox(messageDto);
         redirectAttributes.addFlashAttribute(
                 HomeController.NOTIFICATION_ATTRIBUTE,
                 "widomość <b>%s</b> została wysłana do terapeuty "
