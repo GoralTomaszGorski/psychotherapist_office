@@ -1,6 +1,5 @@
 package goral.psychotherapistoffice.web.registration_login;
 
-import goral.psychotherapistoffice.config.security.CustomUserDetailsService;
 import goral.psychotherapistoffice.domain.messeges.MessageService;
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.*;
@@ -12,16 +11,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ChangePasswordController {
-    private final CustomUserDetailsService userDetailsService;
     private final UserService userService;
     private final UserRepository userRepository;
     private final MessageService messageService;
     private final ChangePasswordTokenRepository changePasswordTokenRepository;
 
 
-    public ChangePasswordController(
-            CustomUserDetailsService userDetailsService, UserService userService, UserRepository userRepository, MessageService messageService, ChangePasswordTokenRepository changePasswordTokenRepository) {
-        this.userDetailsService = userDetailsService;
+    public ChangePasswordController(UserService userService, UserRepository userRepository, MessageService messageService, ChangePasswordTokenRepository changePasswordTokenRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.messageService = messageService;
@@ -36,7 +32,7 @@ public class ChangePasswordController {
     }
 
     @PostMapping("/forgotPassword")
-    public String forgotPasswordProcess(@ModelAttribute("message") MessageDto messageDto, RedirectAttributes redirectAttributes) {
+    public String forgotPasswordProcess(@ModelAttribute("message") MessageDto messageDto) {
         String output = "";
         User user = userRepository.findUsersByEmail(messageDto.getRecipient());
         String resetLink = userService.generateResetToken(user);
