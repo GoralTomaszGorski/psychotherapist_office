@@ -51,7 +51,38 @@ przyciski dod sprawdzenia zarezerwowanych i wolnych terminów
     color: orangered;
 }
 
+/* strona zmiany hasła restu hsała*/
 
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+#roles {
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+}
+.success-container {
+    background-color: green;
+}
+.error-container {
+    background-color: red;
+}
+
+/* KONIEC strona zmiany hasła restu hsała*/
 
 /*Główna sekcja powinna być skalowana wraz z rozciąganiem okna przeglądarki
 i powinna zajmować większość dostępnej przestrzeni
@@ -96,7 +127,6 @@ i powinna zajmować większość dostępnej przestrzeni
 .menu-toggle {
     display: flex;
     font-size: 17px;
-
 }
 
 /*Office START*/
@@ -365,7 +395,7 @@ i powinna zajmować większość dostępnej przestrzeni
 
 /*Tekst nad formularzem logowania*/
 .mc-form-message {
-    color: #ffc107;
+    color: darkgreen;
     text-align: center;
 }
 

@@ -10,13 +10,13 @@ import java.util.Properties;
 @Service
 public class MessageService{
 
-    public void sendMail(MessageDto messageDto) {
+    Properties properties = MailConfiguration.getConfiguration();
+    MailAuthentication authenticator = new MailAuthentication();
+    Session session = Session.getInstance(properties, authenticator);
+
+    public void sendMailByMessagebox(MessageDto messageDto) {
         //logic
         //smtp properties
-        Properties properties = MailConfiguration.getConfiguration();
-        MailAuthentication authenticator = new MailAuthentication();
-        //session
-        Session session = Session.getInstance(properties, authenticator);
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(
@@ -33,6 +33,22 @@ public class MessageService{
             throw new MailSenderException();
         }
     }
+
+    public void sendMail(MessageDto messageDto, String resetLink) {
+
+        try {
+            Message message = new MimeMessage(session);
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(messageDto.getRecipient()));
+            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: "  + resetLink+ ". \n\n"
+                    + "Regards \n" + "ABC");
+            message.setSubject("Reset hasła -  Gabinet Psychoterapeutyczny Ewa Górska");
+            Transport.send(message);
+        }
+        catch (Throwable e) {
+            throw new MailSenderException();
+        }
+    }
+
 }
 
 

@@ -28,6 +28,13 @@ public class PatientService {
         return patientJpaRepository.findPatientById(id)
                 .map(PatientDtoMapper::map);
     }
+    public List<PatientDto> findPatientByEmail(String email) {
+        return patientJpaRepository
+                .findPatientByEmail(email)
+                .stream()
+                .map(PatientDtoMapper::map)
+                .toList();
+    }
 
     public List<PatientDto> findBySurnameOrName(String keyword) {
         return patientJpaRepository

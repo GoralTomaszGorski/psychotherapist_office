@@ -18,8 +18,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-
     private Set<UserRole> roles = new HashSet<>();
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -52,4 +54,5 @@ public class User {
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
     }
+
 }

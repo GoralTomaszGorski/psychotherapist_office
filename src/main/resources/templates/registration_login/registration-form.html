@@ -9,11 +9,17 @@
 <body>
 <main class="main-content" layout:fragment="content">
     <h2 class="list-heading">Zarejestruj się</h2>
-    <form action="#" th:action="@{/rejestracja}" method="post" class="mc-form" th:object="${user}">
+    <form action="#" th:action="@{/rejestracja}"
+          method="post" class="mc-form" th:object="${user}">
+
         <label for="email">Adres email</label>
-        <input id="email" type="email" placeholder="nazwa użytkownika" th:field="*{email}">
+        <input id="email" type="email" placeholder="nazwa użytkownika"
+               th:field="*{email}">
+
         <label for="password">Hasło</label>
-        <input id="password" placeholder="hasło" type="password" th:field="*{password}">
+        <input id="password" placeholder="hasło" type="password"
+               th:field="*{password}">
+
         <button type="submit">Zarejestruj się</button>
     </form>
 </main>

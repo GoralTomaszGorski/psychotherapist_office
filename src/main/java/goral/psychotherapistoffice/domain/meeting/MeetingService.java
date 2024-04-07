@@ -110,7 +110,8 @@ public class MeetingService {
 
     public List<MeetingDto> findByKeyword(String keyword){
         return meetingRepository
-                .findMeetingsByCalenderDayofContainsIgnoreCaseOrPatientSurnameContainsIgnoreCaseOrPatientNameContainsIgnoreCaseOrderByCalender(keyword, keyword, keyword)
+                .findMeetingsByCalenderDayofContainsIgnoreCaseOrPatientSurnameContainsIgnoreCaseOrPatientNameContainsIgnoreCaseOrderByCalender(
+                        keyword, keyword, keyword)
                 .stream()
                 .map(MeetingDtoMapper::map)
                 .toList();
