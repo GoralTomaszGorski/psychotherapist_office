@@ -39,8 +39,8 @@ public class MessageService{
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(messageDto.getRecipient()));
-            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: "  + resetLink+ ". \n\n"
-                    + "Regards \n" + "ABC");
+            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: \n\n"  + resetLink+ ". \n\n"
+                    + "z poważaniem \n" + "Gabinet Psychoterapeutyczny \n Ewa Górska");
             message.setSubject("Reset hasła -  Gabinet Psychoterapeutyczny Ewa Górska");
             Transport.send(message);
         }

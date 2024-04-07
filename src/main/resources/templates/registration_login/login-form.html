@@ -12,7 +12,7 @@
         <form action="" th:action="@{/login}" method="post" class="mc-form">
             <p th:if="${param.error}"
                class="mc-form-message">
-                Błąd logowania. Wprowadzono niepoprawne hasło lub login.
+                Wprowadzono niepoprawne hasło lub login/nazwę użytkownika.
             </p>
             <p th:if="${param.logout}" class="mc-form-message">
                 Zostałeś wylogowany, możesz zalogować się ponownie.

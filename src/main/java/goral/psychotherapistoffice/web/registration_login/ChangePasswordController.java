@@ -44,7 +44,7 @@ public class ChangePasswordController {
         if (output.equals("success")) {
             return "redirect:forgotPassword?success";
         }
-        return "redirect:forgotPassword?error";
+        return "redirect:/login?error";
     }
 
     @GetMapping("/resetPassword/{token}")
