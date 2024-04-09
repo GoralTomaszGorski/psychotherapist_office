@@ -76,7 +76,7 @@ public class MeetingManagementController {
                                         .map(PatientDto::getNick).orElse("Undefined"),
                                 therapyService.findTherapyById(meetingSave.getTherapy())
                                         .map(TherapyDto::getKindOfTherapy).orElse("Undefined")
-                                )
+                        )
         );
         return "redirect:/admin";
     }

@@ -26,14 +26,18 @@ public class CalenderManagementController {
     public String addCalenderForm(Model model) {
         CalenderDto calenderDto = new CalenderDto();
         model.addAttribute("calenderDto", calenderDto);
-        model.addAttribute("heading", "Podaj dane nowego Terminu w kalendarzu");
-        model.addAttribute("description", "Dodaj informacje dotyczące nowego teminu spotkań dostępnego pacjentów");
-        model.addAttribute("admin/dodaj-termin", "admin/dodaj-termin");
+        model.addAttribute("heading",
+                "Podaj dane nowego Terminu w kalendarzu");
+        model.addAttribute("description",
+                "Dodaj informacje dotyczące nowego teminu spotkań dostępnego pacjentów");
+        model.addAttribute("admin/dodaj-termin",
+                "admin/dodaj-termin");
         return "admin/calender-add-form";
     }
 
     @PostMapping("/dodaj-termin")
-    public String addCalender(@ModelAttribute("calender") CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
+    public String addCalender(@ModelAttribute("calender")
+                              CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
         calenderService.addCalender(calenderDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
@@ -51,8 +55,10 @@ public class CalenderManagementController {
     public String showCalenderTherms(Model model) {
         List<CalenderDto> calenderTherms = calenderService.findAllTherms();
         model.addAttribute("calenderS", calenderTherms);
-        model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
-        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
+        model.addAttribute("heading",
+                "Edytuj dane Terminu w kalendarzu");
+        model.addAttribute("description",
+                "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
         return "admin/calender-therms-view";
     }
 
@@ -62,14 +68,18 @@ public class CalenderManagementController {
         CalenderDto calenderDto = calenderService.findCalenderById(id)
                 .orElseThrow();
         model.addAttribute("calenderDto", calenderDto);
-        model.addAttribute("heading", "Edytuj dane Terminu w kalendarzu");
-        model.addAttribute("description", "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
-        model.addAttribute("calender/edit", "calender/edit");
+        model.addAttribute("heading",
+                "Edytuj dane Terminu w kalendarzu");
+        model.addAttribute("description",
+                "Edytuj informacje dotyczące teminu spotkań dostępnego pacjentów");
+        model.addAttribute("calender/edit",
+                "calender/edit");
         return "admin/calender-edit-form";
     }
 
     @PostMapping("/calender/edit")
-    public String editCalender(CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
+    public String editCalender(
+            CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
         calenderService.editCalender(calenderDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,

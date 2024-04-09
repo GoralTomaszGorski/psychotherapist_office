@@ -3,22 +3,29 @@ package goral.psychotherapistoffice.domain.messeges.dto;
 public class MessageDto {
 
     private String phone;
+    private String recipient;
     private String from;
     private String subject;
     private String body;
 
-    public MessageDto(String phone, String from, String subject, String body) {
+    public MessageDto(String phone, String from, String subject, String recipient, String body) {
         this.phone = phone;
+        this.recipient = recipient;
         this.from = from;
         this.subject = subject;
         this.body = body;
     }
 
     public MessageDto() {
+
     }
 
-    public MessageDto(String phone) {
-        this.phone = phone;
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     public String getPhone() {
