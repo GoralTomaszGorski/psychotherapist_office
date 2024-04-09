@@ -5,23 +5,26 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">>
 
-
-
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading">Dodaj nowy rodzaj terapii/usługi</h2>
-        <form action="#" th:action="@{/admin/dodaj-terapie}" method="post" class="mc-form" th:object="${therapyDto}">
+        <h2 class="list-heading" th:text="${heading}">Dodaj nowy rodzaj terapii/usługi</h2>
+        <form action="#" th:action="@{/admin/offer/add}"
+              method="post" class="mc-form" th:object="${therapyDto}">
             <!-- dodawanie terapii -->
-            <label for="kindOfTherapy">Rodzaj terapii</label>
-            <input type="text" id="kindOfTherapy" placeholder="np. indywidualna" th:field="*{kindOfTherapy}">
+            <label for="id">Rodzaj terapii</label>
+            <input type="text" id="id" placeholder="np. 41" th:field="*{id}">
             <label for="therapyDescription">Opis - max 1500 znaków</label>
-            <textarea id="therapyDescription" rows="5" th:field="*{description}"></textarea>
+            <label for="kindOfTherapy">Rodzaj terapii</label>
+            <input type="text" id="kindOfTherapy"
+                   placeholder="np. indywidualna" th:field="*{kindOfTherapy}">
+            <label for="therapyDescription">Opis - max 1500 znaków</label>
+            <textarea id="therapyDescription" rows="5"
+                      th:field="*{description}"></textarea>
             <label for="therapyPrice">Cena </label>
-            <input type="number" id="therapyPrice" placeholder="w zł"  step="10" th:field="*{price}">
-            <button type="submit">Dodaj</button>
-
-
+            <input type="number" id="therapyPrice"
+                   placeholder="w zł"  step="10" th:field="*{price}">
+            <button type="submit">Zapisz</button>
         </form>
     </main>
 </div>

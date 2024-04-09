@@ -37,7 +37,7 @@ public class CalenderManagementController {
 
     @PostMapping("/dodaj-termin")
     public String addCalender(@ModelAttribute("calender")
-                                  CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
+                              CalenderDto calenderDto, RedirectAttributes redirectAttributes) {
         calenderService.addCalender(calenderDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,

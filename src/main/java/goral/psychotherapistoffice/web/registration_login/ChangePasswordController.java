@@ -38,7 +38,7 @@ public class ChangePasswordController {
         String resetLink = userService.generateResetToken(user);
 
         if (user != null) {
-           messageService.sendMail(messageDto, resetLink);
+            messageService.sendMail(messageDto, resetLink);
         }
 
         if (output.equals("success")) {
