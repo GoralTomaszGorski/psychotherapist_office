@@ -85,7 +85,7 @@ public class UserAddMeetingController {
                                 therapyService.findTherapyById(meetingToSaveDto.getTherapy())
                                         .map(TherapyDto::getKindOfTherapy).orElse("Undefined")
                         )
-                );
+        );
         return "redirect:/";
     }
 
@@ -99,7 +99,7 @@ public class UserAddMeetingController {
 
         String email = userService.getCurrentUserName();
         List<PatientDto> patient = patientService.findPatientByEmail(email);
-                model.addAttribute("patients", patient);
+        model.addAttribute("patients", patient);
 
         List<CalenderDto> allFreeTherms = calenderService.findAllFreeTherms();
         model.addAttribute("therms", allFreeTherms);
