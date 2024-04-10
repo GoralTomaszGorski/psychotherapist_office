@@ -13,6 +13,7 @@ public class ChangePasswordToken {
     @Column(name = "id")
     private Long id;
     private String token;
+    private String email;
     private String currentPassword;
     private String newPassword;
     private String confirmationPassword;
@@ -22,7 +23,9 @@ public class ChangePasswordToken {
     private User user;
 
     public ChangePasswordToken() {
+
     }
+
 
     public Long getId() {
         return id;
@@ -38,6 +41,14 @@ public class ChangePasswordToken {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCurrentPassword() {
@@ -80,13 +91,16 @@ public class ChangePasswordToken {
         this.user = user;
     }
 
-    public ChangePasswordToken(Long id, String token, String currentPassword, String newPassword, String confirmationPassword, LocalDateTime expiryDateTime, User user) {
+    public ChangePasswordToken(Long id, String token, String email, String currentPassword, String newPassword, String confirmationPassword, LocalDateTime expiryDateTime, User user) {
         this.id = id;
         this.token = token;
+        this.email = email;
         this.currentPassword = currentPassword;
         this.newPassword = newPassword;
         this.confirmationPassword = confirmationPassword;
         this.expiryDateTime = expiryDateTime;
         this.user = user;
     }
+
+
 }

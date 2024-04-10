@@ -55,7 +55,7 @@ public class UserService {
     public String generateResetToken(User user) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime expiryDateTime = currentDateTime.plusMinutes(30);
+        LocalDateTime expiryDateTime = currentDateTime.plusMinutes(3000);
         ChangePasswordToken resetToken = new ChangePasswordToken();
         resetToken.setUser(user);
         resetToken.setToken(uuid.toString());

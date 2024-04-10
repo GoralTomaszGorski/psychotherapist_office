@@ -46,7 +46,8 @@ public class CustomSecurityConfig {
                 "/images/**",
                 "/scripts/**",
                 "/styles/**",
-                "/h2-console/**"
+                "/h2-console/**",
+                "/resetPassword/**"
         );
     }
 
