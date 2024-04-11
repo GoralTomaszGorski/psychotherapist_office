@@ -55,7 +55,7 @@ public class UserService {
     public String generateResetToken(User user) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime expiryDateTime = currentDateTime.plusMinutes(3000);
+        LocalDateTime expiryDateTime = currentDateTime.plusMinutes(30);
         ChangePasswordToken resetToken = new ChangePasswordToken();
         resetToken.setUser(user);
         resetToken.setToken(uuid.toString());
@@ -63,7 +63,7 @@ public class UserService {
         resetToken.setUser(user);
         ChangePasswordToken token = tokenRepository.save(resetToken);
         if (token != null) {
-            String endpointUrl = "http://localhost:8080/resetPassword";
+            String endpointUrl = "http://localhost:8080/reset-password";
             return endpointUrl + "/" + resetToken.getToken();
         }
         return "/";

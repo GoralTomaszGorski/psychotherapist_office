@@ -1,15 +1,12 @@
 package goral.psychotherapistoffice.web.registration_login;
 
 import goral.psychotherapistoffice.domain.messeges.MessageService;
-import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.*;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
-import org.springframework.boot.Banner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -30,14 +27,14 @@ public class ChangePasswordController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/forgotPassword")
+    @GetMapping("/forgot-password")
     public String forgotPassword(Model model) {
         UserCredentialsDto userCredentialsDto = new UserCredentialsDto();
         model.addAttribute("userCredentialsDto", userCredentialsDto);
-        return "registration_login/forgotPassword";
+        return "registration_login/forgot-Password";
     }
 
-    @PostMapping("/forgotPassword")
+    @PostMapping("/forgot-password")
     public String forgotPasswordProcess(@ModelAttribute("message")
                                         UserCredentialsDto userCredentialsDto) {
         String output = "";
@@ -49,12 +46,12 @@ public class ChangePasswordController {
                     userCredentialsDto, resetLink);
         }
         if (output.equals("success")) {
-            return "redirect:/forgotPassword?success";
+            return "redirect:/forgot-password?success";
         }
         return "redirect:/login?error";
     }
 
-    @GetMapping("/resetPassword/{token}")
+    @GetMapping("/reset-password/{token}")
     public String resetPasswordForm(
             @PathVariable String token, Model model) {
         ChangePasswordToken reset = changePasswordTokenRepository.findByToken(token);
@@ -66,26 +63,19 @@ public class ChangePasswordController {
                     reset.getUser().getPassword());
             return "registration_login/change-password-form";
         }
-        return "redirect:/forgotPassword?error";
+        return "redirect:/forgot-password?error";
     }
 
-    @PostMapping("/resetPassword")
+    @PostMapping("/reset-password")
     public String passwordResetProcess(
             @ModelAttribute UserCredentialsDto userCredentialsDto) {
         User user = userRepository.findUsersByEmail(
                 userCredentialsDto.getEmail());
-        String output = "";
-
         if (user != null) {
-            output =
             user.setPassword(passwordEncoder.encode(
                     userCredentialsDto.getPassword()));
             userRepository.save(user);
         }
-        if (output.equals("success")) {
-            return "redirect:/resetPassword?success";
-        }
-        return "redirect:/resetPassword?error";
-
+        return "redirect:/login";
     }
 }
