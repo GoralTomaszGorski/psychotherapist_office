@@ -7,24 +7,30 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
+        <p th:if="${param.error}"
+           class="mc-form-message">
+            Wprowadzono niepoprawne hasło lub login/nazwę użytkownika.
+        </p>
+
+        <p th:if="${param.logout}" class="mc-form-message">
+            Zostałeś wylogowany, możesz zalogować się ponownie.
+        </p>
 
         <h2 class="list-heading">Zaloguj się</h2>
-        <form action="" th:action="@{/login}" method="post" class="mc-form">
-            <p th:if="${param.error}"
-               class="mc-form-message">
-                Wprowadzono niepoprawne hasło lub login/nazwę użytkownika.
-            </p>
-            <p th:if="${param.logout}" class="mc-form-message">
-                Zostałeś wylogowany, możesz zalogować się ponownie.
-            </p>
+        <form class="mc-form" action="" th:action="@{/login}" method="post">
+
+
             <label for="username">Adres email</label>
-            <input id="username" name="username" placeholder="nazwa użytkownika">
+            <input id="username" name="username" placeholder="nazwa użytkownika" type="text">
+
             <label for="password">Hasło</label>
             <input id="password" name="password" placeholder="hasło" type="password">
+
             <button type="submit">Zaloguj się</button>
-            <p class="registration-link">Nie masz jeszcze konta? <a href="#" th:href="@{/rejestracja}">Zarejestruj się</a></p>
-            <p class="registration-link">Nie pamiętasz hasła? <a href="#" th:href="@{/forgotPassword}">Kliknij tutaj</a></p>
         </form>
+
+        <p class="registration-link">Nie masz jeszcze konta? <a href="#" th:href="@{/rejestracja}">Zarejestruj się</a></p>
+        <p class="registration-link">Nie pamiętasz hasła? <a href="#" th:href="@{/forgotPassword}">Kliknij tutaj</a></p>
     </main>
 </div>
 </body>
