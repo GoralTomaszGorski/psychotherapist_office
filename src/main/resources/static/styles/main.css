@@ -3,11 +3,13 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: inherit;
+
 
 }
 /*Zmiana domyślnego fontu*/
 body {
-    font-family: 'Montserrat';
+    font-family: inherit;
     background: url("../images/gory2.jpg") no-repeat fixed 0 0 transparent;
 }
 /*Ustawienie koloru odnośników i usunięcie podkreśleń*/
@@ -340,6 +342,8 @@ i powinna zajmować większość dostępnej przestrzeni
     flex-direction: column;
     font-size: 1.0rem;
     color: black;
+    font-family: inherit;
+
 }
 
 /*odstępy między etykietami i inputami*/
@@ -627,3 +631,55 @@ i powinna zajmować większość dostępnej przestrzeni
 .d-none {
     display: none;
 }
+
+/*reset password form*/
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+#roles {
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+}
+.success-container {
+    background-color: green;
+}
+.error-container {
+    background-color: red;
+}
+/*end reset password form*/

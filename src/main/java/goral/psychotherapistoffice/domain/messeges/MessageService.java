@@ -1,6 +1,7 @@
 package goral.psychotherapistoffice.domain.messeges;
 import goral.psychotherapistoffice.domain.exception.MailSenderException;
 import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
+import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -34,18 +35,19 @@ public class MessageService{
         }
     }
 
-    public void sendMail(MessageDto messageDto, String resetLink) {
+    public String sendMail(UserCredentialsDto userCredentialsDto, String resetLink) throws MailSenderException{
 
         try {
             Message message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(messageDto.getRecipient()));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userCredentialsDto.getEmail()));
             message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: \n\n"  + resetLink+ ". \n\n"
                     + "z poważaniem \n" + "Gabinet Psychoterapeutyczny \n Ewa Górska");
             message.setSubject("Reset hasła -  Gabinet Psychoterapeutyczny Ewa Górska");
             Transport.send(message);
+            return "success";
         }
-        catch (Throwable e) {
-            throw new MailSenderException();
+        catch (Throwable throwable ) {
+            return "error";
         }
     }
 

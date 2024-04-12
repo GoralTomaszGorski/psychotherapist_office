@@ -63,7 +63,7 @@ public class UserService {
         resetToken.setUser(user);
         ChangePasswordToken token = tokenRepository.save(resetToken);
         if (token != null) {
-            String endpointUrl = "http://localhost:8080/resetPassword";
+            String endpointUrl = "http://localhost:8080/reset-password";
             return endpointUrl + "/" + resetToken.getToken();
         }
         return "/";

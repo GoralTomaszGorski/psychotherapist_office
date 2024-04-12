@@ -26,7 +26,7 @@ public class CustomSecurityConfig {
                         .requestMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
                         .requestMatchers("/termin/**", "/user/**").hasAnyRole(ADMIN_ROLE, USER_ROLE)
                         .requestMatchers("/secured").hasAnyRole(ADMIN_ROLE, USER_ROLE)
-                        .requestMatchers("/register", "/confirmation","/forgotPassword/**","/resetPassword/**").permitAll()
+                        .requestMatchers("/register", "/confirmation","/forgot-password/**","/reset-password/**").permitAll()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
@@ -46,7 +46,8 @@ public class CustomSecurityConfig {
                 "/images/**",
                 "/scripts/**",
                 "/styles/**",
-                "/h2-console/**"
+                "/h2-console/**",
+                "/reset-password/**"
         );
     }
 

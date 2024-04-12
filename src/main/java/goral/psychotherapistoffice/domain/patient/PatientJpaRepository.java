@@ -10,7 +10,7 @@ public interface PatientJpaRepository extends JpaRepository<Patient, Long> {
     Optional<Patient> findPatientById(long id);
     List<Patient> findPatientByEmail(String email);
 
-    List<Patient>findAll();
+    List<Patient>findAllBy();
 
     List<Patient> findBySurnameContainsIgnoreCaseOrNameContainsIgnoreCase(String surname, String name);
 
