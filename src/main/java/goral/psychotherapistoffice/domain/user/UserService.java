@@ -3,7 +3,6 @@ package goral.psychotherapistoffice.domain.user;
 
 import goral.psychotherapistoffice.config.security.TokenRepository;
 import goral.psychotherapistoffice.domain.messeges.MessageService;
-import goral.psychotherapistoffice.domain.messeges.dto.MessageDto;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,13 +19,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final MessageService messageService;
     private final TokenRepository tokenRepository;
     public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, MessageService messageService, TokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.messageService = messageService;
         this.tokenRepository = tokenRepository;
     }
 
