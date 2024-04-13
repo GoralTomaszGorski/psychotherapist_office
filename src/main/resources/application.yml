@@ -1,8 +1,9 @@
-  profiles:
-    default: dev
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
   jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    defer-datasource-initialization: true
-
+    show-sql: false
+  main:
+    allow-circular-references: true
