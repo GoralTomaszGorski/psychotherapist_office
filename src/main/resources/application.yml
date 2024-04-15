@@ -7,4 +7,4 @@ spring:
     show-sql: false
 
   main:
-    allow-circular-references: true
+    allow-circular-references: false

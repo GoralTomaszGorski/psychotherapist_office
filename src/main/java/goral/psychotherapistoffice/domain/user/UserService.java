@@ -28,6 +28,7 @@ public class UserService {
     }
 
 
+
     public Optional<UserCredentialsDto> findCredentialsByEmail(String email) {
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);

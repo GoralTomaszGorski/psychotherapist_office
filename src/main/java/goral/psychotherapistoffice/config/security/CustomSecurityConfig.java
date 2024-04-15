@@ -56,20 +56,20 @@ public class CustomSecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+//    @Autowired
+//    private CustomUserDetailsService userDetailsService;
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userDetailsService);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
-
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authenticationConfiguration) throws Exception{
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider(){
+//        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+//        auth.setUserDetailsService(userDetailsService);
+//        auth.setPasswordEncoder(passwordEncoder());
+//        return auth;
+//    }
+//
+//    public AuthenticationManager authenticationManager(
+//            AuthenticationConfiguration authenticationConfiguration) throws Exception{
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
 
 }
