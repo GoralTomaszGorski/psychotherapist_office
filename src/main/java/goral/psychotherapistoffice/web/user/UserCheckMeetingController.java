@@ -12,7 +12,7 @@ import java.util.List;
 public class UserCheckMeetingController {
 
     @Controller
-    public class MeetingController {
+    public static class MeetingController {
         private final MeetingService meetingService;
 
         public MeetingController(MeetingService meetingService) {

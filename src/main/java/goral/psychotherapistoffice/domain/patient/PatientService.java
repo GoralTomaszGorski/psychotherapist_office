@@ -4,7 +4,6 @@ import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
 import goral.psychotherapistoffice.domain.user.UserService;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,7 +84,7 @@ public class PatientService {
         try {
             patientJpaRepository.deletePatientById(id);
         } catch (Throwable e) {
-            throw new DeletePatientException(HttpStatus.BAD_REQUEST);
+            throw new DeletePatientException();
         }
     }
 }

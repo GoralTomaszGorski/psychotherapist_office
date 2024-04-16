@@ -11,14 +11,12 @@ import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import goral.psychotherapistoffice.domain.user.UserService;
 import goral.psychotherapistoffice.web.HomeController;
-import goral.psychotherapistoffice.web.admin.AdminController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class UserAddMeetingController {

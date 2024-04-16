@@ -688,7 +688,9 @@ input[type="password"] {
     display: table;
     clear: both;
 }
-
+.mar{
+    line-height: 200%;
+}
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 930px) {
     .column {

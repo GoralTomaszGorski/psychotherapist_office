@@ -4,7 +4,6 @@ package goral.psychotherapistoffice.web.admin;
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -71,7 +70,7 @@ public class PatientManagementController {
         try {
             patientService.deletePatient(id);
         } catch (Exception e) {
-            throw new DeletePatientException(HttpStatus.BAD_REQUEST);
+            throw new DeletePatientException();
         }
 
         redirectAttributes.addFlashAttribute(
