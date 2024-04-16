@@ -11,6 +11,6 @@ public class TermIsBusyException extends ResponseStatusException implements User
 
     @Override
     public String getUserMessage() {
-        return "Termin który próbujesz zarezerwować jest już zajęty.";
+        return "Termin który próbujesz zarezerwować jest już zajęty. Cofnij i wybierz zieloną ikonkę.";
     }
 }

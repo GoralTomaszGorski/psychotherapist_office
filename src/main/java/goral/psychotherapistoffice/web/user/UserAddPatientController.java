@@ -28,7 +28,7 @@ public class UserAddPatientController {
                 "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
         model.addAttribute("additinal",
                 "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
-                        "2 pierwsze litery nazwiska i pierwsza litera imienia.");
+                        "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
         return "user/add-patient-form";
     }
 

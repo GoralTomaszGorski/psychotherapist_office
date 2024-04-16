@@ -8,22 +8,34 @@
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
-        <h2 class="list-heading">Wyślij wiadomość do terapeuty </h2>
-        <form action="#" th:action="@{/mail}"
-              method="post" class="mc-form" th:object="${mailDto}">
-            <label for="subject">Temat</label>
-            <input type="text" id="subject"
-                   placeholder="tamat wiadomości" th:field="*{subject}">
-            <label for="body">Treść wiadomości</label>
-            <textarea id="body" rows="10" th:field="*{body}"></textarea>
-            <label for="from">mail kontaktowy </label>
-            <input type="email" id="from"
-                   placeholder="mail własny" th:field="*{from}">
-            <label for="phone">telefon </label>
-            <input type="text" id="phone"
-                   placeholder="telefon" th:field="*{phone}">
-            <button type="submit">Dodaj</button>
-        </form>
+        <div class="row-table">
+            <div class="column">
+                <h2>Wyślij wiadomość do terapeuty </h2>
+                <form action="#" th:action="@{/mail}"
+                      method="post" class="mc-form" th:object="${mailDto}">
+                    <label for="subject">Temat</label>
+                    <input type="text" id="subject"
+                           placeholder="tamat wiadomości" th:field="*{subject}">
+                    <label for="body">Treść wiadomości</label>
+                    <textarea id="body" rows="10" th:field="*{body}"></textarea>
+                    <label for="from">e-mail kontaktowy </label>
+                    <input type="email" id="from"
+                           placeholder="mail własny" th:field="*{from}">
+                    <label for="phone">telefon </label>
+                    <input type="text" id="phone"
+                           placeholder="telefon" th:field="*{phone}">
+                    <button type="submit">Wyślij</button>
+                </form>
+            </div>
+            <div class="column">
+                <h2>Dane kontaktowe</h2>
+                <h4>Ewa Górska</h4>
+                <p>ul. Fabryczna 6, 23-200 Kraśnik</p>
+                <p>tel (+48) 781 106 026</p>
+                <p>nr rachunku bankowego</p>
+                <p>BKO BP: rachunek do sprawdzenia 57 1020 1185 0000 4002 0117 8185</p>
+            </div>
+        </div>
     </main>
 </div>
 </body>

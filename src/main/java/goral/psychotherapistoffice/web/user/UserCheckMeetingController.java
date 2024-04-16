@@ -23,7 +23,7 @@ public class UserCheckMeetingController {
         public String meetingByUser(Model model) {
             List<MeetingDto> meetingsTherms = meetingService.findMeetingByUserMail();
             model.addAttribute("heading", "Ustalone terminy spotkań");
-            model.addAttribute("description", "Sprawdz termin swojej wizyty");
+            model.addAttribute("description", "Sprawdź termin swojej wizyty");
             model.addAttribute("meetingsTherms", meetingsTherms);
             return "meeting";
         }

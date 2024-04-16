@@ -11,7 +11,7 @@
             <h2 class="list-heading" th:text="${patientHeading}">Pacjenci</h2>
 
             <form id="serch-form" class="mc-form">
-                <label> Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter </label>
+                <label> Wyszukaj Pacjenta wpisując imię lub nazwisko</label>
                 <input th:action="@{admin/pacjeci}" type="text"
                        th:name="keyword" placeholder="szukaj po imieniu lub nazwisku">
                 <button type="submit">Szukaj</button>

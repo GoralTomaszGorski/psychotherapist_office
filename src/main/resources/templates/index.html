@@ -13,9 +13,9 @@
             Belka z powiadomieniami
         <!-- Nagłówek pobieramy z modelu -->
         <h2 class="list-heading" th:text="${headingAllTherm}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
+        <h4 class="list-description" th:text="${descriptionHead}">Wyświetla wolne terminy w pętli thymeleaf'a</h4>
         <!-- godzine pobieramy z modelu -->
         <p class="list-description" th:text="${descriptionAllTherms}">opis, że trzeba kliknąc żeby się zapisać</p>
-
         <!-- Zostawiamy tylko pierwszy element <li> -->
         <ul class="free-therms-list" th:remove="all-but-first">
             <!-- Pętla po wszystkich terminach z modelu -->
@@ -58,9 +58,6 @@
             </li>
         </ul>
     </main>
-
 </div>
-
 </body>
-
 </html>

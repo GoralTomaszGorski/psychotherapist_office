@@ -28,12 +28,12 @@ public class PatientManagementController {
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patientDto", patientDto);
         model.addAttribute("heading",
-                "Podaj swoje dane, aby umówić wizytę");
+                "Podaj dane pacjęta, aby umówić wizytę");
         model.addAttribute("description",
-                "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
+                "Dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
         model.addAttribute("additinal",
                 "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
-                        "2 pierwsze litery nazwiska i pierwsza litera imienia.");
+                        "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
         return "user/add-patient-form";
     }
 

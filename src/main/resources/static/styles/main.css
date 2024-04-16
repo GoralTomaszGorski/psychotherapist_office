@@ -77,12 +77,8 @@ przyciski dod sprawdzenia zarezerwowanych i wolnych terminów
     height: 30px;
     font-size: 16px;
 }
-.success-container {
-    background-color: green;
-}
-.error-container {
-    background-color: red;
-}
+
+
 
 /* KONIEC strona zmiany hasła restu hsała*/
 
@@ -148,7 +144,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .list-heading,
 .list-description {
     text-align: center;
-    margin: 16px 0;
+    margin: 16px 16px;
 }
 
 /*Office START*/
@@ -434,7 +430,7 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 .error-header,
 .error-icon {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 16px 0;
 }
 /*error pages END*/
@@ -674,10 +670,29 @@ input[type="password"] {
     height: 30px;
     font-size: 16px;
 }
-.success-container {
-    background-color: green;
-}
-.error-container {
-    background-color: red;
-}
 /*end reset password form*/
+
+/*table style*/
+/* Create two unequal columns that floats next to each other */
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 47%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row-table:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 930px) {
+    .column {
+        width: 100%;
+    }
+}
+/*end table style*/

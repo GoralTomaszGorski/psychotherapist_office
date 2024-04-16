@@ -19,7 +19,7 @@ public class TherapyController {
     @GetMapping("/offerta")
     public String offers(Model model){
         List<TherapyDto> kindOfTherapies = therapyService.findAllTherapies();
-        model.addAttribute("therapyHeading", "Wybierz terapię która Cię interesuje");
+        model.addAttribute("therapyHeading", "Oferta");
         model.addAttribute("therapies", kindOfTherapies);
         return "offer";
     }

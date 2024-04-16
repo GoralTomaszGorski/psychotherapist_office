@@ -27,7 +27,7 @@ public class TherapyManagementController {
         TherapyDto therapyDto = new TherapyDto();
         model.addAttribute("therapyDto", therapyDto);
         model.addAttribute("heading",
-                "Dodaj rodzaj terapii, opis, cenę. Nie wpisuj Id, zostanie wygenerowane autoamtycznie");
+                "Dodaj rodzaj terapii, opis, cenę. Nie wpisuj Id, zostanie wygenerowane automatycznie.");
         return "admin/therapy-form";
     }
 
