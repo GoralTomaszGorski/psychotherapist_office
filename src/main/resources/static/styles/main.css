@@ -24,7 +24,14 @@ Elementy będą ustawiane jeden pod drugim
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 2%;
+}
 
+
+.container-am {
+    display: block;
+    flex-direction: column;
+    min-height: 100vh;
     padding: 2%;
 }
 
@@ -513,6 +520,11 @@ i powinna zajmować większość dostępnej przestrzeni
     padding-right: 10px;
 }
 
+.px-30px {
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
 .py-50px {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -525,6 +537,8 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .mt-20px{
     margin-top: 20px;
+    line-height: 150%;
+
 }
 
 .text-center {
@@ -725,31 +739,40 @@ input[type="password"] {
 
 /*table style about-me*/
 
-.column-left {
+.column-am-left {
     float: left;
-    width: 32%;
+    max-width: 25%;
     padding: 2%;
+
 }
 
-.column-right {
+.column-am-right {
+    min-width: 450px;
+
     float: left;
-    width: 60%;
+    max-width: 66%;
     padding: 2%;
+
 }
 
 /* Clear floats after the columns */
-.row-table-a:after {
+.row-table-am:after {
     content: "";
     display: table;
     clear: both;
 }
-.mar-a{
+.mar-am{
     line-height: 200%;
 
 }
 
 .pic-a{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.column-a{
     flex-wrap: wrap;
     justify-content: space-between;
 }
