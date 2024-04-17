@@ -581,10 +581,16 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .flip-box {
     display: flex;
-
     background-color: transparent;
     width: 200px;
     height: 300px;
+    border: 2px solid #ffb6ae;
+}
+.flip-box2 {
+    display: flex;
+    background-color: transparent;
+    max-width: 457px;
+    max-height: 345px;
     border: 2px solid #ffb6ae;
 }
 
@@ -592,6 +598,14 @@ i powinna zajmować większość dostępnej przestrzeni
     position: relative;
     width: 100%;
     height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.flip-box-inner2 {
+    position: relative;
+    max-width: 455px;
+    max-height: 343px;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
@@ -608,7 +622,6 @@ i powinna zajmować większość dostępnej przestrzeni
     height: 100%;
     backface-visibility: hidden;
 }
-
 .flip-box-back {
     color: #333;
     transform: rotateY(180deg);
@@ -690,10 +703,59 @@ input[type="password"] {
 }
 .mar{
     line-height: 200%;
+
+}
+
+.pic{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 930px) {
     .column {
+        width: 100%;
+    }
+}
+/*end table style*/
+
+
+
+
+
+/*table style about-me*/
+
+.column-left {
+    float: left;
+    width: 32%;
+    padding: 2%;
+}
+
+.column-right {
+    float: left;
+    width: 60%;
+    padding: 2%;
+}
+
+/* Clear floats after the columns */
+.row-table-a:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.mar-a{
+    line-height: 200%;
+
+}
+
+.pic-a{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 930px) {
+    .column-a {
         width: 100%;
     }
 }
