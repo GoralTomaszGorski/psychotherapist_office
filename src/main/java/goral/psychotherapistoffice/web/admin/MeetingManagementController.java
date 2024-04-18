@@ -45,7 +45,7 @@ public class MeetingManagementController {
         }
         model.addAttribute("headingFA", "Terminy spotkań");
         model.addAttribute("descriptionFA",
-                "Wyszukaj Pacjenta wpisując imię lub nazwisko bez rozróżnienia wielkości liter lub wyszukaj dzień tygodnia w ten sam sposób.");
+                "Wyszukaj Pacjenta wpisując: imię, nazwisko lub dzień tygodnia.");
         model.addAttribute("meetings", meetings);
         return "admin/meeting-admin-view";
     }

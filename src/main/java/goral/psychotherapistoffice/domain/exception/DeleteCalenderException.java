@@ -11,7 +11,7 @@ public class DeleteCalenderException extends ResponseStatusException implements 
 
     @Override
         public String getUserMessage() {
-            return "Nie można usunąć terminu. Pacjent jest umuwiony w tym terminie na wizytę. Najpierw trzeba usunąć tą wizytę";
+            return "Nie można usunąć terminu. Pacjent jest umówiony w tym terminie na wizytę. Najpierw trzeba usunąć tą wizytę";
         }
 
 }

@@ -11,14 +11,12 @@ import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import goral.psychotherapistoffice.domain.user.UserService;
 import goral.psychotherapistoffice.web.HomeController;
-import goral.psychotherapistoffice.web.admin.AdminController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class UserAddMeetingController {
@@ -45,8 +43,11 @@ public class UserAddMeetingController {
             @PathVariable long calenderId,
             Model model) throws TermIsBusyException{
         model.addAttribute("heading", "Podaj swoje dane, aby umówić wizytę");
-        model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
-        model.addAttribute("additinal", "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, 2 pierwsze litery nazwiska i pierwsza litera imienia.");
+        model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. " +
+                "Ogólnodostępne będzie jednynie NICK. ");
+        model.addAttribute(
+                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
+                        "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
         //1. wybranie z kalendarza
         CalenderDto calender = calenderService.findFreeCalenderById(calenderId)
                 .orElseThrow(TermIsBusyException::new);

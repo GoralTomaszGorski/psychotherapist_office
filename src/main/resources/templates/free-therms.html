@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <!-- Dodana przestrzeń nazw th -->
 <!-- Dodana przestrzeń layout -->
-
 <html lang="pl"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
-
 <body>
 <div class="container">
     <main class="main-content" layout:fragment="content">
         <!-- Nagłówek pobieramy z modelu -->
-        <h2 class="list-heading" th:text="${headingFreeTherm}">Wyświetla wolne terminy w pętli thymeleaf'a</h2>
+        <h2 class="list-heading" th:text="${headingFreeTherm}">
+            Wyświetla wolne terminy w pętli thymeleaf'a</h2>
         <!-- godzine pobieramy z modelu -->
-        <p class="list-description" th:text="${descriptionFreeTherms}">opis, że trzeba kliknąc żeby się zapisać</p>
-
+        <p class="list-description" th:text="${descriptionFreeTherms}">
+            opis, że trzeba kliknąc żeby się zapisać</p>
         <div class="terms-href">
         <a class="terms-booked-href" href="/spotkania">
             <button class="meeting-button-booked">
@@ -23,12 +22,10 @@
             <p>sprawdź umówione wizyty</p>
         </a>
         </div>
-
         <!-- Zostawiamy tylko pierwszy element <li> -->
         <ul class="free-therms-list" th:remove="all-but-first">
             <!-- Pętla po wszystkich terminach z modelu -->
             <li class="free-therms-list-item" th:each="freeTherms: ${allFreeTherms}">
-
                 <!-- Link do strony pojedynczego termiu  /termin/5 -->
                 <a href="#" th:href="@{|/termin/${freeTherms.id}|}">
                     <!-- Po uruchomieniu aplikacji to może być ścieżka do placeholdera zdjecia/plakatu  -->
@@ -36,14 +33,14 @@
                         <i class="fa-regular fa-calendar"></i>
                     </button>
                 </a>
-
                 <!--dane do pojedynczego spotkania terminu-->
                 <div class="free-therms-list-item-card">
                     <div class="free-therms-list-item-content">
                         <h3 class="free-therms-list-item-title">
                             <!-- Link do strony pojedynczego spotkania /termin/6 -->
-                            <a href="#" th:href="@{|/termin/${freeTherms.id}|}" th:text="|Termin: ${freeTherms.dayof} ${freeTherms.getTime()}|">Dzień spotkania
-
+                            <a href="#" th:href="@{|/termin/${freeTherms.id}|}"
+                               th:text="|Termin: ${freeTherms.dayof}
+                               ${freeTherms.getTime()}|">Dzień spotkania
                             </a>
                         </h3>
                     </div>

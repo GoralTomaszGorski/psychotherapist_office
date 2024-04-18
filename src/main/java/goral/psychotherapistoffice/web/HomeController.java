@@ -26,8 +26,9 @@ public class HomeController {
     @GetMapping("/")
     public String therms(Model model){
         List<CalenderDto>allTherms = calenderService.findAllTherms();
-        model.addAttribute("headingAllTherm", "Czas pracy gabinetu");
-        model.addAttribute("descriptionAllTherms", "Kalendarz spotkań i wolne terminy");
+        model.addAttribute("headingAllTherm", "Rejestracja internetowa");
+        model.addAttribute("descriptionHead", "Termin sesji jest stały i cotygodniowy zgodnie ze standardami prowadzenia psychoterapii. Podczas pierwszej sesji (konsultacyjnej) wspólnie ustalimy czy rozpoczynamy cykliczne spotkania.");
+        model.addAttribute("descriptionAllTherms", "Kliknij na wybrany wolny termin (zielona ikonka):");
         model.addAttribute("alltherms", allTherms);
         return "index";
     }

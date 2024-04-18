@@ -1,12 +1,10 @@
-
 /*CSS reset*/
 * {
     margin: 0;
     padding: 0;
     font-family: inherit;
-
-
 }
+
 /*Zmiana domyślnego fontu*/
 body {
     font-family: inherit;
@@ -24,67 +22,17 @@ Elementy będą ustawiane jeden pod drugim
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-
     padding: 2%;
 }
 
-/*
-przyciski dod sprawdzenia zarezerwowanych i wolnych terminów
-*/
-.terms-href,
-.terms-booked-href,
-.terms-free-href{
-    padding: 10px 18px;
-    font-size: 14px;
-    align-items: center;
-    text-align: center;
-}
-.meeting-button-free,
-.meeting-button-booked{
-    padding: 14px 24px;
-    font-size: 28px;
-    text-align: center;
-    align-items: center;
-}
-.meeting-button-free{
-    color: darkgreen;
-}
-.meeting-button-booked{
-    color: orangered;
-}
-
-/* strona zmiany hasła restu hsała*/
-
-.btn-submit {
+.container-am {
     display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-    cursor: pointer;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2%;
 }
 
-.btn-submit:hover {
-    background-color: #45a049;
-}
 
-#roles {
-    width: 200px;
-    height: 30px;
-    font-size: 16px;
-}
-.success-container {
-    background-color: green;
-}
-.error-container {
-    background-color: red;
-}
-
-/* KONIEC strona zmiany hasła restu hsała*/
 
 /*Główna sekcja powinna być skalowana wraz z rozciąganiem okna przeglądarki
 i powinna zajmować większość dostępnej przestrzeni
@@ -113,11 +61,8 @@ i powinna zajmować większość dostępnej przestrzeni
     padding: 8px;
     border-bottom: 1px #6d6d6d solid;
     text-align: center;
-    display: block;
-
+    display: none;
 }
-
-
 
 /*Po wciśnięciu przycisku elementy będą widoczne*/
 .expanded > .menu-item {
@@ -130,7 +75,6 @@ i powinna zajmować większość dostępnej przestrzeni
     display: flex;
     font-size: 17px;
 }
-
 /*MENU END*/
 
 /*FOOTER START*/
@@ -148,12 +92,11 @@ i powinna zajmować większość dostępnej przestrzeni
 .list-heading,
 .list-description {
     text-align: center;
-    margin: 16px 0;
+    margin: 16px 16px;
 }
 
 /*Office START*/
 .office {
-
     padding: 3rem;
     text-align: center;
 }
@@ -161,16 +104,13 @@ i powinna zajmować większość dostępnej przestrzeni
     font-size: 1.5rem;
     margin: 0.2rem 0;
 }
-.office-description {
-    font-size: 0.7rem;
-}
+
 /*Office END*/
 /*Usunięcie dekoracji elementów listy (kropki na początku)*/
 .free-therms-list,
 .therapy-therms-list,
 .list-border {
     list-style-type: none;
-
 }
 
 .free-therms-list{
@@ -180,7 +120,6 @@ i powinna zajmować większość dostępnej przestrzeni
     display: block;
 }
 
-
 .patients-list123 {
     list-style-type: none;
     font-size: 16px;
@@ -188,74 +127,19 @@ i powinna zajmować większość dostępnej przestrzeni
     line-height: 160%;
 }
 
-.about-me-heading {
-    text-align: center;
-    margin: 16px 0;
-    padding-top: 6%;
-    float: right
-}
-
-.about-me-photo {
-    object-fit: contain;
-    width: 150px;
-    height: 200px;
-    background-image: url("../images/Ewcia_na_strone.jpg");
-    background-size: cover;
-    border: 1px #6d6d6d solid;
-    float: left;
-    margin: 2%;
-}
-
-
-.about-me {
-    list-style-type: none;
-    font-size: 16px;
-    padding-left: 6%;
-    padding-right: 6%;
-    padding-bottom: 2%;
-    line-height: 160%;
-    text-align: justify;
-    text-indent: 8%;
-}
-
-
-.about-me-top {
-    padding-left: 6%;
-    padding-right: 6%;
-    padding-bottom: 2%;
-    line-height: 160%;
-}
-
-.office-photo {
-    object-fit: contain;
-    border: 1px #6d6d6d solid;
-    float: right;
-    margin: 2%;
-}
-
 .patients-list{
     list-style-type: none;
     font-size: 14px;
-
 }
 
 .patient-description{
     display: table;
-
 }
 
-
-
-.patient-summary{
-    display: block;
-    flex-direction: column;
-
-}
 .delete-button-link{
     display: flow;
     float: right;
     right: 2%;
-
 }
 
 .delete-button{
@@ -271,31 +155,7 @@ i powinna zajmować większość dostępnej przestrzeni
     display: flex;
     border: 1px #6d6d6d solid;
 }
-
-.patients-list-item{
-    max-width: 930px;
-    display: block;
-    border: 1px #6d6d6d solid;
-    margin: 2px 32px;
-}
-/*Plakat - usuniecie paddingu*/
-.free-therms-list-item-poster {
-    display: block;
-    object-fit: contain;
-    max-width: 100px;
-    max-height: 100px;
-    font-size: 0.8rem;
-
-}
 /*Karta terminu*/
-
-.meeting-button{
-    display: block;
-    padding: 14px 24px;
-    font-size: 28px;
-    color: darkgreen;
-    text-align: center;
-}
 
 .free-therms-list-item-card{
     display: block;
@@ -312,23 +172,11 @@ i powinna zajmować większość dostępnej przestrzeni
 .free-therms-list-item-rating {
     font-size: 0.6rem;
 }
-
-
 /*index END*/
-
-.list {
-    font-size: 18px;
-    flex-direction: column;
-    margin: 0 32px;
-    padding: 14px;
-}
-
 
 /*formularze*/
 /*textarea domyślnie nie dziedziczy czcionki z body*/
-.textarea {
-    font-family: inherit;
-}
+
 /*etykiety i inputy jeden pod drugim z odstępami po bokach*/
 .mc-form {
     display: flex;
@@ -378,7 +226,6 @@ i powinna zajmować większość dostępnej przestrzeni
     font-size: 0.8rem;
     color: black;
     padding: 8px;
-
     background-color: lightgray;
     margin-top: 16px;
     border: none;
@@ -410,11 +257,10 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 /*Odstęp informacji o spotkaniu od okładki*/
-.meeting-summary-info,
-.therapy-summary-info,
-.patient-summary-info{
+.therapy-summary-info{
     margin-left: 8px;
 }
+
 /*Dzień spotkania w kolorze wybanym przez Żonę i odstęp pod nim*/
 .meeting-summary-day {
     display: flex;
@@ -434,7 +280,7 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 .error-header,
 .error-icon {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 16px 0;
 }
 /*error pages END*/
@@ -517,6 +363,11 @@ i powinna zajmować większość dostępnej przestrzeni
     padding-right: 10px;
 }
 
+.px-30px {
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
 .py-50px {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -529,6 +380,8 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .mt-20px{
     margin-top: 20px;
+    line-height: 150%;
+
 }
 
 .text-center {
@@ -585,10 +438,16 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .flip-box {
     display: flex;
-
     background-color: transparent;
     width: 200px;
     height: 300px;
+    border: 2px solid #ffb6ae;
+}
+.flip-box2 {
+    display: flex;
+    background-color: transparent;
+    max-width: 600px;
+    max-height: 400px;
     border: 2px solid #ffb6ae;
 }
 
@@ -612,7 +471,6 @@ i powinna zajmować większość dostępnej przestrzeni
     height: 100%;
     backface-visibility: hidden;
 }
-
 .flip-box-back {
     color: #333;
     transform: rotateY(180deg);
@@ -622,17 +480,107 @@ i powinna zajmować większość dostępnej przestrzeni
     cursor: pointer;
 }
 
-.float-right {
-    float:right;
-}
-
-.d-none {
-    display: none;
-}
 
 /*reset password form*/
 .form-group {
     margin-bottom: 20px;
+}
+
+
+/*table style*/
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 47%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row-table:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.mar{
+    line-height: 200%;
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 930px) {
+    .column {
+        width: 100%;
+    }
+}
+/*end table style*/
+
+
+
+/*table style about-me*/
+
+.column-am-left {
+    float: left;
+    max-width: 25%;
+    padding: 2%;
+
+}
+
+.column-am-right {
+    min-width: 450px;
+
+    float: left;
+    max-width: 66%;
+    padding: 2%;
+
+}
+
+/* Clear floats after the columns */
+.row-table-am:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.mar-am{
+    line-height: 200%;
+
+}
+
+.column-a{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 930px) {
+    .column-a {
+        width: 100%;
+    }
+}
+/*end table style*/
+
+
+/*przyciski dod sprawdzenia zarezerwowanych i wolnych terminów*/
+.terms-href,
+.terms-booked-href,
+.terms-free-href{
+    padding: 10px 18px;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+}
+.meeting-button-free,
+.meeting-button-booked{
+    padding: 14px 24px;
+    font-size: 28px;
+    text-align: center;
+    align-items: center;
+}
+.meeting-button-free{
+    color: darkgreen;
+}
+.meeting-button-booked{
+    color: orangered;
 }
 
 label {
@@ -652,6 +600,7 @@ input[type="password"] {
     font-size: 14px;
 }
 
+/* strona zmiany hasła restu hsała*/
 .btn-submit {
     display: block;
     width: 100%;
@@ -674,10 +623,4 @@ input[type="password"] {
     height: 30px;
     font-size: 16px;
 }
-.success-container {
-    background-color: green;
-}
-.error-container {
-    background-color: red;
-}
-/*end reset password form*/
+/* KONIEC strona zmiany hasła restu hsała*/

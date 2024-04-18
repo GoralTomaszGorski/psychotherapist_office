@@ -10,7 +10,7 @@ public class AboutMeController {
 
     @GetMapping("/omnie")
     public String therms(Model model){
-        model.addAttribute("heading", "Ewa Górska psychoterapełta, psycholog, mediator");
-        return "aboutMe";
+        model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, mediator");
+        return "about-me";
     }
 }

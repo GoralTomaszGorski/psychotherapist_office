@@ -13,7 +13,8 @@
         <h4 class="list-heading" th:text="${description}">Twoje dane będzie widział jedynie terapeuta</h4>
         <p class="list-heading" th:text="${additinal}">ogólnodostępne będzie jednynie NICK</p>
         <!--suppress LanguageDetectionInspection -->
-        <form action="" th:action="@{/user/dodaj-pacjenta}" method="post" class="mc-form" th:object="${patientDto}">
+        <form action="" th:action="@{/user/dodaj-pacjenta}"
+              method="post" class="mc-form" th:object="${patientDto}">
             <!-- dodawanie pacjenta -->
             <label for="nick">Nick  </label>
             <input type="text" id="nick" placeholder="np. Wiki23" th:field="*{nick}">
