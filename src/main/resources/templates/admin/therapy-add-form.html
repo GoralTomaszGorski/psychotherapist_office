@@ -12,8 +12,7 @@
         <form action="#" th:action="@{/admin/offer/add}"
               method="post" class="mc-form" th:object="${therapyDto}">
             <!-- dodawanie terapii -->
-            <label for="id">Liczba porządkowa (id).</label>
-            <input type="text" id="id" placeholder="np. 41" th:field="*{id}">
+
             <label for="kindOfTherapy">Rodzaj terapii</label>
             <input type="text" id="kindOfTherapy"
                    placeholder="np. indywidualna" th:field="*{kindOfTherapy}">
