@@ -9,7 +9,7 @@ spring:
     default: dev
 
   liquibase:
-    change-log: classpath:db/master.xml
+    change-log: classpath:db/master2.xml
   sql:
     init:
       mode: never
