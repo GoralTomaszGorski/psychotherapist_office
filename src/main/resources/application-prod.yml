@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gabinet
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 8557
+  liquibase:
+    contexts: prod
+  jpa:
+    hibernate:
+      ddl-auto: validate
