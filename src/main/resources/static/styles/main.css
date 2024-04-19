@@ -523,12 +523,11 @@ i powinna zajmować większość dostępnej przestrzeni
     float: left;
     max-width: 25%;
     padding: 2%;
+    min-width: 230px;
 
 }
 
 .column-am-right {
-    min-width: 450px;
-
     float: left;
     max-width: 66%;
     padding: 2%;
@@ -547,8 +546,12 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 
 .column-a{
+    display: flow;
+    /*min-width: 450px;*/
     flex-wrap: wrap;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    /*display: flex;*/
+    justify-content: space-between;;
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
