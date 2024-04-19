@@ -1,9 +1,7 @@
 insert	into	Patient	(	nick	,	name	,	surname	,	telephone	,	year_Of_Brith	,	email	,	password	)
 values
 (	'vaylesbury0'	,	'Valentine'	,	'Aylesbury'	,	'+7-415-462-2763'	,	1974	,	'admin@example.com', '{noop}adminpass'),
-
-('vaylesbury0','Valentine','Aylesbury','+7-415-462-2763',1974,'hfishwick0@list-manage.com','{noop}Haslo1!'),
-('gthomson1','Gerti','Thomson','+54-867-645-8594',1986,'ayele1@elegantthemes.com','{noop}K0doweHaslo2'),
+('gthomson1','Gerti','Thomson','+54-867-645-8594',1986,'user@example.com', '{noop}userpass'),
 ('nberthomier2','Natty','Berthomier','+62-909-391-2521',1986,'kbrabon2@spotify.com','{noop}BezpieczneP@ss'),
 ('rmapston3','Ramonda','Mapston','+1-809-839-9117',2005,'draff3@mtv.com','{noop}Szyfrowane7X'),
 ('dlorkins4','Dur','Lorkins','+81-851-144-8891',2008,'pslateford4@t.co','{noop}TajneHaslo8_'),

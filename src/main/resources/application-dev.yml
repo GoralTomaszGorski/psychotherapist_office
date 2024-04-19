@@ -6,3 +6,6 @@ spring:
     contexts: dev
     change-log: classpath:db/changelog/master2.xml
 
+  jpa:
+    hibernate:
+      ddl-auto: validate

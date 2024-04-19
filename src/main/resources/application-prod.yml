@@ -6,6 +6,8 @@ spring:
     password: 8557
   liquibase:
     contexts: prod
+    change-log: classpath:db/changelog/master2.xml
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update

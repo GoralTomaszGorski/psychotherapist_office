@@ -1,6 +1,6 @@
-insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'11:00'	,	false	)	;
+insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'11:00'	,	true	)	;
 insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'12:00'	,	false	)	;
-insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'13:00'	,	true	)	;
+insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'13:00'	,	false	)	;
 insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'14:00'	,	true	)	;
 insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'15:00'	,	false	)	;
 insert	into	calender	(	dayof	,	time	,	free	)	values	('Poniedziałek'	,	'16:00'	,	false	)	;

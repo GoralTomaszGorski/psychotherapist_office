@@ -9,7 +9,7 @@ insert into
     users (email, password)
 values
     ('admin@example.com', '{noop}adminpass'),   -- 1
-    ('user@example.com', '{noop}userpass'),     -- 1
+    ('user@example.com', '{noop}userpass'),     -- 2
     ('editor@example.com', '{noop}editorpass'),
     ('draff3@mtv.com','{noop}Szyfrowane7X'),
     ('pslateford4@t.co','{noop}TajneHaslo8_'),
@@ -63,7 +63,7 @@ insert into
     user_roles (user_id, role_id)
 values
     (	1	,	1	),
-    (	2	,	1	)	,
+    (	2	,	2	)	,
     (	3	,	2	)	,
     (	4	,	2	)	,
     (	5	,	2	)	,
