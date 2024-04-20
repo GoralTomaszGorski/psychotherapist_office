@@ -10,7 +10,6 @@
     <main class="main-content" layout:fragment="content">
         <h2 class="list-heading" th:text="${heading}">Podaj swoje dane, aby umówić wizytę</h2>
         <h4 class="list-heading" th:text="${description}">Twoje dane będzie widział jedynie terapeuta.</h4>
-        <p class="list-heading" th:text="${additinal}">Ogólnodostępne będzie jednynie NICK</p>
 
         <section class="mc-form" th:object="${calender}">
             <h4 >Termin spotkania: </h4>
@@ -31,16 +30,18 @@
             </select>
 
             <div class="mc-form-patient" th:field="*{patient}">
+
+                <p>* - pola obowiązkowe</p>
+                <label for="name">Imię * </label>
+                <input required class="option-box" type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
+                <label for="surname">Nazwisko *</label>
+                <input required class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
+                <label for="telephone">Telefon *</label>
+                <input required class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
+                <label  for="yearOfBrith">Rok urodzenia Pacjenta np. 1988 *</label>
+                <input class="option-box" type="number" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
                 <label for="nick">Nick </label>
                 <input class="option-box" type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
-                <label for="name">Imię  </label>
-                <input required class="option-box" type="text" id="name" placeholder="np. Adam" th:field="${patientToSave.name}">
-                <label for="surname">Nazwisko </label>
-                <input required class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
-                <label for="telephone">Telefon </label>
-                <input required class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
-                <label  for="yearOfBrith">Rok urodzenia Pacjenta</label>
-                <input class="option-box" type="text" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
             </div>
 
             <button type="submit">Dodaj</button>

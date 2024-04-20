@@ -200,9 +200,14 @@ i powinna zajmować większość dostępnej przestrzeni
 /*większe inputy z paddingami*/
 .mc-form > input,
 .mc-form > textarea,
-.mc-form > button {
+.mc-form > number,
+.mc-form > tel,
+.mc-form > text,
+.mc-form > data,
+.mc-form > button{
     font-size: 1.2rem;
     color: black;
+    background-color: white;
     padding: 8px;
     font-family: inherit;
 
@@ -594,7 +599,8 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

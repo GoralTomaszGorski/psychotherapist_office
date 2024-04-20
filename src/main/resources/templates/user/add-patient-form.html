@@ -11,22 +11,27 @@
     <main class="main-content" layout:fragment="content">
         <h2 class="list-heading" th:text="${heading}">Podaj swoje dane, aby umówić wizytę</h2>
         <h4 class="list-heading" th:text="${description}">Twoje dane będzie widział jedynie terapeuta</h4>
-        <p class="list-heading" th:text="${additinal}">ogólnodostępne będzie jednynie NICK</p>
         <!--suppress LanguageDetectionInspection -->
         <form action="" th:action="@{/user/dodaj-pacjenta}"
               method="post" class="mc-form" th:object="${patientDto}">
             <!-- dodawanie pacjenta -->
-            <label for="nick">Nick  </label>
-            <input type="text" id="nick" placeholder="np. Wiki23" th:field="*{nick}">
-            <label for="name">Imię  </label>
-            <input required type="text" id="name" placeholder="np. Adam" th:field="*{name}">
-            <label for="surname">Nazwisko  </label>
-            <input required type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="*{surname}">
-            <label for="telephone">Telefon </label>
-            <input required type="text" id="telephone" placeholder="+48 606 215 111" th:field="*{telephone}">
 
-            <label for="yearOfBrith">Rok urodzenia </label>
-            <input type="text" id="yearOfBrith" placeholder="1988" th:field="*{yearOfBrith}">
+            <p>* - pola obowiązkowe</p>
+            <label for="name">Imię *  </label>
+            <input required type="text" id="name" placeholder="np. Adam"
+                   th:field="*{name}">
+            <label for="surname">Nazwisko *  </label>
+            <input required type="text" id="surname" placeholder="np. Brzęczyszczykiewicz"
+                   th:field="*{surname}">
+            <label for="telephone">Telefon * </label>
+            <input required type="text" id="telephone" placeholder="606 215 111"
+                   th:field="*{telephone}">
+            <label for="yearOfBrith">Rok urodzenia np. 1988 * </label>
+            <input type="number" th:default="1988" id="yearOfBrith"
+                   placeholder="1988" th:field="*{yearOfBrith}">
+            <label for="nick">Nick  </label>
+            <input type="text" id="nick" placeholder="np. Wiki23"
+                   th:field="*{nick}">
             <button type="submit">Dodaj</button>
         </form>
     </main>

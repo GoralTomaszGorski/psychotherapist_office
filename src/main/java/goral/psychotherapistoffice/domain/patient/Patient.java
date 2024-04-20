@@ -18,8 +18,7 @@ public class Patient {
     private String surname;
     private String email;
     private String telephone;
-    private Year yearOfBrith;
-
+    private int yearOfBrith;
     public Long getId() {
         return id;
     }
@@ -68,11 +67,11 @@ public class Patient {
         this.telephone = telephone;
     }
 
-    public Year getYearOfBrith() {
+    public int getYearOfBrith() {
         return yearOfBrith;
     }
 
-    public void setYearOfBrith(Year yearOfBrith) {
+    public void setYearOfBrith(int yearOfBrith) {
         this.yearOfBrith = yearOfBrith;
     }
 

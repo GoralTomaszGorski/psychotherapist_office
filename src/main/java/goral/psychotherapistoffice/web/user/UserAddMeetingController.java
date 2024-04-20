@@ -44,10 +44,8 @@ public class UserAddMeetingController {
             Model model) throws TermIsBusyException{
         model.addAttribute("heading", "Podaj swoje dane, aby umówić wizytę");
         model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. " +
-                "Ogólnodostępne będzie jednynie NICK. ");
-        model.addAttribute(
-                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
-                        "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
+                "Ogólnodostępny będzie jednynie Nick. ");
+
         //1. wybranie z kalendarza
         CalenderDto calender = calenderService.findFreeCalenderById(calenderId)
                 .orElseThrow(TermIsBusyException::new);
@@ -76,11 +74,10 @@ public class UserAddMeetingController {
         meetingService.addMeetingWithNewPatient(patientToSave, meetingToSaveDto);
         redirectAttributes.addFlashAttribute(
                 HomeController.NOTIFICATION_ATTRIBUTE,
-                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany na <b>%s</b> na <b>%s</b>"
+                "Pacjent <b>%s %s </b> został zapisany na <b>%s</b> na <b>%s</b>"
                         .formatted(
                                 patientToSave.getName(),
                                 patientToSave.getSurname(),
-                                patientToSave.getNick(),
                                 calenderService.findCalenderById(calenderIdLocal)
                                         .map(CalenderDto::getDayof).orElse("Undefined"),
                                 therapyService.findTherapyById(meetingToSaveDto.getTherapy())
