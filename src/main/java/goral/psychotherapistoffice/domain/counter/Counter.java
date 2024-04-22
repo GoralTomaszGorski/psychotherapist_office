@@ -22,6 +22,9 @@ public class Counter {
     @Column(name = "entry", nullable = false)
     private int entry;
 
+    @Column(name = "url", nullable = false)
+    private String url;
+
     @Column(name = "date", nullable = false)
     private Date date;
 
@@ -78,4 +81,11 @@ public class Counter {
     }
 
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

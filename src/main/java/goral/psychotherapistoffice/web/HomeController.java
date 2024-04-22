@@ -30,14 +30,7 @@ public class HomeController {
     @GetMapping("/")
     public String therms(Model model, HttpServletRequest request){
         List<CalenderDto>allTherms = calenderService.findAllTherms();
-        String sessionId = request.getSession().getId();
-        String ip = request.getRemoteAddr();
-        Counter counter = counterService.findBySessionAndIp(sessionId, ip);
-        if (counter == null) {
-            counterService.incrementEntry(sessionId, ip);
-        } else {
-            counterService.incrementRefresh(sessionId, ip);
-        }
+
         model.addAttribute("headingAllTherm", "Rejestracja internetowa");
         model.addAttribute("descriptionHead",
                 "Termin sesji jest stały i cotygodniowy zgodnie ze standardami prowadzenia psychoterapii. " +
@@ -45,7 +38,7 @@ public class HomeController {
         model.addAttribute("descriptionAllTherms",
                 "Kliknij na wybrany wolny termin (zielona ikonka):");
         model.addAttribute("alltherms", allTherms);
-        model.addAttribute("counter", counter);
+
         return "index";
     }
 

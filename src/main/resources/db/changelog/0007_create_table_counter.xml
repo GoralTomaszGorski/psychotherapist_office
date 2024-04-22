@@ -22,6 +22,9 @@
             <column name="entry" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="date" type="DATE">
                 <constraints nullable="false"/>
             </column>
