@@ -6,7 +6,7 @@ spring:
     password: 8557
   liquibase:
     contexts: prod
-    change-log: classpath:db/changelog/master2.xml
+    change-log: classpath:db/changelog/master3.xml
 
   jpa:
     hibernate:

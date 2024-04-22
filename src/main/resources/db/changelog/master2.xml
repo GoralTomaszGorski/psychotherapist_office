@@ -20,7 +20,6 @@
     <include file="../testdata/0004_Meeting.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testdata/0005_Users_and_roles.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testdata/0006_Users_and_roles_prod.sql" relativeToChangelogFile="true" context="prod"/>
-    <include file="../testdata/0007_Calender_prod.sql" relativeToChangelogFile="true" context="prod"/>
 
 
 

@@ -18,6 +18,7 @@ public class Patient {
     private String surname;
     private String email;
     private String telephone;
+    @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
     public Long getId() {
         return id;
