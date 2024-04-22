@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+
+
+<body>
+<main class="main-content" layout:fragment="content">
+
+    <h2 class="list-heading">Panel administracyjny</h2>
+    <div >
+        <ul class="patients-list123">
+            <li>Strona główna: <span th:text="${urlVisits['/']}"></span></li>
+            <li>user: <span th:text="${urlVisits['user']}"></span></li>
+            <li>O nas: <span th:text="${urlVisits['/omnie']}"></span></li>
+            <li>O nas: <span th:text="${urlVisits['http://localhost:8080/omnie']}"></span></li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>
