@@ -1,3 +1,4 @@
 .idea
 target
 docker/.env
+resources/application-prod.yml

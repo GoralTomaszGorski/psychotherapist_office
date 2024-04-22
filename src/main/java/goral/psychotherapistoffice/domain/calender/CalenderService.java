@@ -21,14 +21,14 @@ public class CalenderService {
     }
 
     public List<CalenderDto>findAllFreeTherms(){
-        return calenderRepository.findAllByFreeIsTrue()
+        return calenderRepository.findAllByFreeIsTrueOrderById()
                 .stream()
                 .map(CalenderDtoMapper::map)
                 .toList();
     }
 
     public List<CalenderDto>findAllTherms(){
-        return calenderRepository.findAll()
+        return calenderRepository.findAllByDayofIsNotNullOrderById()
                 .stream()
                 .map(CalenderDtoMapper::map)
                 .toList();
