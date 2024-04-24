@@ -2,11 +2,17 @@ package goral.psychotherapistoffice.domain.counter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 
-@WebFilter("/*")
+
+@WebFilter(filterName = "TimeOfDayFilter",
+        urlPatterns = {"/*"},
+        initParams = {
+                @WebInitParam(name = "mood", value = "awake")})
+
 public class UrlVisitFilter implements Filter {
 
     private final CounterService counterService;
