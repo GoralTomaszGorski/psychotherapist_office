@@ -31,13 +31,15 @@ public class PatientManagementController {
         model.addAttribute("description",
                 "Dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
         model.addAttribute("additinal",
-                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
+                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie " +
+                        "3 ostatnie cyfry z nr tel, " +
                         "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
         return "user/add-patient-form";
     }
 
     @PostMapping("/dodaj-pacjenta")
-    public String addPatient(@ModelAttribute("patient") PatientDto patientDto, RedirectAttributes redirectAttributes){
+    public String addPatient(@ModelAttribute("patient") PatientDto patientDto,
+                             RedirectAttributes redirectAttributes){
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
@@ -51,14 +53,16 @@ public class PatientManagementController {
     }
 
     @GetMapping("/pacjenci")
-    public String patients(@RequestParam(required = false) String keyword,  Model model) {
+    public String patients(@RequestParam(required = false)
+                               String keyword,  Model model) {
         List<PatientDto> patients;
         if (keyword == null)  {
             patients = patientService.findAllPatients();
         } else {
             patients = patientService.findBySurnameOrName(keyword);
         }
-        model.addAttribute("patientHeading", "Sprawdź dane pacjentów");
+        model.addAttribute("patientHeading",
+                "Sprawdź dane pacjentów");
         model.addAttribute("patients", patients);
         return "admin/patients";
     }

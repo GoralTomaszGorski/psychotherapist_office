@@ -1,9 +1,12 @@
 package goral.psychotherapistoffice.domain.counter;
 
+import goral.psychotherapistoffice.domain.counter.dto.CounterDto;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.Optional;
 
 
 @Service
@@ -17,46 +20,30 @@ public class CounterService {
     }
 
     @Transactional
-    public void incrementVisitCount(String sessionId, String ip, String url) {
-        Counter counter = counterRepository.findBySessionIdAndIp(sessionId, ip);
-        if (counter == null) {
-            counter = new Counter();
-            counter.setSessionId(sessionId);
-            counter.setIp(ip);
-            counter.setEntry(1);
-            counter.setRefresh(0);
-            counter.setUrl(url);
-        } else {
-            counter.setEntry(counter.getEntry() + 1);
-        }
-        counter.setDate(new Date());
-        counterRepository.save(counter);
+    public void httpParameterToIncrement(HttpServletRequest request){
+        String sessionId = request.getSession().getId();
+        String ip = request.getRemoteAddr();
+        String url = request.getRequestURI();
+        incrementCounter(sessionId, ip, url);
     }
 
-    @Transactional
-    public void incrementRefresh(String sessionId, String ip, String url) {
-        Counter counter = counterRepository.findBySessionIdAndIp(sessionId, ip);
+
+    public void incrementCounter(String sessionId, String ip, String url) {
+        Counter counter = counterRepository.findBySessionIdAndUrl(sessionId, url);
         if (counter == null) {
             counter = new Counter();
             counter.setSessionId(sessionId);
             counter.setIp(ip);
-            counter.setEntry(0);
-            counter.setRefresh(1);
             counter.setUrl(url);
+            counter.setEntry(1);
+            counter.setDate(new Date());
         } else {
             counter.setRefresh(counter.getRefresh() + 1);
         }
-        counter.setDate(new Date());
         counterRepository.save(counter);
     }
 
-    public int getVisitCount(String url) {
-        Counter counter = counterRepository.findByUrl(url);
-        return (counter != null) ? counter.getEntry() : 0;
-    }
-
-    public int getRefreshCount(String url, String sessionId, String ip) {
-        Counter counter = counterRepository.findBySessionIdAndIp(sessionId, ip);
-        return (counter != null) ? counter.getRefresh() : 0;
+    public int getCountForUrl(String url) {
+        return counterRepository.countByUrl(url);
     }
 }

@@ -19,15 +19,19 @@ public class HomeController {
     public static final String NOTIFICATION_ATTRIBUTE = "notification";
 
     private final CalenderService calenderService;
+    private final CounterService counterService;
 
-    public HomeController(CalenderService calenderService){
+
+    public HomeController(CalenderService calenderService, CounterService counterService){
         this.calenderService = calenderService;
+        this.counterService = counterService;
     }
 
     @GetMapping("/")
     public String therms(Model model, HttpServletRequest request){
-        List<CalenderDto>allTherms = calenderService.findAllTherms();
+        counterService.httpParameterToIncrement(request);
 
+        List<CalenderDto>allTherms = calenderService.findAllTherms();
         model.addAttribute("headingAllTherm", "Rejestracja internetowa");
         model.addAttribute("descriptionHead",
                 "Termin sesji jest stały i cotygodniowy zgodnie ze standardami prowadzenia psychoterapii. " +

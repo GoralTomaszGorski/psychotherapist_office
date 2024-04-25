@@ -33,7 +33,8 @@ public class TherapyManagementController {
 
     @PostMapping("/offer/add")
     public String addTherapy(@ModelAttribute("therapy")
-                                 TherapyDto therapyDto, RedirectAttributes redirectAttributes){
+                                 TherapyDto therapyDto,
+                             RedirectAttributes redirectAttributes){
         therapyService.addTherapy(therapyDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
@@ -64,7 +65,8 @@ public class TherapyManagementController {
     }
 
     @PostMapping("/offer/edit/{id}")
-    public String showEditTherapy(@PathVariable("id") TherapyDto therapyDto, RedirectAttributes redirectAttributes){
+    public String showEditTherapy(@PathVariable("id") TherapyDto therapyDto,
+                                  RedirectAttributes redirectAttributes){
         therapyService.editTherapy(therapyDto);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
@@ -91,5 +93,4 @@ public class TherapyManagementController {
         );
         return "redirect:/admin";
     }
-
 }

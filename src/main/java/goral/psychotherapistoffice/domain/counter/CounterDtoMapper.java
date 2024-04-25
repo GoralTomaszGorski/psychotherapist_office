@@ -10,6 +10,7 @@ public class CounterDtoMapper {
                 counter.getIp(),
                 counter.getRefresh(),
                 counter.getEntry(),
+                counter.getUrl(),
                 counter.getDate()
         );
     }

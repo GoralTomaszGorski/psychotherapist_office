@@ -53,21 +53,38 @@ docker-compose -f docker/docker-compose.yml up -d
 ###### password: adminpass
 
 ## Description
-Psychotherapy office client services
+Customer service for the psychotherapy office
 
-The application has been prepared for clients of a psychotherapy office 
-to manage appointments more efficiently. 
-The client can check the working time of the office, 
-choose a free and convenient date for an appointment.
-API administrator gets a tool for easier access to the patient, 
-appointment management becomes much easier.
+The application has been developed with the clients of a psychotherapy office in order to manage appointments more efficiently.
+The client can make contact with the therapist,
+check the offer, choose a free and convenient appointment.
+The API administrator is given a tool for easier access to the patient,
+managing appointments becomes much easier.
+Key functionalities:
+- adds, searches for patients from the database;
+- edits appointments;
+- adds, edits therapy types (offer);
+- adds, edits work calendar;
 
-Actually I prepare functions:
-1. Login and authorization of client
-2. changing therm hours - for admin
-3. approving, deleting meetings - for admin
-4. Contacting box
-5. Tab about me
+
+In the project I use:
+java 17;
+spring boot 3.2.0;
+View layer using thymeleaf, CSS, java script;
+Developer and production profiles using liquibase;
+Development database H2, production database postgreSQL;
+Logging, password changing is done using libraries:
+org.springframework.security.config.annotation.web.builders.HttpSecurity;
+org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+org.springframework.security.web.SecurityFilterChain;
+Contact mailbox using libraries:
+jakarta.mail;
+jakarta.mail.internet.InternetAddress;
+jakarta.mail.internet.MimeMessage;
+
+I have some more ideas and suggestions, the application will be extended.
+
+Translated with DeepL.com (free version)
 
 DB Schema
-![Psychotherapy_office_DB_Schema .png](src%2Fmain%2Fresources%2Fstatic%2Fimages%2FPsychotherapy_office_DB_Schema%20.png)
+![psychotherapistOffice_db_schema.png](src%2402Fmain%2Fresources%2Fstatic%2Fimages%2FpsychotherapistOffice_db_schema.png)

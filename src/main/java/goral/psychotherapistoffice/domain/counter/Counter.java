@@ -1,7 +1,9 @@
 package goral.psychotherapistoffice.domain.counter;
 
+import goral.psychotherapistoffice.domain.counter.dto.CounterDto;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name = "counter")
@@ -22,11 +24,11 @@ public class Counter {
     @Column(name = "entry", nullable = false)
     private int entry;
 
-    @Column(name = "url", nullable = false)
-    private String url;
-
     @Column(name = "date", nullable = false)
     private Date date;
+
+    @Column(name = "url", nullable = false)
+    private String url;
 
     public Counter() {
     }
@@ -88,4 +90,6 @@ public class Counter {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 }

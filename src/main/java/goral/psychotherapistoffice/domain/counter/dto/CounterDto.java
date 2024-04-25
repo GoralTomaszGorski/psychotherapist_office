@@ -9,17 +9,20 @@ public class CounterDto {
     private String ip;
     private int refresh;
     private int entry;
+    private String url;
     private Date date;
 
     public CounterDto() {
     }
 
-    public CounterDto(Long id, String sessionId, String ip, int refresh, int entry, Date date) {
+
+    public CounterDto(Long id, String sessionId, String ip, int refresh, int entry, String url, Date date) {
         this.id = id;
         this.sessionId = sessionId;
         this.ip = ip;
         this.refresh = refresh;
         this.entry = entry;
+        this.url = url;
         this.date = date;
     }
 
@@ -69,5 +72,13 @@ public class CounterDto {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

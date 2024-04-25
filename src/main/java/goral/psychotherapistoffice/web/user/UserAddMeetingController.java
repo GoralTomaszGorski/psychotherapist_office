@@ -2,6 +2,7 @@ package goral.psychotherapistoffice.web.user;
 
 import goral.psychotherapistoffice.domain.calender.CalenderService;
 import goral.psychotherapistoffice.domain.calender.dto.CalenderDto;
+import goral.psychotherapistoffice.domain.counter.CounterService;
 import goral.psychotherapistoffice.domain.exception.TermIsBusyException;
 import goral.psychotherapistoffice.domain.meeting.MeetingService;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingToSaveDto;
@@ -11,6 +12,7 @@ import goral.psychotherapistoffice.domain.therapy.TherapyService;
 import goral.psychotherapistoffice.domain.therapy.dto.TherapyDto;
 import goral.psychotherapistoffice.domain.user.UserService;
 import goral.psychotherapistoffice.web.HomeController;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +30,17 @@ public class UserAddMeetingController {
     private final TherapyService therapyService;
     private final UserService userService;
     private final PatientService patientService;
+    private final CounterService counterService;
+
 
     private long calenderIdLocal ;
-    public UserAddMeetingController(CalenderService calenderService, MeetingService meetingService, TherapyService therapyService, UserService userService, PatientService patientService) {
+    public UserAddMeetingController(CalenderService calenderService, MeetingService meetingService, TherapyService therapyService, UserService userService, PatientService patientService, CounterService counterService) {
         this.calenderService = calenderService;
         this.meetingService = meetingService;
         this.therapyService = therapyService;
         this.userService = userService;
         this.patientService = patientService;
+        this.counterService = counterService;
     }
 
     @GetMapping("/termin/{calenderId}")
@@ -69,9 +74,10 @@ public class UserAddMeetingController {
     public String addMeetingWithNewPatient(
             @ModelAttribute MeetingToSaveDto meetingToSaveDto,
             PatientDto patientToSave,
-            Model model,
+            Model model,  HttpServletRequest request,
             RedirectAttributes redirectAttributes) {
-        model.addAttribute("meetingSave", meetingToSaveDto);
+        counterService.httpParameterToIncrement(request);
+                model.addAttribute("meetingSave", meetingToSaveDto);
         meetingToSaveDto.setCalender(calenderIdLocal);
         meetingService.addMeetingWithNewPatient(patientToSave, meetingToSaveDto);
         redirectAttributes.addFlashAttribute(

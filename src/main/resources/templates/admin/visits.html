@@ -7,24 +7,21 @@
 
 <body>
 <main class="main-content" layout:fragment="content">
+    <h2 class="list-heading">Dzienny licznik wizyt</h2>
+    <div >
+        <ul class="patients-list123">
+            <h5>Licznik wizyt home /: <span th:text="${home}"></span></h5>
+            <h5>Licznik wizyt omnie/: <span th:text="${omnieC}"></span></h5>
+            <h5>Licznik wizyt user/: <span th:text="${userC}"></span></h5>
+            <h5>Licznik wizyt admin/: <span th:text="${adminC}"></span></h5>
+            <h5>Licznik wizyt terminy/: <span th:text="${terminyC}"></span></h5>
+            <h5>Licznik wizyt spotkania/: <span th:text="${spotkaniaC}"></span></h5>
+            <h5>Licznik wizyt mail/: <span th:text="${mail}"></span></h5>
+            <h5>Licznik wizyt oferta/: <span th:text="${offertaC}"></span></h5>
+            <h5>Licznik wizyt login/: <span th:text="${loginC}"></span></h5>
 
-    <h2>Statystyki odwiedzin</h2>
-
-    <h3>Liczba wejść na stronę:</h3>
-    <ul>
-        <li>Strona główna: <span th:text="${urlVisits['Strona główna']}"></span></li>
-        <li>Strona użytkownika: <span th:text="${urlVisits['Strona użytkownika']}"></span></li>
-        <li>O nas: <span th:text="${urlVisits['O nas']}"></span></li>
-        <li>Oferta: <span th:text="${urlVisits['Oferta']}"></span></li>
-    </ul>
-
-    <h3>Liczba odświeżeń:</h3>
-    <ul>
-        <li>Strona główna: <span th:text="${urlRefreshes['Strona główna']}"></span></li>
-        <li>Strona użytkownika: <span th:text="${urlRefreshes['Strona użytkownika']}"></span></li>
-        <li>O nas: <span th:text="${urlRefreshes['O nas']}"></span></li>
-        <li>Oferta: <span th:text="${urlRefreshes['Oferta']}"></span></li>
-    </ul>
+        </ul>
+    </div>
 </main>
 </body>
 </html>
