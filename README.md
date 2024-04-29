@@ -84,7 +84,5 @@ jakarta.mail.internet.MimeMessage;
 
 I have some more ideas and suggestions, the application will be extended.
 
-Translated with DeepL.com (free version)
-
 DB Schema
 ![psychotherapistOffice_db_schema.png](src%2402Fmain%2Fresources%2Fstatic%2Fimages%2FpsychotherapistOffice_db_schema.png)

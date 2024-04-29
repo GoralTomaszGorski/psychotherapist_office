@@ -10,7 +10,7 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="kind_of_therapy" type="VARCHAR(30)"/>
-            <column name="description" type="VARCHAR(1500)"/>
+            <column name="description" type="VARCHAR(6000)"/>
             <column name="price" type="decimal"/>
 
         </createTable>
