@@ -1,5 +1,6 @@
 package goral.psychotherapistoffice.domain.counter.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CounterDto {
@@ -12,7 +13,7 @@ public class CounterDto {
     private String url;
     private Date date;
 
-    public CounterDto() {
+    public CounterDto(Long id, String sessionId, String ip, int refresh, int entry, String url, LocalDate date) {
     }
 
 

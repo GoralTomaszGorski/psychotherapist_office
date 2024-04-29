@@ -2,7 +2,7 @@ package goral.psychotherapistoffice.domain.counter;
 
 import goral.psychotherapistoffice.domain.counter.dto.CounterDto;
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Entity
@@ -25,7 +25,7 @@ public class Counter {
     private int entry;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "url", nullable = false)
     private String url;
@@ -74,11 +74,11 @@ public class Counter {
         this.entry = entry;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

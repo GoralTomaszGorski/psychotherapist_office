@@ -1,12 +1,11 @@
 package goral.psychotherapistoffice.domain.counter;
 
-import goral.psychotherapistoffice.domain.counter.dto.CounterDto;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.Optional;
+import java.time.LocalDate;
+
 
 
 @Service
@@ -36,7 +35,7 @@ public class CounterService {
             counter.setIp(ip);
             counter.setUrl(url);
             counter.setEntry(1);
-            counter.setDate(new Date());
+            counter.setDate(LocalDate.now());
         } else {
             counter.setRefresh(counter.getRefresh() + 1);
         }
