@@ -1,10 +1,10 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:test
-  liquibase:
-    change-log: classpath:db/changelog/master.xml
   jpa:
-    show-sql: false
+    show-sql: true
 
-  main:
-    allow-circular-references: false
+  profiles:
+    default: dev
+
+  sql:
+    init:
+      mode: never

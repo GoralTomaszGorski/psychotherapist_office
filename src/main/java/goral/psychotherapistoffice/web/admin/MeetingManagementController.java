@@ -26,9 +26,7 @@ public class MeetingManagementController {
     private final CalenderService calenderService;
     private final TherapyService therapyService;
 
-    public MeetingManagementController(
-            MeetingService meetingService, PatientService patientService,
-            CalenderService calenderService, TherapyService therapyService) {
+    public MeetingManagementController(MeetingService meetingService, PatientService patientService, CalenderService calenderService, TherapyService therapyService) {
         this.meetingService = meetingService;
         this.patientService = patientService;
         this.calenderService = calenderService;
@@ -36,8 +34,7 @@ public class MeetingManagementController {
     }
 
     @GetMapping("/spotkania")
-    public String meetingAdmin(@RequestParam(required = false)
-                                   String keyword, Model model){
+    public String meetingAdmin(@RequestParam(required = false) String keyword, Model model){
         List<MeetingDto> meetings;
         if (keyword == null){
             meetings = meetingService.findAllMeetings();
@@ -46,11 +43,9 @@ public class MeetingManagementController {
         } else {
             meetings = meetingService.findByKeyword(keyword);
         }
-        model.addAttribute("headingFA",
-                "Terminy spotkań");
+        model.addAttribute("headingFA", "Terminy spotkań");
         model.addAttribute("descriptionFA",
-                "Wyszukaj spotknie wpisując: " +
-                        "imię, nazwisko lub dzień tygodnia.");
+                "Wyszukaj Pacjenta wpisując: imię, nazwisko lub dzień tygodnia.");
         model.addAttribute("meetings", meetings);
         return "admin/meeting-admin-view";
     }
@@ -58,11 +53,8 @@ public class MeetingManagementController {
 
     @GetMapping("/dadaj-rezerwacje")
     public String addMeetingForm(Model model){
-        model.addAttribute("heading",
-                "Podaj swoje dane, aby umówić wizytę");
-        model.addAttribute("description",
-                "Twoje dane będzie widział jedynie terapeuta. " +
-                        "Ogólnodostępne będzie jednynie NICK. ");
+        model.addAttribute("heading", "Podaj swoje dane, aby umówić wizytę");
+        model.addAttribute("description", "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępny będzie jednynie Nick. ");
 
         List<TherapyDto>allTherapies = therapyService.findAllTherapies();
         model.addAttribute("therapies", allTherapies);

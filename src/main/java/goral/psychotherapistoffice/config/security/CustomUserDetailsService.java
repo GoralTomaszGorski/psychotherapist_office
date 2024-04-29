@@ -2,13 +2,11 @@ package goral.psychotherapistoffice.config.security;
 
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import goral.psychotherapistoffice.domain.user.UserService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 @Service

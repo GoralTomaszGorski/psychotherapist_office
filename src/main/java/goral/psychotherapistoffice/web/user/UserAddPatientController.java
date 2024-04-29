@@ -31,10 +31,7 @@ public class UserAddPatientController {
         model.addAttribute("heading",
                 "Podaj swoje dane, aby umówić wizytę");
         model.addAttribute("description",
-                "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie NICK. ");
-        model.addAttribute("additinal",
-                "Jeśli nie chcesz podawać nicku zostanie wygenerowny automatycznie 3 ostatnie cyfry z nr tel, " +
-                        "pierwsza litera imienia i 2 pierwsze litery nazwiska.");
+                "Twoje dane będzie widział jedynie terapeuta. Ogólnodostępne będzie jednynie Nick. ");
         return "user/add-patient-form";
     }
 
@@ -44,11 +41,11 @@ public class UserAddPatientController {
         patientService.addPatient(patientDto);
         redirectAttributes.addFlashAttribute(
                 UserController.NOTIFICATION_ATTRIBUTE,
-                "Pacjent <b>%s %s </b> pseudonim <b>%s</b> został zapisany "
+                "Pacjent <b>%s %s </b> został zapisany "
                         .formatted(
                                 patientDto.getName(),
-                                patientDto.getSurname(),
-                                patientDto.getNick())
+                                patientDto.getSurname()
+                        )
         );
         return "redirect:/user";
     }
