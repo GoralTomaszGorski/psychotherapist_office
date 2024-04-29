@@ -12,6 +12,8 @@
     <include file="0004_create_table_meeting.xml" relativeToChangelogFile="true"/>
     <include file="0005_create_table_role.xml" relativeToChangelogFile="true"/>
     <include file="0006_create_table_change_password.xml" relativeToChangelogFile="true"/>
+    <include file="0007_create_table_counter.xml" relativeToChangelogFile="true"/>
+
 
     <!-- TEST DATA -->
     <include file="../testdata/0001_Patient.sql" relativeToChangelogFile="true" context="dev"/>
