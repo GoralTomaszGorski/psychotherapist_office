@@ -20,8 +20,10 @@ public class MessageService{
         //smtp properties
         try {
             Message message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(
-                    authenticator.getPasswordAuthentication().getUserName()));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("ewagorska88@wp.pl"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("gabinet.ewa.gorska@gmail.com"));
+//                    authenticator.getPasswordAuthentication().getUserName()));
+
             message.setFrom(new InternetAddress(messageDto.getFrom()));
             message.setText(messageDto.getBody());
             message.setSubject(

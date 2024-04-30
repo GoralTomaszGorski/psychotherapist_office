@@ -85,4 +85,4 @@ jakarta.mail.internet.MimeMessage;
 I have some more ideas and suggestions, the application will be extended.
 
 DB Schema
-![psychotherapistOffice_db_schema.png](src%2402Fmain%2Fresources%2Fstatic%2Fimages%2FpsychotherapistOffice_db_schema.png)
+![psychotherapistOffice_db_schema.png](https://github.com/GoralTomaszGorski/psychotherapist_office/blob/6ca77b18357403c09c19b23b21effa0e37df7d4c/src/main/resources/static/images/psychotherapistOffice_db_schema.png)
