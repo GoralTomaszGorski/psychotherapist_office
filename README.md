@@ -49,8 +49,12 @@ docker-compose -f docker/docker-compose.yml up -d
 [Click here](http://localhost:8080/).
 
 ### Authentication data:
+###### Admin:
 ###### login: admin@example.com
 ###### password: adminpass
+###### User:
+###### login: user@example.com
+###### password: userpass
 
 ## Description
 Customer service for the psychotherapy office
