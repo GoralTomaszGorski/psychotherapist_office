@@ -8,12 +8,14 @@ public class PatientDto {
     private String email;
     private String telephone;
     private int yearOfBrith;
+    private boolean  approval;
+    private String  information;
 
     public PatientDto() {
 
     }
 
-    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith) {
+    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, boolean approval, String  information) {
         this.id = id;
         this.nick = nick;
         this.name = name;
@@ -21,6 +23,11 @@ public class PatientDto {
         this.email = email;
         this.telephone = telephone;
         this.yearOfBrith = yearOfBrith;
+        this.approval = isApproval();
+        this.information = information;
+    }
+
+    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, String information, boolean approval) {
     }
 
     public Long getId() {
@@ -77,5 +84,21 @@ public class PatientDto {
 
     public void setYearOfBrith(int yearOfBrith) {
         this.yearOfBrith = yearOfBrith;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 }

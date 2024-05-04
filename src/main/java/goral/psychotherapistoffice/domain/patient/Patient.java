@@ -20,6 +20,9 @@ public class Patient {
     private String telephone;
     @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
+    private boolean  approval;
+    private String  information;
+
     public Long getId() {
         return id;
     }
@@ -74,6 +77,22 @@ public class Patient {
 
     public void setYearOfBrith(int yearOfBrith) {
         this.yearOfBrith = yearOfBrith;
+    }
+
+    public boolean isApproval() {
+        return approval;
+    }
+
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     @OneToMany(mappedBy = "patient")

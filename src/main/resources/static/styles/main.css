@@ -120,6 +120,7 @@ i powinna zajmować większość dostępnej przestrzeni
     display: block;
 }
 
+
 .patients-list123 {
     list-style-type: none;
     font-size: 16px;
@@ -190,8 +191,17 @@ i powinna zajmować większość dostępnej przestrzeni
     font-size: 1.0rem;
     color: black;
     font-family: inherit;
-
 }
+
+.checkbox{
+    float: left;
+    block-size: 28px;
+    max-width: 28px;
+}
+/*.checkbox-au{*/
+/*    display: table-row;*/
+/*    flex-direction: row;*/
+/*}*/
 
 /*odstępy między etykietami i inputami*/
 .mc-form > * {

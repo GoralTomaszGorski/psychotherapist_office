@@ -17,6 +17,8 @@
             <column name="email" type="VARCHAR(100)">
             </column>
             <column name="password" type="VARCHAR(200)"/>
+            <column name="approval" type="boolean"/>
+            <column name="information" type="VARCHAR(2000)"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
