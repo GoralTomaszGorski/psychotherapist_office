@@ -179,6 +179,14 @@ i powinna zajmować większość dostępnej przestrzeni
 /*textarea domyślnie nie dziedziczy czcionki z body*/
 
 /*etykiety i inputy jeden pod drugim z odstępami po bokach*/
+
+.checkbox{
+    float: left;
+    block-size: 28px;
+    max-width: 28px;
+}
+
+
 .mc-form {
     display: flex;
     flex-direction: column;
@@ -193,11 +201,6 @@ i powinna zajmować większość dostępnej przestrzeni
     font-family: inherit;
 }
 
-.checkbox{
-    float: left;
-    block-size: 28px;
-    max-width: 28px;
-}
 
 
 /*odstępy między etykietami i inputami*/
