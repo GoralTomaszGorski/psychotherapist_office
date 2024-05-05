@@ -38,10 +38,20 @@
                 <input required class="option-box" type="text" id="surname" placeholder="np. Brzęczyszczykiewicz" th:field="${patientToSave.surname}">
                 <label for="telephone">Telefon *</label>
                 <input required class="option-box" type="text" id="telephone" placeholder="+48 606 215 111" th:field="${patientToSave.telephone}">
-                <label  for="yearOfBrith">Rok urodzenia Pacjenta np. 1988 *</label>
-                <input class="option-box" type="number" id="yearOfBrith" placeholder="1988" th:field="${patientToSave.yearOfBrith}">
+                <label for="approve">Zgoda na przetwarzanie danych zawartych w formularzu
+                    wyłącznie do kontaktu z Tobą oraz prowadzenia dokumentacji medycznej. * </label>
+                <input class="checkbox" required type="checkbox"
+                       id="approve" name="approve" th:checked="${patientToSave.approval}"/>
+                <label for="yearOfBrith">Rok urodzenia np. 1988 * </label>
+                <input required class="option-box" type="number" th:default="1988" id="yearOfBrith"
+                       placeholder="1988" th:field="${patientToSave.yearOfBrith}" min="1920">
                 <label for="nick">Nick </label>
-                <input class="option-box" type="text" id="nick" placeholder="np. Wiki23" th:field="${patientToSave.nick}">
+                <input type="text" class="option-box" id="nick" placeholder="np. Wiki23"
+                       th:field="${patientToSave.nick}">
+                <label for="info">Dodatkowe inforamacje np. adres zamieszkania. </label>
+                <input type="text" class="option-box" id="info" placeholder="np. adres"
+                       th:field="${patientToSave.information}">
+
             </div>
 
             <button type="submit">Dodaj</button>

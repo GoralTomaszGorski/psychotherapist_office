@@ -195,13 +195,12 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .checkbox{
     float: left;
+    display: table-row;
     block-size: 28px;
     max-width: 28px;
+    font-size: 1.2rem;
 }
-/*.checkbox-au{*/
-/*    display: table-row;*/
-/*    flex-direction: row;*/
-/*}*/
+
 
 /*odstępy między etykietami i inputami*/
 .mc-form > * {
@@ -461,7 +460,7 @@ i powinna zajmować większość dostępnej przestrzeni
 .flip-box2 {
     display: flex;
     background-color: transparent;
-    max-width: 600px;
+    max-width: 580px;
     max-height: 400px;
     border: 2px solid #ffb6ae;
 }

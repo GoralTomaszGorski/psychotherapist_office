@@ -17,32 +17,26 @@
             <!-- dodawanie pacjenta -->
 
             <p>* - pola obowiązkowe</p>
-            <label for="name">Imię *  </label>
+            <label for="name">Imię * </label>
             <input required type="text" id="name" placeholder="np. Adam"
                    th:field="*{name}">
-            <label for="surname">Nazwisko *  </label>
+            <label for="surname">Nazwisko * </label>
             <input required type="text" id="surname" placeholder="np. Brzęczyszczykiewicz"
                    th:field="*{surname}">
             <label for="telephone">Telefon * </label>
             <input required type="text" id="telephone" placeholder="606 215 111"
                    th:field="*{telephone}">
-
-            <div>
-                <label for="approve">Zgoda na przetwarzanie danych zawartych w formularzu
-                    wyłącznie do kontaktu z Tobą oraz prowadzenia dokumentacji medycznej. *</label>
-                <input class="checkbox" required type="checkbox"
-                       id="approve" name="approve" th:checked="*{approval}"/>
-
-            </div>
-
-
+            <label for="approve">Zgoda na przetwarzanie danych zawartych w formularzu
+                wyłącznie do kontaktu z Tobą oraz prowadzenia dokumentacji medycznej. * </label>
+            <input class="checkbox" required type="checkbox"
+                   id="approve" name="approve" th:checked="*{approval}"/>
             <label for="yearOfBrith">Rok urodzenia np. 1988 * </label>
             <input required type="number" th:default="1988" id="yearOfBrith"
-                   placeholder="1988" th:field="*{yearOfBrith}">
-            <label for="nick">Nick  </label>
+                   placeholder="1988" th:field="*{yearOfBrith}" min="1920">
+            <label for="nick">Nick </label>
             <input type="text" id="nick" placeholder="np. Wiki23"
                    th:field="*{nick}">
-            <label for="info">Dodatkowe inforamacje np. adres zamieszkania.  </label>
+            <label for="info">Dodatkowe inforamacje np. adres zamieszkania. </label>
             <input type="text" id="info" placeholder="np. adres"
                    th:field="*{information}">
             <button type="submit">Dodaj</button>
