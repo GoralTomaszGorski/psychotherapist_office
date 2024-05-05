@@ -195,10 +195,8 @@ i powinna zajmować większość dostępnej przestrzeni
 
 .checkbox{
     float: left;
-    display: table-row;
     block-size: 28px;
     max-width: 28px;
-    font-size: 1.2rem;
 }
 
 
@@ -227,6 +225,13 @@ i powinna zajmować większość dostępnej przestrzeni
     color: black;
     border: 1px #6d6d6d solid;
 }
+
+.mc-form > checkbox {
+    float: left;
+    block-size: 28px;
+    max-width: 28px;
+}
+
 .option-box{
     font-size: 1.2rem;
     color: black;
