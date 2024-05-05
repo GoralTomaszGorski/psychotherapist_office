@@ -20,8 +20,8 @@ public class Patient {
     private String telephone;
     @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
-    private boolean  approval;
     private String  information;
+    private boolean  approval;
 
     public Long getId() {
         return id;

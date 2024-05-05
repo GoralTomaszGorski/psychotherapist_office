@@ -45,9 +45,10 @@ public class PatientService {
     }
 
     public List<PatientDto> findAllPatients() {
-        return patientJpaRepository.findAll()
+        return patientJpaRepository.findAllBy()
                 .stream()
-                .map(PatientDtoMapper::map).toList();
+                .map(PatientDtoMapper::map)
+                .toList();
     }
 
     @Transactional
