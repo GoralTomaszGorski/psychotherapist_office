@@ -179,18 +179,15 @@ i powinna zajmować większość dostępnej przestrzeni
 /*textarea domyślnie nie dziedziczy czcionki z body*/
 
 /*etykiety i inputy jeden pod drugim z odstępami po bokach*/
-
-.checkbox{
-    float: left;
-    block-size: 28px;
-    max-width: 28px;
-}
-
-
 .mc-form {
     display: flex;
     flex-direction: column;
     margin: 0 32px;
+    .checkbox{
+        float: left;
+        block-size: 28px;
+        max-width: 28px;
+    }
 }
 .mc-form-patient {
     margin-top: 8px;
@@ -200,6 +197,7 @@ i powinna zajmować większość dostępnej przestrzeni
     color: black;
     font-family: inherit;
 }
+
 
 
 
