@@ -22,7 +22,7 @@ public class AboutMeController {
         counterService.httpParameterToIncrement(request);
         int count = counterService.getCountForUrl("/omnie");
         model.addAttribute("count", count);
-        model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, mediator");
+        model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, mediator, pedagog");
         return "about-me";
     }
 
