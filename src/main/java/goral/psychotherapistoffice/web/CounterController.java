@@ -16,7 +16,7 @@ public class CounterController {
 
     @GetMapping("/admin/visits")
     public String visits(Model model){
-        model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, mediator");
+        model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, pedagog, mediator");
 
         int home = (counterService.getCountForUrl("/"));
         model.addAttribute("home", home);
