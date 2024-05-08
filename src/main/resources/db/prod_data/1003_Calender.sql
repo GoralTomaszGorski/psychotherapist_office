@@ -1,29 +1,31 @@
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	11	,	'	Poniedziałek	'	,	'	08:00	'	,	false	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	12	,	'	Poniedziałek	'	,	'	09:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	13	,	'	Poniedziałek	'	,	'	10:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	14	,	'	Poniedziałek	'	,	'	11:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	15	,	'	Poniedziałek	'	,	'	12:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	16	,	'	Poniedziałek	'	,	'	13:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	24	,	'	Wtorek	'	,	'	15:30	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	25	,	'	Wtorek	'	,	'	16:30	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	26	,	'	Wtorek	'	,	'	17:30	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	27	,	'	Wtorek	'	,	'	18:30	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	28	,	'	Wtorek	'	,	'	19:30	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	31	,	'	Środa	'	,	'	08:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	32	,	'	Środa	'	,	'	09:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	33	,	'	Środa	'	,	'	10:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	34	,	'	Środa	'	,	'	11:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	35	,	'	Czwartek	'	,	'	08:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	41	,	'	Czwartek	'	,	'	09:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	42	,	'	Czwartek	'	,	'	10:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	43	,	'	Czwartek	'	,	'	11:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	44	,	'	Czwartek	'	,	'	12:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	45	,	'	Czwartek	'	,	'	13:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	46	,	'	Czwartek	'	,	'	14:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	53	,	'	Piątek	'	,	'	13:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	54	,	'	Piątek	'	,	'	14:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	55	,	'	Piątek	'	,	'	15:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	56	,	'	Piątek	'	,	'	16:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	57	,	'	Piątek	'	,	'	17:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	58	,	'	Piątek	'	,	'	18:00	'	,	true	)	;
-insert	into	Calender	(	id	,	dayOf	,	time	,	free	)	values	(	59	,	'	Piątek	'	,	'	19:00	'	,	true	)	;
+insert	into	Calender	(	id	,	dayOf	,	time	,	free	)
+values
+    (	11	,	'	Poniedziałek	'	,	'	08:00	'	,	false	)	,
+    (	12	,	'	Poniedziałek	'	,	'	09:00	'	,	true	)	,
+    (	13	,	'	Poniedziałek	'	,	'	10:00	'	,	true	)	,
+    (	14	,	'	Poniedziałek	'	,	'	11:00	'	,	true	)	,
+    (	15	,	'	Poniedziałek	'	,	'	12:00	'	,	true	)	,
+    (	16	,	'	Poniedziałek	'	,	'	13:00	'	,	true	)	,
+    (	24	,	'	Wtorek	'	,	'	15:30	'	,	true	)	,
+    (	25	,	'	Wtorek	'	,	'	16:30	'	,	true	)	,
+    (	26	,	'	Wtorek	'	,	'	17:30	'	,	true	)	,
+    (	27	,	'	Wtorek	'	,	'	18:30	'	,	true	)	,
+    (	28	,	'	Wtorek	'	,	'	19:30	'	,	true	)	,
+    (	31	,	'	Środa	'	,	'	08:00	'	,	true	)	,
+    (	32	,	'	Środa	'	,	'	09:00	'	,	true	)	,
+    (	33	,	'	Środa	'	,	'	10:00	'	,	true	)	,
+    (	34	,	'	Środa	'	,	'	11:00	'	,	true	)	,
+    (	35	,	'	Czwartek	'	,	'	08:00	'	,	true	)	,
+    (	41	,	'	Czwartek	'	,	'	09:00	'	,	true	)	,
+    (	42	,	'	Czwartek	'	,	'	10:00	'	,	true	)	,
+    (	43	,	'	Czwartek	'	,	'	11:00	'	,	true	)	,
+    (	44	,	'	Czwartek	'	,	'	12:00	'	,	true	)	,
+    (	45	,	'	Czwartek	'	,	'	13:00	'	,	true	)	,
+    (	46	,	'	Czwartek	'	,	'	14:00	'	,	true	)	,
+    (	53	,	'	Piątek	'	,	'	13:00	'	,	true	)	,
+    (	54	,	'	Piątek	'	,	'	14:00	'	,	true	)	,
+    (	55	,	'	Piątek	'	,	'	15:00	'	,	true	)	,
+    (	56	,	'	Piątek	'	,	'	16:00	'	,	true	)	,
+    (	57	,	'	Piątek	'	,	'	17:00	'	,	true	)	,
+    (	58	,	'	Piątek	'	,	'	18:00	'	,	true	)	,
+    (	59	,	'	Piątek	'	,	'	19:00	'	,	true	)	;
