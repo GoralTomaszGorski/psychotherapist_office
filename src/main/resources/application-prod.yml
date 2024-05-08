@@ -1,12 +1,15 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/b
+    url: jdbc:postgresql://localhost:5432/example
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: 8557
+
+    username: example
+    password: example
+
+
   liquibase:
     contexts: prod
-    change-log: classpath:db/changelog/master.xml
+    change-log: classpath:db/changelog/master_prod.xml
 
   jpa:
     hibernate:

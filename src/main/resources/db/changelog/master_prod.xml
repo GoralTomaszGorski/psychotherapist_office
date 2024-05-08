@@ -14,19 +14,12 @@
     <include file="0006_create_table_change_password.xml" relativeToChangelogFile="true"/>
     <include file="0007_create_table_counter.xml" relativeToChangelogFile="true"/>
 
-
     <!-- TEST DATA -->
-    <include file="../testdata/0001_Patient.sql" relativeToChangelogFile="true" context="dev"/>
-    <include file="../testdata/0002_Therapy.sql" relativeToChangelogFile="true" />
-    <include file="../testdata/0003_Calender.sql" relativeToChangelogFile="true" context="dev"/>
-    <include file="../testdata/0004_Meeting.sql" relativeToChangelogFile="true" context="dev"/>
-    <include file="../testdata/0005_Users_and_roles.sql" relativeToChangelogFile="true" context="dev"/>
-    <include file="../testdata/0006_Users_and_roles_prod.sql" relativeToChangelogFile="true" context="prod"/>
-
-
-
-    <!--    <include file="../testdata/0006_create_table_messages" relativeToChangelogFile="true" />&lt;!&ndash;context="dev"/>&ndash;&gt;-->
-    <!--    <include file="../testdata/0007_create_table_change_password" relativeToChangelogFile="true" />&lt;!&ndash;context="dev"/>&ndash;&gt;-->
-
+    <include file="../prod_data/1001_Patient.sql" relativeToChangelogFile="true" context="prod"/>
+    <include file="../testdata/0002_Therapy.sql" relativeToChangelogFile="true" context="prod"/>
+    <include file="../prod_data/1003_Calender.sql" relativeToChangelogFile="true" context="prod"/>
+    <include file="../prod_data/1004_Meeting.sql" relativeToChangelogFile="true" context="prod"/>
+    <include file="../prod_data/1005_Users_and_roles.sql" relativeToChangelogFile="true" context="prod"/>
+    <include file="../testdata/0006_Counter.sql" relativeToChangelogFile="true" context="prod"/>
 </databaseChangeLog>
 

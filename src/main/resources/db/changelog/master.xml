@@ -21,8 +21,7 @@
     <include file="../testdata/0004_Meeting.sql" relativeToChangelogFile="true" /><!--context="dev"/>-->
     <include file="../testdata/0005_Users_and_roles.sql" relativeToChangelogFile="true" /><!--context="dev"/>-->
     <include file="../testdata/0006_Counter.sql" relativeToChangelogFile="true" /><!--context="dev"/>-->
-    <!--    <include file="../testdata/0006_create_table_messages" relativeToChangelogFile="true" />&lt;!&ndash;context="dev"/>&ndash;&gt;-->
-    <!--    <include file="../testdata/0007_create_table_change_password" relativeToChangelogFile="true" />&lt;!&ndash;context="dev"/>&ndash;&gt;-->
+
 
 </databaseChangeLog>
 
