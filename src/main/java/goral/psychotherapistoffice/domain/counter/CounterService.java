@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Service
 public class CounterService {
 
-
     private final CounterRepository counterRepository;
 
     public CounterService(CounterRepository counterRepository) {
@@ -25,7 +24,6 @@ public class CounterService {
         String url = request.getRequestURI();
         incrementCounter(sessionId, ip, url);
     }
-
 
     public void incrementCounter(String sessionId, String ip, String url) {
         Counter counter = counterRepository.findBySessionIdAndUrl(sessionId, url);
@@ -41,7 +39,6 @@ public class CounterService {
         }
         counterRepository.save(counter);
     }
-
     public int getCountForUrl(String url) {
         return counterRepository.countByUrl(url);
     }

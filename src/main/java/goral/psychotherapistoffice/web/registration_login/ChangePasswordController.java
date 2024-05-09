@@ -15,7 +15,7 @@ public class ChangePasswordController {
     private final UserRepository userRepository;
     private final MessageService messageService;
     private final ChangePasswordTokenRepository changePasswordTokenRepository;
-    private PasswordEncoder passwordEncoder;
+    private final  PasswordEncoder passwordEncoder;
 
 
     public ChangePasswordController(UserService userService,

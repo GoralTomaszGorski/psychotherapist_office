@@ -2,7 +2,6 @@ package goral.psychotherapistoffice.domain.meeting.dto;
 
 import goral.psychotherapistoffice.domain.calender.Calender;
 import goral.psychotherapistoffice.domain.patient.Patient;
-import goral.psychotherapistoffice.domain.therapy.Therapy;
 
 public class MeetingDtoDev {
     private Long id;

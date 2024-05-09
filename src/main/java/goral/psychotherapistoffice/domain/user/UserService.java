@@ -25,13 +25,10 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-
-
     public Optional<UserCredentialsDto> findCredentialsByEmail(String email) {
         return userRepository.findByEmail(email)
                 .map(UserCredentialsDtoMapper::map);
     }
-
 
     @Transactional
     public void registerUserWithDefaultRole(
@@ -47,7 +44,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-
     public String generateResetToken(User user) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -56,10 +52,9 @@ public class UserService {
         resetToken.setUser(user);
         resetToken.setToken(uuid.toString());
         resetToken.setExpiryDateTime(expiryDateTime);
-        resetToken.setUser(user);
-        ChangePasswordToken token = changePasswordTokenRepository.save(resetToken);
-            String endpointUrl = "http://localhost:8080/reset-password";
-            return endpointUrl + "/" + resetToken.getToken();
+        changePasswordTokenRepository.save(resetToken);
+        String endpointUrl = "http://localhost:8080/reset-password";
+        return endpointUrl + "/" + resetToken.getToken();
     }
 
     public String getCurrentUserName() {

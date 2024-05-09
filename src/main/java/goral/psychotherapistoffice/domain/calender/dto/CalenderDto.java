@@ -15,7 +15,6 @@ public class CalenderDto {
     }
 
     public CalenderDto() {
-
     }
 
     public Long getId() {

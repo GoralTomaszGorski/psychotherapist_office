@@ -16,7 +16,6 @@ public class CounterDto {
     public CounterDto(Long id, String sessionId, String ip, int refresh, int entry, String url, LocalDate date) {
     }
 
-
     public CounterDto(Long id, String sessionId, String ip, int refresh, int entry, String url, Date date) {
         this.id = id;
         this.sessionId = sessionId;
