@@ -60,11 +60,8 @@ public class UserService {
         resetToken.setExpiryDateTime(expiryDateTime);
         resetToken.setUser(user);
         ChangePasswordToken token = tokenRepository.save(resetToken);
-        if (token != null) {
             String endpointUrl = "http://localhost:8080/reset-password";
             return endpointUrl + "/" + resetToken.getToken();
-        }
-        return "/";
     }
 
     public String getCurrentUserName() {

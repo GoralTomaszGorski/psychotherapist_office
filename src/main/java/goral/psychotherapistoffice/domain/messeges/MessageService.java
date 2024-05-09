@@ -16,14 +16,10 @@ public class MessageService{
     Session session = Session.getInstance(properties, authenticator);
 
     public void sendMailByMessagebox(MessageDto messageDto) {
-        //logic
-        //smtp properties
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress("ewagorska88@wp.pl"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress("gabinet.ewa.gorska@gmail.com"));
-//                    authenticator.getPasswordAuthentication().getUserName()));
-
             message.setFrom(new InternetAddress(messageDto.getFrom()));
             message.setText(messageDto.getBody());
             message.setSubject(
@@ -37,12 +33,12 @@ public class MessageService{
         }
     }
 
-    public String sendMail(UserCredentialsDto userCredentialsDto, String resetLink) throws MailSenderException{
+    public String sendMailToResetPassword(UserCredentialsDto userCredentialsDto, String resetLink) throws MailSenderException{
 
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userCredentialsDto.getEmail()));
-            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: \n\n"  + resetLink+ ". \n\n"
+            message.setText(  "Dzień dobry \n\n" + "Kliknij link poniżej żeby zresetować hasło: \n\n"  + resetLink+ "\n\n"
                     + "z poważaniem \n" + "Gabinet Psychoterapeutyczny \n Ewa Górska");
             message.setSubject("Reset hasła -  Gabinet Psychoterapeutyczny Ewa Górska");
             Transport.send(message);

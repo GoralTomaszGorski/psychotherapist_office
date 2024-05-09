@@ -42,7 +42,7 @@ public class ChangePasswordController {
                 userCredentialsDto.getEmail());
         String resetLink = userService.generateResetToken(user);
         if (user != null) {
-            output = messageService.sendMail(
+            output = messageService.sendMailToResetPassword(
                     userCredentialsDto, resetLink);
         }
         if (output.equals("success")) {
@@ -72,10 +72,10 @@ public class ChangePasswordController {
         User user = userRepository.findUsersByEmail(
                 userCredentialsDto.getEmail());
         if (user != null) {
-            user.setPassword(passwordEncoder.encode(
+           user.setPassword(passwordEncoder.encode(
                     userCredentialsDto.getPassword()));
-            userRepository.save(user);
+           userRepository.save(user);
         }
-        return "redirect:/login";
+        return "redirect:/login?setedNewPass";
     }
 }

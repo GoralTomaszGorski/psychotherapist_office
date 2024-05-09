@@ -12,8 +12,14 @@
             Wprowadzono niepoprawne hasło lub login/nazwę użytkownika.
         </p>
 
-        <p th:if="${param.logout}" class="mc-form-message">
+        <p th:if="${param.logout}"
+           class="mc-form-message">
             Zostałeś wylogowany, możesz zalogować się ponownie.
+        </p>
+
+        <p th:if="${param.setedNewPass}"
+           class="mc-form-message">
+            Hasło zostało zresetowane, możesz się zalogować nowym hasłem:)
         </p>
 
         <h2 class="list-heading">Zaloguj się</h2>
