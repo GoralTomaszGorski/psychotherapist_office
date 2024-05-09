@@ -1,8 +1,6 @@
 package goral.psychotherapistoffice.domain.user;
 
 
-import goral.psychotherapistoffice.config.security.TokenRepository;
-import goral.psychotherapistoffice.domain.messeges.MessageService;
 import goral.psychotherapistoffice.domain.user.Dto.UserCredentialsDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,14 +15,14 @@ public class UserService {
 
     private static final String DEFAULT_USER_ROLE = "USER";
     private final UserRepository userRepository;
+    private final ChangePasswordTokenRepository changePasswordTokenRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final TokenRepository tokenRepository;
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, MessageService messageService, TokenRepository tokenRepository) {
+    public UserService(UserRepository userRepository, ChangePasswordTokenRepository changePasswordTokenRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.changePasswordTokenRepository = changePasswordTokenRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.tokenRepository = tokenRepository;
     }
 
 
@@ -59,7 +57,7 @@ public class UserService {
         resetToken.setToken(uuid.toString());
         resetToken.setExpiryDateTime(expiryDateTime);
         resetToken.setUser(user);
-        ChangePasswordToken token = tokenRepository.save(resetToken);
+        ChangePasswordToken token = changePasswordTokenRepository.save(resetToken);
             String endpointUrl = "http://localhost:8080/reset-password";
             return endpointUrl + "/" + resetToken.getToken();
     }
