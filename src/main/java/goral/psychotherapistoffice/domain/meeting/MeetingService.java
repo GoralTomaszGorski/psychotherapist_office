@@ -97,7 +97,6 @@ public class MeetingService {
         try {
             meetingRepository.deleteMeetingById(id);
         } catch (EmptyResultDataAccessException e){
-            // ignore
         }
     }
 

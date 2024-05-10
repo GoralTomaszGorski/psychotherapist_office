@@ -18,24 +18,24 @@ public class CounterController {
     public String visits(Model model){
         model.addAttribute("heading", "Ewa Górska psychoterapeuta, psycholog, pedagog, mediator");
 
-        int home = (counterService.getCountForUrl("/"));
-        model.addAttribute("home", home);
-        int omnnieC = (counterService.getCountForUrl("/omnie"));
-        model.addAttribute("omnieC", omnnieC);
-        int offertaC = (counterService.getCountForUrl("/offerta"));
-        model.addAttribute("offertaC", offertaC);
-        int mail = (counterService.getCountForUrl("/mail"));
-        model.addAttribute("mail", mail);
-        int userC = (counterService.getCountForUrl("/user"));
-        model.addAttribute("userC", userC);
-        int adminC = (counterService.getCountForUrl("/admin"));
-        model.addAttribute("adminC", adminC);
-        int spotkaniaC = (counterService.getCountForUrl("/spotkania"));
-        model.addAttribute("spotkaniaC", spotkaniaC);
-        int terminyC = (counterService.getCountForUrl("/terminy"));
-        model.addAttribute("terminyC", terminyC);
-        int loginC = (counterService.getCountForUrl("/login"));
-        model.addAttribute("loginC", loginC);
+        int homeCounter = (counterService.getCountForUrl("/"));
+        model.addAttribute("homeCounter", homeCounter);
+        int omnnieCounter = (counterService.getCountForUrl("/omnie"));
+        model.addAttribute("omnnieCounter", omnnieCounter);
+        int ofertaCounter = (counterService.getCountForUrl("/offerta"));
+        model.addAttribute("ofertaCounter", ofertaCounter);
+        int mailCounter = (counterService.getCountForUrl("/mail"));
+        model.addAttribute("mailCounter", mailCounter);
+        int userCounter = (counterService.getCountForUrl("/user"));
+        model.addAttribute("userCounter", userCounter);
+        int adminCounter = (counterService.getCountForUrl("/admin"));
+        model.addAttribute("adminCounter", adminCounter);
+        int spotkaniaCounter = (counterService.getCountForUrl("/spotkania"));
+        model.addAttribute("spotkaniaCounter", spotkaniaCounter);
+        int terminyCounter = (counterService.getCountForUrl("/terminy"));
+        model.addAttribute("terminyCounter", terminyCounter);
+        int loginCounter = (counterService.getCountForUrl("/login"));
+        model.addAttribute("loginCounter", loginCounter);
         return "admin/visits";
     }
 }
