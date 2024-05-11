@@ -17,7 +17,7 @@
             Zostałeś wylogowany, możesz zalogować się ponownie.
         </p>
 
-        <p th:if="${param.setedNewPass}"
+        <p th:if="${param.new_pass}"
            class="mc-form-message">
             Hasło zostało zresetowane, możesz się zalogować nowym hasłem:)
         </p>
@@ -29,15 +29,12 @@
         <h4 class="list-heading">Admin: 'admin@example.com', 'adminpass'</h4>
         <form class="mc-form" action="" th:action="@{/login}" method="post">
 
-
             <label for="username">Adres email</label>
             <input id="username" name="username"
                    placeholder="nazwa użytkownika" type="text">
-
             <label for="password">Hasło</label>
             <input id="password" name="password"
                    placeholder="hasło" type="password">
-
             <button type="submit">Zaloguj się</button>
         </form>
 

@@ -3,8 +3,6 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">>
-
-
 <body>
 <main class="main-content" layout:fragment="content">
     <p class="notification-bar" th:if="${notification}" th:utext="${notification}">
@@ -21,7 +19,6 @@
             <li><a href="#" th:href="@{/admin/calender/view}">7. Edytuj/Usuń termin z kalendarza</a></li>
             <li><a href="#" th:href="@{/admin/offer/view}">8. Edytuj/Usuń rodzaj terapii</a></li>
             <li><a href="#" th:href="@{/admin/visits}">9. Zobacz liczbę odwiwedziń</a></li>
-
         </ul>
     </div>
 </main>

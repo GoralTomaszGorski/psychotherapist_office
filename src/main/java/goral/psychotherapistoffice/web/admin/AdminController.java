@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
-    //stała z TherapyManagementController
     public static final String NOTIFICATION_ATTRIBUTE = "notification";
     private final CounterService counterService;
 

@@ -1,6 +1,5 @@
 package goral.psychotherapistoffice.domain.meeting;
 
-import goral.psychotherapistoffice.domain.meeting.dto.MeetingDto;
 import goral.psychotherapistoffice.domain.meeting.dto.MeetingDtoDev;
 
 public class MeetingDtoMapperDev {

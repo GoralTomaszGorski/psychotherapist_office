@@ -20,7 +20,6 @@ public class PatientService {
     public PatientService(PatientJpaRepository patientJpaRepository, UserService userService) {
         this.patientJpaRepository = patientJpaRepository;
         this.userService = userService;
-
     }
 
     public Optional<PatientDto> findPatientById(long id) {

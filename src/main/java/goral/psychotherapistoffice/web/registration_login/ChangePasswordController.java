@@ -76,6 +76,6 @@ public class ChangePasswordController {
                     userCredentialsDto.getPassword()));
            userRepository.save(user);
         }
-        return "redirect:/login?setedNewPass";
+        return "redirect:/login?new_pass";
     }
 }

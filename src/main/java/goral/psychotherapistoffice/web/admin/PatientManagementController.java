@@ -1,6 +1,5 @@
 package goral.psychotherapistoffice.web.admin;
 
-
 import goral.psychotherapistoffice.domain.exception.DeletePatientException;
 import goral.psychotherapistoffice.domain.patient.PatientService;
 import goral.psychotherapistoffice.domain.patient.dto.PatientDto;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-
 
 @Controller
 @RequestMapping("/admin")
@@ -69,7 +67,6 @@ public class PatientManagementController {
         } catch (Exception e) {
             throw new DeletePatientException();
         }
-
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Usunięto Pacjenta "
