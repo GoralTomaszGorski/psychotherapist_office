@@ -1,5 +1,7 @@
 package goral.psychotherapistoffice.domain.patient.dto;
 
+import java.sql.Date;
+
 public class PatientDto {
     private Long id;
     private String nick;
@@ -8,13 +10,15 @@ public class PatientDto {
     private String email;
     private String telephone;
     private int yearOfBrith;
+    private Date joinDate;
     private String  information;
     private boolean approval;
 
-    public PatientDto() {
+    public PatientDto(Date joinDate) {
+        this.joinDate = joinDate;
     }
 
-    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, String  information, boolean approval) {
+    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, Date joinDate, String  information, boolean approval) {
         this.id = id;
         this.nick = nick;
         this.name = name;
@@ -22,8 +26,13 @@ public class PatientDto {
         this.email = email;
         this.telephone = telephone;
         this.yearOfBrith = yearOfBrith;
+        this.joinDate = joinDate;
         this.information = information;
         this.approval = approval;
+    }
+
+    public PatientDto() {
+
     }
 
 
@@ -97,5 +106,13 @@ public class PatientDto {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 }

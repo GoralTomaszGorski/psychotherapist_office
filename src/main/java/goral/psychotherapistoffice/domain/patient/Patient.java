@@ -2,7 +2,9 @@ package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
-import java.time.Year;
+
+import java.sql.Date;
+import java.util.*;
 import java.util.Collection;
 
 @Entity
@@ -20,6 +22,8 @@ public class Patient {
     private String telephone;
     @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
+    @Column(name = "JOIN_DATE")
+    private Date joinDate;
     private String  information;
     private boolean  approval;
 
@@ -100,5 +104,13 @@ public class Patient {
 
     public Collection<Meeting> getMeeting() {
         return meeting;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 }

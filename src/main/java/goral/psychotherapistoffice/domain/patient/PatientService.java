@@ -7,6 +7,7 @@ import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,19 +55,7 @@ public class PatientService {
     public Patient addPatient(PatientDto patientDto) {
         Patient patientToSave = new Patient();
         if (patientDto.getNick().isEmpty()) {
-            StringBuilder sB = new StringBuilder();
-            String tel = patientDto.getTelephone();
-            int n = tel.length();
-            for (int i = (n - 3);
-                 i < n;
-                 i++) {
-                char c = patientDto.getTelephone().charAt(i);
-                sB.append(c);
-            }
-            sB.append(patientDto.getName().charAt(0));
-            sB.append(patientDto.getSurname().charAt(0));
-            sB.append(patientDto.getSurname().charAt(1));
-            patientToSave.setNick(String.valueOf(sB));
+            setNewNick(patientDto, patientToSave);
         } else {
             patientToSave.setNick(patientDto.getNick());
         }
@@ -81,6 +70,22 @@ public class PatientService {
         return patientToSave;
     }
 
+    private static void setNewNick(PatientDto patientDto, Patient patientToSave) {
+        StringBuilder sB = new StringBuilder();
+        String tel = patientDto.getTelephone();
+        int n = tel.length();
+        for (int i = (n - 3);
+             i < n;
+             i++) {
+            char c = patientDto.getTelephone().charAt(i);
+            sB.append(c);
+        }
+        sB.append(patientDto.getName().charAt(0));
+        sB.append(patientDto.getSurname().charAt(0));
+        sB.append(patientDto.getSurname().charAt(1));
+        patientToSave.setNick(String.valueOf(sB));
+    }
+
     @Transactional
     public void deletePatient(Long id) {
         try {
@@ -89,6 +94,8 @@ public class PatientService {
             throw new DeletePatientException();
         }
     }
+    
+    Date date = new Date();
 }
 
 

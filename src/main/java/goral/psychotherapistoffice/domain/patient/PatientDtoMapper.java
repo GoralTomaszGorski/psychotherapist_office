@@ -15,6 +15,7 @@ public class PatientDtoMapper {
                 patient.getEmail(),
                 patient.getTelephone(),
                 patient.getYearOfBrith(),
+                patient.getJoinDate(),
                 patient.getInformation(),
                 patient.isApproval()
         );
