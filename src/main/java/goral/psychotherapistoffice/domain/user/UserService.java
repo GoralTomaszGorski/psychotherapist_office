@@ -18,6 +18,7 @@ public class UserService {
     private final ChangePasswordTokenRepository changePasswordTokenRepository;
     private final UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
+
     public UserService(UserRepository userRepository, ChangePasswordTokenRepository changePasswordTokenRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.changePasswordTokenRepository = changePasswordTokenRepository;
@@ -58,6 +59,7 @@ public class UserService {
     }
 
     public String getCurrentUserName() {
+
         String currentUsername = SecurityContextHolder
                 .getContext()
                 .getAuthentication()

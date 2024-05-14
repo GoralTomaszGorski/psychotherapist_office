@@ -7,7 +7,7 @@ import goral.psychotherapistoffice.domain.user.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +17,13 @@ public class PatientService {
 
     private final PatientJpaRepository patientJpaRepository;
     private final UserService userService;
+    private final DateInWarsaw dateInWarsaw;
 
-    public PatientService(PatientJpaRepository patientJpaRepository, UserService userService) {
+
+    public PatientService(PatientJpaRepository patientJpaRepository, UserService userService, DateInWarsaw dateInWarsaw) {
         this.patientJpaRepository = patientJpaRepository;
         this.userService = userService;
+        this.dateInWarsaw = dateInWarsaw;
     }
 
     public Optional<PatientDto> findPatientById(long id) {
@@ -64,8 +67,9 @@ public class PatientService {
         patientToSave.setTelephone(patientDto.getTelephone());
         patientToSave.setEmail(userService.getCurrentUserName());
         patientToSave.setYearOfBrith(patientDto.getYearOfBrith());
+        patientToSave.setJoinDate(dateInWarsaw.getLocalDateInWarsaw());
         patientToSave.setInformation(patientDto.getInformation());
-        patientToSave.setApproval(patientDto.isApproval());
+        patientToSave.setApproval(true);
         patientJpaRepository.save(patientToSave);
         return patientToSave;
     }
@@ -94,8 +98,9 @@ public class PatientService {
             throw new DeletePatientException();
         }
     }
-    
-    Date date = new Date();
+
 }
+
+
 
 

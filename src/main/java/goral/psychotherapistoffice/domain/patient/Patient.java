@@ -4,7 +4,7 @@ import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.*;
+import java.time.ZonedDateTime;
 import java.util.Collection;
 
 @Entity
@@ -23,7 +23,7 @@ public class Patient {
     @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
     @Column(name = "JOIN_DATE")
-    private Date joinDate;
+    private ZonedDateTime joinDate;
     private String  information;
     private boolean  approval;
 
@@ -106,11 +106,11 @@ public class Patient {
         return meeting;
     }
 
-    public Date getJoinDate() {
+    public ZonedDateTime getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(ZonedDateTime joinDate) {
         this.joinDate = joinDate;
     }
 }
