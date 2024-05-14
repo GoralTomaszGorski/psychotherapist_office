@@ -59,7 +59,6 @@ public class UserService {
     }
 
     public String getCurrentUserName() {
-
         String currentUsername = SecurityContextHolder
                 .getContext()
                 .getAuthentication()

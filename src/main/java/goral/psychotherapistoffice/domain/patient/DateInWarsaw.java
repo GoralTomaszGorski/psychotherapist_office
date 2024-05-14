@@ -3,6 +3,7 @@ package goral.psychotherapistoffice.domain.patient;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -14,7 +15,7 @@ public class DateInWarsaw {
 
     public ZonedDateTime getLocalDateInWarsaw() {
         return localDateInWarsaw =
-                ZonedDateTime.of(LocalDateTime.now(),
+                ZonedDateTime.of(LocalDate.now().atStartOfDay(),
                 ZoneId.of("Europe/Warsaw"));
     }
 }
