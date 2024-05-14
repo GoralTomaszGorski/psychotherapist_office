@@ -3,7 +3,6 @@ package goral.psychotherapistoffice.domain.patient;
 import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 

@@ -1,6 +1,6 @@
 package goral.psychotherapistoffice.domain.patient.dto;
 
-import java.sql.Date;
+
 import java.time.ZonedDateTime;
 
 public class PatientDto {
@@ -14,10 +14,6 @@ public class PatientDto {
     private ZonedDateTime joinDate;
     private String  information;
     private boolean approval;
-
-    public PatientDto(ZonedDateTime joinDate) {
-        this.joinDate = joinDate;
-    }
 
     public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, ZonedDateTime joinDate, String  information, boolean approval) {
         this.id = id;
