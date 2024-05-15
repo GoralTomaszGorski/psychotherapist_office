@@ -16,7 +16,6 @@
             <column name="YEAR_OF_BRITH" type="integer"/>
             <column name="JOIN_DATE" type="timestamp"/>
             <column name="email" type="VARCHAR(100)"/>
-            <column name="password" type="VARCHAR(200)"/>
             <column name="information" type="VARCHAR(2000)"/>
             <column name="approval" type="boolean"/>
         </createTable>
