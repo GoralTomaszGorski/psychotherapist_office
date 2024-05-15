@@ -2,7 +2,8 @@ package goral.psychotherapistoffice.domain.patient;
 
 import goral.psychotherapistoffice.domain.meeting.Meeting;
 import jakarta.persistence.*;
-import java.time.Year;
+
+import java.time.ZonedDateTime;
 import java.util.Collection;
 
 @Entity
@@ -20,6 +21,8 @@ public class Patient {
     private String telephone;
     @Column(name = "YEAR_OF_BRITH")
     private int yearOfBrith;
+    @Column(name = "JOIN_DATE")
+    private ZonedDateTime joinDate;
     private String  information;
     private boolean  approval;
 
@@ -100,5 +103,13 @@ public class Patient {
 
     public Collection<Meeting> getMeeting() {
         return meeting;
+    }
+
+    public ZonedDateTime getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(ZonedDateTime joinDate) {
+        this.joinDate = joinDate;
     }
 }

@@ -26,7 +26,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                                 String.format("User with email %s not found", username)));
     }
 
-
     private UserDetails createUserDetails(UserCredentialsDto credentials) {
         return User.builder()
                 .username(credentials.getEmail())
@@ -34,5 +33,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles(credentials.getRoles().toArray(String[]::new))
                 .build();
     }
+
 
 }

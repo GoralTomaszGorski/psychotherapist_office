@@ -1,5 +1,8 @@
 package goral.psychotherapistoffice.domain.patient.dto;
 
+
+import java.time.ZonedDateTime;
+
 public class PatientDto {
     private Long id;
     private String nick;
@@ -8,13 +11,11 @@ public class PatientDto {
     private String email;
     private String telephone;
     private int yearOfBrith;
+    private ZonedDateTime joinDate;
     private String  information;
     private boolean approval;
 
-    public PatientDto() {
-    }
-
-    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, String  information, boolean approval) {
+    public PatientDto(Long id, String nick, String name, String surname, String email, String telephone, int yearOfBrith, ZonedDateTime joinDate, String  information, boolean approval) {
         this.id = id;
         this.nick = nick;
         this.name = name;
@@ -22,8 +23,13 @@ public class PatientDto {
         this.email = email;
         this.telephone = telephone;
         this.yearOfBrith = yearOfBrith;
+        this.joinDate = joinDate;
         this.information = information;
         this.approval = approval;
+    }
+
+    public PatientDto() {
+
     }
 
 
@@ -97,5 +103,13 @@ public class PatientDto {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public ZonedDateTime getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(ZonedDateTime joinDate) {
+        this.joinDate = joinDate;
     }
 }

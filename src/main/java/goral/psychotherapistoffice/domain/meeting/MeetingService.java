@@ -54,7 +54,6 @@ public class MeetingService {
         meeting.setCalender(calender);
         calender.setFree(false);
         calenderRepository.save(calender);
-
         meetingRepository.save(meeting);
     }
 
@@ -96,7 +95,7 @@ public class MeetingService {
         calender.setFree(true);
         try {
             meetingRepository.deleteMeetingById(id);
-        } catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException ignored){
         }
     }
 
