@@ -20,12 +20,12 @@ public class MessageService{
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress("ewagorska88@wp.pl"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress("gabinet.ewa.gorska@gmail.com"));
-            message.setFrom(new InternetAddress(messageDto.getFrom()));
+            message.setFrom(new InternetAddress("ewagorska88@wp.pl"));
             message.setText(messageDto.getBody());
             message.setSubject(
-                    messageDto.getSubject()+", od: " +messageDto.getFrom()+" tel.: "
+                    messageDto.getSubject()+", od: " +messageDto.getSender()+" tel.: "
                             +messageDto.getPhone());
-            message.setHeader((messageDto.getPhone()), (messageDto.getFrom()));
+            message.setHeader((messageDto.getPhone()), (messageDto.getSender()));
             Transport.send(message);
         }
         catch (Throwable e) {
@@ -34,7 +34,6 @@ public class MessageService{
     }
 
     public String sendMailToResetPassword(UserCredentialsDto userCredentialsDto, String resetLink) throws MailSenderException{
-
         try {
             Message message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(userCredentialsDto.getEmail()));
@@ -48,7 +47,6 @@ public class MessageService{
             return "error";
         }
     }
-
 }
 
 

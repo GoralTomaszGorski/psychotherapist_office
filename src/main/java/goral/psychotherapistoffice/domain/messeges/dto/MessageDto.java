@@ -4,14 +4,14 @@ public class MessageDto {
 
     private String phone;
     private String recipient;
-    private String from;
+    private String sender;
     private String subject;
     private String body;
 
-    public MessageDto(String phone, String from, String subject, String recipient, String body) {
+    public MessageDto(String phone, String sender, String subject, String recipient, String body) {
         this.phone = phone;
         this.recipient = recipient;
-        this.from = from;
+        this.sender = sender;
         this.subject = subject;
         this.body = body;
     }
@@ -36,12 +36,12 @@ public class MessageDto {
         this.phone = phone;
     }
 
-    public String getFrom() {
-        return from;
+    public String getSender() {
+        return sender;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     public String getSubject() {
