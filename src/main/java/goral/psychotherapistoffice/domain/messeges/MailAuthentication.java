@@ -7,6 +7,6 @@ public class MailAuthentication extends Authenticator {
 
     @Override
     protected PasswordAuthentication getPasswordAuthentication() {
-        return new  PasswordAuthentication("ewagorska88@wp.pl", "GKU2EFMARMXAXECS");
+        return new  PasswordAuthentication("gabinet.ewa.gorska@gmail.com", "example");
     }
 }

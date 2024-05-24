@@ -14,7 +14,7 @@ values
     ('draff3@mtv.com','{noop}Szyfrowane7X'),
     ('pslateford4@t.co','{noop}TajneHaslo8_'),
     ('goralek_z_gor@o2.pl','{noop}BezZmartwien1e'),
-    ('goralek_z_gor@tlen.pl','{noop}ZnakoweH@sh2'),
+    ('goralek_z_gor@tlen.pl','{noop}123'),
     ('tomasz.gorski88@gmail.com','{noop}123Sekretne$'),
     ('lbarhem8@harvard.edu','{noop}K0dyR@nd0m'),
     ('bsapshed9@weather.com','{noop}BezRyzyka9!'),

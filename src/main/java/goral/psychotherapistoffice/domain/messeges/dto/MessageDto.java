@@ -2,16 +2,17 @@ package goral.psychotherapistoffice.domain.messeges.dto;
 
 public class MessageDto {
 
+
     private String phone;
     private String recipient;
-    private String sender;
+    private String from;
     private String subject;
     private String body;
 
-    public MessageDto(String phone, String sender, String subject, String recipient, String body) {
+    public MessageDto(String phone, String from, String subject, String recipient, String body) {
         this.phone = phone;
         this.recipient = recipient;
-        this.sender = sender;
+        this.from = from;
         this.subject = subject;
         this.body = body;
     }
@@ -36,12 +37,12 @@ public class MessageDto {
         this.phone = phone;
     }
 
-    public String getSender() {
-        return sender;
+    public String getFrom() {
+        return from;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public String getSubject() {
@@ -60,6 +61,3 @@ public class MessageDto {
         this.body = body;
     }
 }
-
-
-
