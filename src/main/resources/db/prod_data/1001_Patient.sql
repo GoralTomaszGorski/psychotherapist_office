@@ -1,5 +1,5 @@
 insert into patient
-(nick, name, surname, telephone, year_of_brith, email, password, information, approval)
+(nick, name, surname, telephone, year_of_brith, JOIN_DATE, email, information, approval)
 values
-    ('vaylesbury0', 'Valentine', 'Aylesbury', '+7-415-462-2763', 1974, '	hfishwick0@list-manage.com	',
-     '	{noop}Haslo1!	', '	Adres 1		', true);
+
+    ('215TGo','Tomasz','Górski','603215114',	1988	,null,'tomasz.gorski88@gmail.com','ul. Mickiewicza 4/29, 23-204 Kraśnik',	true	)	;

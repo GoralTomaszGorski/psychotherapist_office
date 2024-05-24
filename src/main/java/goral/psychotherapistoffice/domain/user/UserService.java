@@ -54,7 +54,9 @@ public class UserService {
         resetToken.setToken(uuid.toString());
         resetToken.setExpiryDateTime(expiryDateTime);
         changePasswordTokenRepository.save(resetToken);
+//        String endpointUrl = "https://psycholog-krasnik.pl/reset-password";
         String endpointUrl = "http://localhost:8080/reset-password";
+
         return endpointUrl + "/" + resetToken.getToken();
     }
 
